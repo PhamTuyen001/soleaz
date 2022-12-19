@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="one-content-page">
-			<img src="<?=UPLOAD_NEWS_L.$about[0]['photo']?>" alt="<?=$about[0]['ten'.$lang]?>">
+			<img src="<?=THUMBS?>/1280x700x1/<?=UPLOAD_NEWS_L.$about[0]['photo']?>" alt="<?=$about[0]['ten'.$lang]?>">
 		</div>
 	</div>
 </section>
