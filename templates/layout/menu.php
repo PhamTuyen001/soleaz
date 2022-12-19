@@ -66,7 +66,7 @@
             
             
             <li>
-                <a class="transition <?php if($com=='lien-he') echo 'active'; ?>" href="lien-he" title="<?=lienhe?>"><?=lienhe?></a>
+                <a class="transition <?php if($com=='contact-us') echo 'active'; ?>" href="contact-us" title="<?=lienhe?>"><?=lienhe?></a>
             </li>
             <li>
                 <div class="search">

@@ -83,7 +83,7 @@
     $config['product'][$nametype]['width_list'] = 65;
     $config['product'][$nametype]['height_list'] = 65;
     $config['product'][$nametype]['thumb_list'] = '65x65x2';
-    $config['product'][$nametype]['img_type_list'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
+    $config['product'][$nametype]['img_type_list'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF|.svg|.SVG';
 
     /* Sản phẩm (Cat) */
     $config['product'][$nametype]['title_main_cat'] = "Sản phẩm cấp 2";

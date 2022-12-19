@@ -1,3 +1,14 @@
+<section class="warp-banner-inpage">
+    <p class="text-center">
+        <img src="assets/images/bg-sanpham.png" alt="">
+    </p>
+</section>
+<?php include TEMPLATE.LAYOUT."breadcrumb.php" ?>
+<section class="wrap-contacts">
+    <div class="container">
+        
+    </div>
+</section>
 <div class="title-main"><h1><span><?=$title_crumb?></span></h1></div>
 <div class="content-main">
     <div class="top-contact mt-xl-3">

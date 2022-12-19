@@ -139,7 +139,7 @@
 	/* Switch coms */
 	switch($com)
 	{
-		case 'lien-he':
+		case 'contact-us':
 			$source = "contact";
 			$template = "contact/contact";
 			$seo->setSeo('type','object');

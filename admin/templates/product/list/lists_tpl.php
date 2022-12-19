@@ -79,7 +79,7 @@
                                 </td>
                                 <?php if(!empty($config['product'][$type]['show_images_list']) && $config['product'][$type]['show_images_list']==true) { ?>
                                     <td class="align-middle">
-                                    	<a href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['ten'.$config['website']['lang-doc']]?>"><img class="rounded img-preview" onerror="src='assets/images/noimage.png'" src="<?=THUMBS?>/<?=$config['product'][$type]['thumb_list']?>/<?=UPLOAD_PRODUCT_L.$items[$i]['photo']?>" alt="<?=$items[$i]['ten'.$config['website']['lang-doc']]?>"></a>
+                                    	<a href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['ten'.$config['website']['lang-doc']]?>"><img class="rounded img-preview" onerror="src='assets/images/noimage.png'" src="<?=UPLOAD_PRODUCT.$items[$i]['photo']?>" alt="<?=$items[$i]['ten'.$config['website']['lang-doc']]?>"></a>
                                     </td>
                                 <?php } ?>
                                 <td class="align-middle">

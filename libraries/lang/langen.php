@@ -1,10 +1,10 @@
 <?php
 define("trangchu","Home");
-define("gioithieu","Intro");
+define("gioithieu","About us");
 define("tintuc","News");
-define("lienhe","Contacts");
+define("lienhe","Contact us");
 define("motasanpham","Description");
-define("sanpham","Products");
+define("sanpham","Product");
 define("luotxem","Views");
 define("masp","Product code");
 define("ngaydang","Date Submitted");
@@ -174,11 +174,5 @@ define("sukien","");
 define("thietbisukien","");
 define("hoatdong","");
 define("dangkyngay","");
-define("outfit","Outfit");
-define("blog","Blog");
-define("customercare","Customer Care");
-define("newcollection","New Collection");
-define("sale","Sale");
-define("soleoutfit","Sole Outfit");
-define("processestablished","Process established");
+define("fashionnole","Fashion Nole");
 ?>

@@ -3,7 +3,7 @@
         <div class="footer-article">
             <div class="row d-flex align-items-start justify-content-between">
 
-                <div class="footer-news col-12 col-sm-12 col-md-12 col-lg-3">
+                <div class="footer-news col-12 col-sm-6 col-md-6 col-lg-3">
                     <div class="info-footer"><?=htmlspecialchars_decode($footer1['noidung'.$lang])?></div>
                     <ul class="social social-footer d-flex align-items-start">
                         <?php for($i=0;$i<count($social1);$i++) { ?>
@@ -12,12 +12,12 @@
                     </ul>
                 </div>
 
-                <div class="footer-news col-12 col-sm-12 col-md-12 col-lg-3">
+                <div class="footer-news col-12 col-sm-6 col-md-6 col-lg-3">
                     <p class="title-footer"><?=gioithieu?></p>
                     <div class="info-footer"><?=htmlspecialchars_decode($footer2['noidung'.$lang])?></div>
                 </div>
 
-                <div class="footer-news col-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="footer-news col-12 col-sm-6 col-md-6 col-lg-2">
                     <p class="title-footer"><?=support?></p>
                     <ul class="footer-ul">
                         <?php foreach($cs as $v) { ?>

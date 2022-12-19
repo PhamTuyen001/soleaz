@@ -775,7 +775,7 @@
 	{
 		if(inputFile[0].files[0])
 		{
-			if(inputFile[0].files[0].name.match(/.(jpg|jpeg|png|gif)$/i))
+			if(inputFile[0].files[0].name.match(/.(jpg|jpeg|png|gif|svg)$/i))
 			{
 				var size = parseInt(inputFile[0].files[0].size) / 4096;
 

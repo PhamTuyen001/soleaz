@@ -6,7 +6,8 @@
     $logo = $d->rawQueryOne("SELECT id, photo FROM #_photo WHERE type = ? AND act = ? limit 0,1",array('logo','photo_static'));
     $slogan = $d->rawQueryOne("SELECT ten$lang FROM #_static WHERE type = ? limit 0,1",array('slogan'));
     
-    $splistmenu = $d->rawQuery("SELECT ten$lang as ten, tenkhongdauvi, tenkhongdauen, id FROM #_product_list WHERE hienthi=1 AND type = ? ORDER BY stt,id DESC",array('san-pham'));
+    $sqlProduct="SELECT ten$lang as ten, tenkhongdauvi, tenkhongdauen, id,photo FROM #_product_list WHERE hienthi=1 AND type = 'san-pham' ORDER BY stt,id DESC";
+    $splistmenu=$cache->getCache($sqlProduct,'result',600);
 
     $serviceslist = $d->rawQuery("SELECT ten$lang as ten, tenkhongdauvi, tenkhongdauen, id FROM #_news WHERE hienthi=1 AND type = ? ORDER BY stt asc,id DESC",array('to-chuc-su-kien'));
 
