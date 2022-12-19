@@ -175,4 +175,12 @@ define("thietbisukien","");
 define("hoatdong","");
 define("dangkyngay","");
 define("fashionnole","Fashion Nole");
+define("leavemessage","LEAVE MESSAGE");
+define("soleoutfit","Sole Outfit");
+define("sale","Sale");
+define("newcollection","New Collection");
+define("support","Support");
+define("contact","Contact");
+define("viewcollection","View Collection");
+define("gotoourinstagram","Go to our Instagram");
 ?>

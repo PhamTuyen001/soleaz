@@ -142,9 +142,9 @@
     $config['newsletter'][$nametype]['showngaytao'] = true;
     $config['newsletter'][$nametype]['file_type'] = 'doc|docx|pdf|rar|zip|ppt|pptx|DOC|DOCX|PDF|RAR|ZIP|PPT|PPTX|xls|jpg|png|gif|JPG|PNG|GIF|xls|XLS';
 
-    /* Tin tức */
-    $nametype = "tin-tuc";
-    $config['news'][$nametype]['title_main'] = "Tin tức";
+    
+    $nametype = "blog";
+    $config['news'][$nametype]['title_main'] = "Blog";
     $config['news'][$nametype]['dropdown'] = false;
     $config['news'][$nametype]['list'] = false;
     $config['news'][$nametype]['cat'] = false;
@@ -156,7 +156,7 @@
     $config['news'][$nametype]['copy'] = true;
     $config['news'][$nametype]['copy_image'] = false;
     $config['news'][$nametype]['slug'] = true;
-    $config['news'][$nametype]['check'] = array("noibat" => "Nổi bật");
+    $config['news'][$nametype]['check'] = array();
     $config['news'][$nametype]['icon'] = false;
     $config['news'][$nametype]['images'] = true;
     $config['news'][$nametype]['show_images'] = true;
@@ -174,26 +174,11 @@
     $config['news'][$nametype]['height'] = 290;
     $config['news'][$nametype]['width_icon'] = 30*2;
     $config['news'][$nametype]['height_icon'] = 30*2;
-    $config['news'][$nametype]['thumb'] = '100x100x1';
+    $config['news'][$nametype]['thumb'] = '390x290x1';
     $config['news'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
     $config['news'][$nametype]['file_type'] = 'doc|docx|pdf|rar|zip|ppt|pptx|DOC|DOCX|PDF|RAR|ZIP|PPT|PPTX|xls|jpg|png|gif|JPG|PNG|GIF|xls|XLS';
 
-    /* Tin tức (List) */
-    $config['news'][$nametype]['title_main_list'] = "Tin tức cấp 1";
-    $config['news'][$nametype]['images_list'] = false;
-    $config['news'][$nametype]['show_images_list'] = false;
-    $config['news'][$nametype]['slug_list'] = true;
-    $config['news'][$nametype]['check_list'] = array();
-    $config['news'][$nametype]['gallery_list'] = array();
-    $config['news'][$nametype]['mota_list'] = false;
-    $config['news'][$nametype]['mota_cke_list'] = false;
-    $config['news'][$nametype]['noidung_list'] = false;
-    $config['news'][$nametype]['noidung_cke_list'] = false;
-    $config['news'][$nametype]['seo_list'] = true;
-    $config['news'][$nametype]['width_list'] = 75*4;
-    $config['news'][$nametype]['height_list'] = 50*4;
-    $config['news'][$nametype]['thumb_list'] = '100x100x1';
-    $config['news'][$nametype]['img_type_list'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
+   
 
 
     $nametype = "gioi-thieu";

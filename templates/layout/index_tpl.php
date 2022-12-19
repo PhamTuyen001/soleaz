@@ -447,7 +447,7 @@
 							<a href="">SOLE FW22 2ND DROP</a>
 						</h3>
 						<p>
-							<a href="">View Collection</a>
+							<a href=""><?=viewcollection?></a>
 						</p>
 					</div>
 				</div>

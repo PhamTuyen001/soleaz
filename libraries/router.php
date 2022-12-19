@@ -84,10 +84,10 @@
 	/* Tối ưu link */
 	$requick = array(
 		/* Sản phẩm */
-		/*array("tbl"=>"product_list","field"=>"idl","source"=>"product","com"=>"san-pham","type"=>"san-pham"),
+		array("tbl"=>"product_list","field"=>"idl","source"=>"product","com"=>"san-pham","type"=>"san-pham"),
 		array("tbl"=>"product_cat","field"=>"idc","source"=>"product","com"=>"san-pham","type"=>"san-pham"),
 		array("tbl"=>"product_brand","field"=>"idb","source"=>"product","com"=>"thuong-hieu","type"=>"san-pham"),
-		array("tbl"=>"product","field"=>"id","source"=>"product","com"=>"san-pham","type"=>"san-pham",'menu'=>true),*/
+		array("tbl"=>"product","field"=>"id","source"=>"product","com"=>"san-pham","type"=>"san-pham",'menu'=>true),
 		
 		/* Tags */
 		/*array("tbl"=>"tags","tbltag"=>"product","field"=>"id","source"=>"tags","com"=>"tags-san-pham","type"=>"san-pham",'menu'=>true),
@@ -102,7 +102,7 @@
 		array("tbl"=>"news","field"=>"id","source"=>"news","com"=>"tin-tuc","type"=>"tin-tuc",'menu'=>true),
 		array("tbl"=>"news_list","field"=>"idl","source"=>"news","com"=>"thiet-bi-su-kien","type"=>"thiet-bi-su-kien"),
 		array("tbl"=>"news","field"=>"id","source"=>"news","com"=>"thiet-bi-su-kien","type"=>"thiet-bi-su-kien",'menu'=>true),
-		array("tbl"=>"news","field"=>"id","source"=>"news","com"=>"to-chuc-su-kien","type"=>"to-chuc-su-kien",'menu'=>false),
+		array("tbl"=>"news","field"=>"id","source"=>"news","com"=>"blog","type"=>"blog",'menu'=>false),
 		array("tbl"=>"news","field"=>"id","source"=>"news","com"=>"chinh-sach","type"=>"chinh-sach",'menu'=>false),
 
 		/* Trang tĩnh */
@@ -162,12 +162,12 @@
 			$title_crumb = tintuc;
 			break;
 
-		case 'to-chuc-su-kien':
+		case 'blog':
 			$source = "news";
 			$template = isset($_GET['id']) ? "news/news_detail" : "news/news";
 			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
 			$type = $com;
-			$title_crumb = tochuc.' '.sukien;
+			$title_crumb = blog;
 			break;
 
 		case 'thiet-bi-su-kien':
