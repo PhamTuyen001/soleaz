@@ -183,4 +183,6 @@ define("support","Support");
 define("contact","Contact");
 define("viewcollection","View Collection");
 define("gotoourinstagram","Go to our Instagram");
+define("viewdetails","View details");
+define("loadmore","Load more");
 ?>

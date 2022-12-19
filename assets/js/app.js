@@ -481,6 +481,26 @@ NN_FRAMEWORK.menuMobile = function(){
 };
 $document.ready(function() {
 	setTimeout(function(){$("#pre-loader").fadeOut(1e3)},400);
+	$('a.click-bloc').click(function(event) {
+		let total=$(this).data('total');
+		let page=$(this).data('page')+1;
+		let url=$(this).data('url');
+		$.ajax({
+			url: url+'?p='+page,
+			type: 'GET',
+			beforeSend:function(){
+				$('a.click-bloc').addClass('active');
+			},
+			success:function(data){
+				let $html=$('<div>'+data+'</div>');
+				$('#load-more-blog .row').append($($html).find('.col-news'));
+				$('a.click-bloc').attr('data-page',page);
+				let tt=$('#load-more-blog .row .col-news').length;
+				if(tt==total) $('a.click-bloc').hide();
+			}
+		})
+		
+	});
 	NN_FRAMEWORK.menuMobile(),
 	NN_FRAMEWORK.galleryPage(),
 	NN_FRAMEWORK.aweOwlPage(),

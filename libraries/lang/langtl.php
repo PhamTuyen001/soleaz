@@ -78,7 +78,7 @@ define("slogandangkynhantin","");
 define("giamoi","");
 define("giacu","");
 define("binhluan","");
-define("baivietkhac","");
+define("baivietkhac","Iba pang balita");
 define("banmuonxoasanphamnay","");
 define("soluongkhongnhohonkhong","");
 define("muatiep","");
@@ -183,4 +183,6 @@ define("support","Suporta");
 define("contact","Makipag-ugnayan");
 define("viewcollection","Tingnan ang Koleksyon");
 define("gotoourinstagram","Pumunta sa aming Instagram");
+define("viewdetails","Tingnan ang mga detalye");
+define("loadmore","Load more");
 ?>

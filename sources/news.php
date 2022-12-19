@@ -320,7 +320,7 @@
 		$params = array($type);
 
 		$curPage = $get_page;
-		$per_page = 10;
+		$per_page = 4;
 		$startpoint = ($curPage * $per_page) - $per_page;
 		$limit = " limit ".$startpoint.",".$per_page;
 		$sql = "select id, ten$lang, tenkhongdauvi, tenkhongdauen, photo, ngaytao, mota$lang from #_news where $where order by stt,id desc $limit";

@@ -8,7 +8,7 @@
     </p>
 </section>
 <?php include TEMPLATE.LAYOUT."breadcrumb.php" ?>
-<section class="show_instagram">
+<section class="show_instagram mb-4">
     <div class="container">
         <div class="one-content-page text-center">
             <div class="title-product text-center mb-3">
@@ -40,39 +40,31 @@
         </div>
     </div>
 </section>
-<section class="load_blog">
+<section class="load_blog py-5">
     <div class="container">
-        
+        <div class="title-product text-center mb-5">
+            <p class="text-capitalize"><?=(isset($title_cat) && $title_cat!='')?$title_cat:$title_crumb?></p>
+        </div>
+        <div id="load-more-blog">
+            <div class="row">
+                <?php foreach ($news as $k => $v) {?>
+                <div class="col-12 col-news col-sm-12 col-md-6 col-lg-6 mb-4">
+                    <div class="block-news d-flex align-items-center">
+                        <a href="<?=$v[$sluglang]?>">
+                            <img src="<?=THUMBS?>/302x211x1/<?=UPLOAD_NEWS_L.$v['photo']?>" alt="<?=$v['ten'.$lang]?>">
+                        </a>
+                        <div class="info-block-news">
+                            <h3><a class="text-split-2" href="<?=$v[$sluglang]?>"><?=$v['ten'.$lang]?></a></h3>
+                            <p class="text-split-3"><?=$v['mota'.$lang]?></p>
+                            <a href="<?=$v[$sluglang]?>"><?=viewdetails?></a>
+                        </div>
+                    </div>
+                </div>
+                <?php }?>
+            </div>
+        </div>
+        <div class="readmore <?=($total==4)?'d-none':'d-flex'?> mt-4 align-items-center justify-content-center">
+            <a href="javascript:void(0)" class="click-bloc" data-url="<?=$func->getCurrentPageURL()?>" data-page="1" data-total="<?=$total?>"><span><?=loadmore?></span><i class="fal fa-spinner fa-spin"></i></a>
+        </div>
     </div>
 </section>
-
-<div class="title-main"><h1><span><?=(isset($title_cat) && $title_cat!='')?$title_cat:$title_crumb?></span></h1></div>
-<div class="content-main mt-xl-3">
-    <div class="row">
-        <?php if(count($news)>0) { foreach($news as $k => $v) { ?>
-        <div class="news col-12 col-sm-6 col-lg-6 hover-desc">
-            <div class="pic-news scale-img">
-                <a href="<?=$v[$sluglang]?>" title="<?=$v['ten'.$lang]?>">
-                    <img class="img-block" onerror="this.src='<?=THUMBS?>/570x350x2/assets/images/noimage.png';" src="<?=THUMBS?>/570x350x1/<?=UPLOAD_NEWS_L.$v['photo']?>" alt="<?=$v['ten'.$lang]?>">
-                </a>
-            </div>
-            <div class="info-news">
-                <h3 class="name-news">
-                    <a href="<?=$v[$sluglang]?>" title="<?=$v['ten'.$lang]?>">
-                        <?=$v['ten'.$lang]?>
-                    </a>
-                </h3>
-                <p class="time-news"><?=ngaydang?>: <?=date("d/m/Y h:i A",$v['ngaytao'])?></p>
-                <div class="desc-news text-split-3"><?=$v['mota'.$lang]?></div>
-            </div>
-        </div>
-    <?php } } else { ?>
-        <div class="col-12">
-            <div class="alert alert-warning" role="alert">
-                <strong><?=khongtimthayketqua?></strong>
-            </div>
-        </div>
-    <?php } ?>
-    </div>
-</div>
-<div class="pagination-home mb-xl-3"><?=$paging?></div>

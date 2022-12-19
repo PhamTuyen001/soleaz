@@ -94,8 +94,8 @@ p,ul{margin-bottom:0px;}
 .title-main h3,.title-main h1{text-transform:uppercase;font-size:24px;font-weight:400;color:#333;line-height:35px;margin-bottom:0px;font-family:'UTMAvoBold';}
 .title-main h3.white{color:#FFF;}
 .title-main p{color:#FFF;}
-.title-main-news{text-align:left;}
-.title-main-news h1{font-size:20px;}
+.title-main-news{text-align: center;}
+.title-main-news h1{font-size:20px;margin-bottom: 0;line-height: normal;text-transform: uppercase;font-weight: 700;}
 .box-main{}
 .left-main{width:270px;}
 .left-main .left-title{padding-left:30px;background:url('../images/icon-list.png') no-repeat left center;text-transform:uppercase;font-size:18px;font-weight:500;color:#333;margin-bottom:12px;line-height:30px;}
@@ -196,7 +196,7 @@ p,ul{margin-bottom:0px;}
 /* Like Share */
 .social-plugin{display:flex;justify-content:flex-start;margin-top:10px;}
 .social-plugin .at-share-btn{margin-bottom:0px!important;}
-.social-plugin .zalo-share-button{margin-left:3px;}
+.social-plugin .zalo-share-button{margin-left:3px;display: none !important;}
 
 /*News*/
 .news-box{display:flex;justify-content:flex-start;margin-bottom:5px;}
@@ -345,7 +345,7 @@ p,ul{margin-bottom:0px;}
 .partner img{border:1px solid #ddd;}
 
 /*breadcrumb*/
-.breadcrumb a{color:#333;font-weight: 600;font-size: 14px;}
+.breadcrumb a{color:#333;font-weight: 600;font-size: 14px;text-transform: capitalize;}
 .breadcrumb li.active a{
     font-weight: 700;
 }
@@ -511,7 +511,7 @@ p,ul{margin-bottom:0px;}
 .toolbar ul li a img{height:6vw;width:auto;}
 .toolbar ul li a span{font-weight:400;color:#fff;font-size:3.5vw;display:none;}
 div.title-product{}
-div.title-product h6{margin:auto;text-align:center;font-size:30px;font-weight:700;line-height:34px;}
+div.title-product h6,div.title-product p{margin:auto;text-align:center;font-size:30px;font-weight:700;line-height:34px;}
 div.row-products{margin:0 -12px;}
 div.row-products .col-product{padding:0 12px;}
 div.box-product{}
@@ -535,8 +535,13 @@ div.box-product .info-products .price-product span{margin:0 5px;color:#333333;fo
 div.box-product .info-products .price-product span.price-new{font-weight:700;color:#E2062E;}
 div.box-product .info-products .price-product span.price-old{}
 .readmore{}
-.readmore a{color:#333333;font-size:14px;text-transform:uppercase;font-weight:700;border:1px solid #333333;padding: 12px 35px;display:inline-block;line-height:normal;transition:all 0.5s ease;}
+.readmore a{color:#333333;font-size:14px;text-transform:uppercase;font-weight:700;border:1px solid #333333;padding: 13px 35px;display:inline-block;line-height:normal;transition:all 0.5s ease;min-width: 170px;text-align: center;}
 .readmore a:hover{background:#333333;color:#fff;}
+.readmore a i{
+    font-size: 19px;
+    color: #fff;
+    display: none;
+}
 .box-soleoutfit{}
 .box-soleoutfit .img-soleoutfit{margin-bottom:20px;text-align:center;}
 .box-soleoutfit .img-soleoutfit a{display:inline-block;overflow:hidden;position:relative;}
@@ -623,6 +628,50 @@ div.box-icon-contact p{
     font-size: 16px;
     font-weight: 700;
     text-transform: capitalize;
+}
+div.block-news{}
+div.block-news > a{
+    width: 302px;
+}
+div.block-news > a img{}
+div.block-news .info-block-news{
+    flex: 1;
+    padding-left: 20px;
+}
+div.block-news .info-block-news h3{
+    line-height: normal;
+    font-size: inherit;
+    margin: auto;
+    font-weight: normal;
+}
+div.block-news .info-block-news h3 a{
+    color: #000000;
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 700;
+    min-height: 46px;
+    margin-bottom: 8px;
+}
+div.block-news .info-block-news h3:hover a{}
+div.block-news .info-block-news p{
+    color: #808080;
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 14px;
+}
+div.block-news .info-block-news > a{
+    display: inline-block;
+    color: #333333;
+    border: 1px solid #333333;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 8px 12px;
+    font-size: 12px;
+    transition: all 0.5s ease;
+}
+div.block-news .info-block-news > a:hover{
+    background: #333333;
+    color: #fff;
 }
 @media screen and (max-width:1080px){
 	.menu ul li a h2{padding:12px 15px 13px;}
