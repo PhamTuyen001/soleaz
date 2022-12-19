@@ -35,17 +35,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-quytrinh">
-					<div class="box-quytrinh">
-						<span>
-							<?=$v['ten'.$lang]?>
-						</span>
-						<div class="info-quytrinh">
-							<h3><?=$v['mota'.$lang]?></h3>
-							<p><?=$v['noidung'.$lang]?></p>
-						</div>
-					</div>
-				</div>
 			<?php }?>
 			</div>
 		</div>

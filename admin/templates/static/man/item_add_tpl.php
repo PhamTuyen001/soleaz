@@ -1,5 +1,14 @@
 <?php
     $linkSave = "index.php?com=static&act=save&type=".$type;
+    if(!empty($config['static'][$type]['gallery'])){
+        foreach($config['static'][$type]['gallery'] as $key => $value){
+            if($key==$type)
+            {
+                $flagGallery=true;
+                break;
+            }
+        }
+    }
 ?>
 <!-- Content Header -->
 <section class="content-header text-sm">
@@ -127,6 +136,40 @@
                 <?php } ?>
             </div>
         </div>
+        <?php if(!empty($flagGallery) && $flagGallery==true) { ?>
+            <div class="card card-primary card-outline text-sm">
+                <div class="card-header">
+                    <h3 class="card-title">Bộ sưu tập <?=$config['static'][$type]['title_main']?></h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="filer-gallery" class="label-filer-gallery mb-3">Album hình: (<?=$config['static'][$type]['title_main']?>)</label>
+                        <input type="file" name="files[]" id="filer-gallery" multiple="multiple">
+                        <input type="hidden" class="col-filer" value="col-xl-2 col-sm-4 col-6">
+                        <input type="hidden" class="act-filer" value="man">
+                    </div>
+                    <?php if(!empty($gallery) && count($gallery) > 0) { ?>
+                        <div class="form-group form-group-gallery">
+                            <label class="label-filer">Album hiện tại:</label>
+                            <div class="action-filer mb-3">
+                                <a class="btn btn-sm bg-gradient-primary text-white check-all-filer mr-1"><i class="far fa-square mr-2"></i>Chọn tất cả</a>
+                                <button type="button" class="btn btn-sm bg-gradient-success text-white sort-filer mr-1"><i class="fas fa-random mr-2"></i>Sắp xếp</button>
+                                <a class="btn btn-sm bg-gradient-danger text-white delete-all-filer" data-folder="news"><i class="far fa-trash-alt mr-2"></i>Xóa tất cả</a>
+                            </div>
+                            <div class="alert my-alert alert-sort-filer alert-info text-sm text-white bg-gradient-info"><i class="fas fa-info-circle mr-2"></i>Có thể chọn nhiều hình để di chuyển</div>
+                            <div class="jFiler-items my-jFiler-items jFiler-row">
+                                <ul class="jFiler-items-list jFiler-items-grid row scroll-bar" id="jFilerSortable">
+                                    <?php foreach($gallery as $v) $func->galleryFiler($v['stt'],$v['id'],$v['photo'],$v['tenen'],'news','col-xl-2 col-sm-4 col-6'); ?>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        <?php } ?>
         <?php if(isset($config['static'][$type]['seo']) && $config['static'][$type]['seo']==true) { ?>
             <div class="card card-primary card-outline text-sm">
                 <div class="card-header">

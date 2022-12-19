@@ -266,6 +266,28 @@
 
   
 
+    $nametype = "shop-on-instagram";
+    $config['static'][$nametype]['title_main'] = "Shop on Instagram";
+    $config['static'][$nametype]['link'] = true;
+    $config['static'][$nametype]['noidung'] = true;
+    $config['static'][$nametype]['noidung_cke'] = true;
+    $config['static'][$nametype]['gallery'] = array(
+        $nametype => array
+        (
+            "title_main_photo" => "Hình ảnh ",
+            "title_sub_photo" => "Hình ảnh",
+            "number_photo" => 3,
+            "images_photo" => false,
+            "cart_photo" => false,
+            "avatar_photo" => false,
+            "tieude_photo" => false,
+            "width_photo" => 250*4,
+            "height_photo" => 250*4,
+            "thumb_photo" => '1000x1000',
+            "img_type_photo" => '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF'
+        )
+    );
+
     /* Slogan */
     $nametype = "slogan";
     $config['static'][$nametype]['title_main'] = "Slogan top";

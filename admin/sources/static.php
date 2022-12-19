@@ -23,9 +23,11 @@
 	/* Get static */
 	function get_static()
 	{
-		global $d, $item, $type;
+		global $d, $item, $type,$gallery,$com;
 
 		$item = $d->rawQueryOne("select * from #_static where type = ?",array($type));
+		$gallery = $d->rawQuery("select * from #_gallery where id_photo = ? and com = ? and type = ? and kind = ? and val = ? order by stt,id desc",array($item['id'],$com,$type,'static',$type));
+
 	}
 
 	/* Save static */
@@ -91,6 +93,48 @@
 					$d->insert('seo',$dataSeo);
 				}
 
+				if(isset($_FILES['files'])) 
+				{
+					if(isset($_POST['jfiler-items-exclude-files-0'])){
+						$arr_chuoi = str_replace('"','',$_POST['jfiler-items-exclude-files-0']);
+						$arr_chuoi = str_replace('[','',$arr_chuoi);
+						$arr_chuoi = str_replace(']','',$arr_chuoi);
+						$arr_chuoi = str_replace('\\','',$arr_chuoi);
+						$arr_chuoi = str_replace('0://','',$arr_chuoi);
+						$arr_file_del = explode(',',$arr_chuoi);
+					}
+					$dem = 0;
+		            $myFile = $_FILES['files'];
+		            $fileCount = count($myFile["name"]);
+
+		            for($i=0;$i<$fileCount;$i++) 
+		            {
+		            	if($_FILES['files']['name'][$i]!='')
+						{
+							if(!in_array(($_FILES['files']['name'][$i]),$arr_file_del,true))
+							{
+								$file_name = $func->uploadName($myFile["name"][$i]);
+								$file_ext = pathinfo($myFile["name"][$i], PATHINFO_EXTENSION);
+								if(move_uploaded_file($myFile["tmp_name"][$i], UPLOAD_NEWS."/".$file_name.".".$file_ext))
+					            {
+									$data1['photo'] = $file_name.".".$file_ext;
+									$data1['stt'] = (int)$_POST['stt-filer'][$dem];		
+									$data1['tenvi'] = $_POST['ten-filer'][$dem];
+									$data1['id_photo'] = $static['id'];
+									$data1['com'] = $com;
+									$data1['type'] = $type;
+									$data1['kind'] = 'static';
+									$data1['val'] = $type;
+									$data1['hienthi'] = 1;
+									$d->insert('gallery',$data1);
+					            }
+					            $dem++;
+							}
+			            }
+		            }
+		        }
+
+
 				$func->transfer("Cập nhật dữ liệu thành công", "index.php?com=static&act=capnhat&type=".$type);
 			}
 			else $func->transfer("Cập nhật dữ liệu bị lỗi", "index.php?com=static&act=capnhat&type=".$type, false);
@@ -101,6 +145,7 @@
 			{
 				if($d->insert('static',$data))
 				{
+					$id_insert = $d->getLastInsertId();
 					/* SEO */
 					if(isset($config['static'][$type]['seo']) && $config['static'][$type]['seo']==true)
 					{
@@ -110,6 +155,49 @@
 						$dataSeo['type'] = $type;
 						$d->insert('seo',$dataSeo);
 					}
+
+					if(isset($_FILES['files'])) 
+					{
+						if(isset($_POST['jfiler-items-exclude-files-0'])){
+							$arr_chuoi = str_replace('"','',$_POST['jfiler-items-exclude-files-0']);
+							$arr_chuoi = str_replace('[','',$arr_chuoi);
+							$arr_chuoi = str_replace(']','',$arr_chuoi);
+							$arr_chuoi = str_replace('\\','',$arr_chuoi);
+							$arr_chuoi = str_replace('0://','',$arr_chuoi);
+							$arr_file_del = explode(',',$arr_chuoi);
+						}
+						
+
+						$dem = 0;
+			            $myFile = $_FILES['files'];
+			            $fileCount = count($myFile["name"]);
+
+			            for($i=0;$i<$fileCount;$i++) 
+			            {
+			            	if($_FILES['files']['name'][$i]!='')
+					    	{
+								if(!in_array(($_FILES['files']['name'][$i]),$arr_file_del,true))
+								{
+									$file_name = $func->uploadName($myFile["name"][$i]);
+									$file_ext = pathinfo($myFile["name"][$i], PATHINFO_EXTENSION);
+									if(move_uploaded_file($myFile["tmp_name"][$i], UPLOAD_NEWS."/".$file_name.".".$file_ext))
+						            {
+										$data1['photo'] = $file_name.".".$file_ext;
+										$data1['stt'] = (int)$_POST['stt-filer'][$dem];		
+										$data1['tenvi'] = $_POST['ten-filer'][$dem];		
+										$data1['id_photo'] = $id_insert;
+										$data1['com'] = $com;
+										$data1['type'] = $type;
+										$data1['kind'] = 'static';
+										$data1['val'] = $type;
+										$data1['hienthi'] = 1;
+										$d->insert('gallery',$data1);
+						            }
+						            $dem++;
+								}
+				            }
+			            }
+			        }
 
 					$func->transfer("Lưu dữ liệu thành công", "index.php?com=static&act=capnhat&type=".$type);
 				}
