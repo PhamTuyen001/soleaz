@@ -540,6 +540,42 @@ div.box-product .info-products .price-product span.price-old{}
 .info-one-content-page{font-size:15px;line-height:27px;margin-bottom:30px;}
 .title-product{}
 .title-product h2{font-weight:700;font-size:27px;line-height:normal;}
+
+.title-quytrinh{}
+.title-quytrinh h2{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 0;
+}
+div.box-quytrinh{
+}
+div.box-quytrinh > span{
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    border-bottom: 0.5px solid #808080;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    position: relative;
+}
+div.box-quytrinh > span:after{content: '';width: 16px;height: 16px;position: absolute;left: 0px;bottom: -8px;border-radius: 50%;border: 1px solid #000;background: #fff;}
+div.box-quytrinh > span:before{content: '';width: 8px;height: 8px;position: absolute;left: 4px;background: #000;bottom: -4px;border-radius: 4px;z-index: 2;}
+div.box-quytrinh .info-quytrinh{
+    color: #333333;
+    padding-right: 25px;
+}
+div.box-quytrinh .info-quytrinh h3{
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    line-height: 21px;
+}
+div.box-quytrinh .info-quytrinh p{
+    font-size: 14px;
+    line-height: 21px;
+    color: #808080;
+}
 @media screen and (max-width:1080px){
 	.menu ul li a h2{padding:12px 15px 13px;}
 }

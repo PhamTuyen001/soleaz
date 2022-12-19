@@ -180,4 +180,5 @@ define("customercare","Pangangalaga sa Customer");
 define("newcollection","Bagong Koleksyon");
 define("sale","pagbebenta");
 define("soleoutfit","Sole Outfit");
+define("processestablished","Itinatag ang proseso");
 ?>

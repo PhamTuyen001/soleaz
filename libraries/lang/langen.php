@@ -180,4 +180,5 @@ define("customercare","Customer Care");
 define("newcollection","New Collection");
 define("sale","Sale");
 define("soleoutfit","Sole Outfit");
+define("processestablished","Process established");
 ?>
