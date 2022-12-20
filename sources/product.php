@@ -11,7 +11,7 @@
 	if($id!='')
 	{
 		/* Lấy sản phẩm detail */
-		$row_detail = $d->rawQueryOne("select type, id, ten$lang, tenkhongdauvi, tenkhongdauen, mota$lang, noidung$lang, masp, luotxem, id_brand, id_mau, id_size, id_list, id_cat, id_item, id_sub, id_tags, photo, options, giakm, giamoi, gia from #_product where hienthi=1 and id = ? and type = ? limit 0,1",array($id,$type));
+		$row_detail = $d->rawQueryOne("select type, id, ten$lang, tenkhongdauvi, tenkhongdauen, mota$lang, noidung$lang, masp, luotxem, id_brand, id_mau, id_size, id_list, id_cat, id_item, id_sub, id_tags, photo, options, giakm, giamoi, gia,photo2 from #_product where hienthi=1 and id = ? and type = ? limit 0,1",array($id,$type));
 
 		/* Cập nhật lượt xem */
 		$data_luotxem['luotxem'] = $row_detail['luotxem'] + 1;
@@ -44,7 +44,8 @@
 		
 		/* Lấy hình ảnh con */
 		$hinhanhsp = $d->rawQuery("select photo from #_gallery where hienthi=1 and id_photo = ? and com='product' and type = ? and kind='man' and val = ? order by stt,id desc",array($row_detail['id'],$type,$type));
-
+		$jsonProduct = $d->rawQuery("select json_product from #_gallery where hienthi=1 and id_photo = ? and com='product' and type = ? and kind='man' and val = ? order by stt,id desc",array($row_detail['id'],$type,$type));
+		
 		/* Lấy sản phẩm mới nhất */
 		$product_new = $d->rawQuery("select photo, ten$lang, tenkhongdauvi, tenkhongdauen, giamoi, gia, giakm, id,masp,photo2 from #_product where id!=? and hienthi!=0 order by id desc limit 0,10", array($row_detail['id']));
 		
@@ -86,10 +87,10 @@
 		$seo->setSeo('photo:type',$img_json_bar['m']);
 		/* breadCrumbs */
 		if($title_crumb) $breadcr->setBreadCrumbs($com,$title_crumb);
-		$breadcr->setBreadCrumbs($pro_list[$sluglang],$pro_list['ten'.$lang]);
-		$breadcr->setBreadCrumbs($pro_cat[$sluglang],$pro_cat['ten'.$lang]);
-		$breadcr->setBreadCrumbs($pro_item[$sluglang],$pro_item['ten'.$lang]);
-		$breadcr->setBreadCrumbs($pro_sub[$sluglang],$pro_sub['ten'.$lang]);
+		//$breadcr->setBreadCrumbs($pro_list[$sluglang],$pro_list['ten'.$lang]);
+		//$breadcr->setBreadCrumbs($pro_cat[$sluglang],$pro_cat['ten'.$lang]);
+		//$breadcr->setBreadCrumbs($pro_item[$sluglang],$pro_item['ten'.$lang]);
+		//$breadcr->setBreadCrumbs($pro_sub[$sluglang],$pro_sub['ten'.$lang]);
 		$breadcr->setBreadCrumbs($row_detail[$sluglang],$row_detail['ten'.$lang]);
 		$breadcrumbs = $breadcr->getBreadCrumbs();
 	}

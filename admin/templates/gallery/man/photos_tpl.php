@@ -46,6 +46,9 @@
                         <?php if(!empty($gallery_config['tieude_photo']) && $gallery_config['tieude_photo']==true) { ?>
 				        	<th class="align-middle" style="width:30%">Tiêu đề</th>
 				        <?php } ?>
+                        <?php if($_GET['val']=='outfit') { ?>
+                            <th class="align-middle" style="width:30%">Tiêu đề</th>
+                        <?php } ?>
                         <?php if(!empty($gallery_config['mausac_photo']) && $gallery_config['mausac_photo']==true) { ?>
                             <th class="align-middle">Màu sắc</th>
                         <?php } ?>
@@ -90,6 +93,16 @@
 	                                    <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['ten'.$config['website']['lang-doc']]?>"><?=$items[$i]['ten'.$config['website']['lang-doc']]?></a>
 	                                </td>
 	                            <?php } ?>
+                                <?php if($_GET['val']=='outfit') {
+                                    $jsons=json_decode($items[$i]['json_product'],true);
+                                    $row = $d->rawQueryOne("select * from #_product where id = ?",array($jsons['id_product']));
+                                ?>
+                                    <td class="align-middle">
+                                        <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>">
+                                            <?=$row['tenen']?>
+                                        </a>
+                                    </td>
+                                <?php }?> 
                                 <?php if(!empty($gallery_config['mausac_photo']) && $gallery_config['mausac_photo']==true) { ?>
                                     <td class="align-middle">
                                         <span class="color-preview rounded" style="background-color:#<?=$items[$i]['mau']?>"></span>

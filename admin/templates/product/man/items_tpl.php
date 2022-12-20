@@ -180,7 +180,9 @@
 							<th class="align-middle">Hình</th>
 						<?php } ?>
 						<th class="align-middle" style="width:30%">Tiêu đề</th>
-						
+                        <?php if(count($config['product'][$type]['gallery']) && (isset($config['product'][$type]['show_images']) && $config['product'][$type]['show_images']==true)) { ?>
+                            <th class="align-middle">Gallery</th>
+                        <?php } ?>
 						<?php foreach($config['product'][$type]['check'] as $key => $value) { ?>
 							<th class="align-middle text-center"><?=$value?></th>
 						<?php } ?>
@@ -231,11 +233,25 @@
 									            </ul>
 			                            	</div>
                                     	<?php } ?>
+                                        <?php if($type=='san-pham'){?>
                                         <a class="text-primary mr-3" href="index.php?com=product&act=man&type=san-pham&id_product=<?=$items[$i]['id']?>" target="_blank" title="<?=$items[$i]['ten'.$config['website']['lang-doc']]?>"><i class="far fa-list-ul mr-1"></i>Thêm thuộc tính</a>
+                                        <?php }?>
+                                        
                                     	<a class="text-danger" id="delete-item" data-url="<?=$linkDelete?><?=$linkID?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['ten'.$config['website']['lang-doc']]?>"><i class="far fa-trash-alt mr-1"></i>Delete</a>
                                     </div>
                                 </td>
-                                
+                                <?php if(count($config['product'][$type]['gallery']) && empty($_GET['id_product']) && (isset($config['product'][$type]['show_images']) && $config['product'][$type]['show_images']==true)) { ?>
+                                    <td class="align-middle">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-sm bg-gradient-success dropdown-toggle" id="dropdown-gallery" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Thêm</button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdown-gallery">
+                                                <?php foreach($config['product'][$type]['gallery'] as $key => $value) { ?>
+                                                    <a class="dropdown-item text-dark" href="<?=$linkMulti?>&idc=<?=$items[$i]['id']?>&val=<?=$key?>" title="<?=$value['title_sub_photo']?>"><i class="far fa-caret-square-right text-secondary mr-2"></i><?=$value['title_sub_photo']?></a>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                    </td>
+                                <?php } ?>
                                 <?php foreach($config['product'][$type]['check'] as $key => $value) { ?>
 								  	<td class="align-middle text-center">
 	                                	<div class="custom-control custom-checkbox my-checkbox">

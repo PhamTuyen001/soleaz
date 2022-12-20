@@ -51,14 +51,14 @@
 	/* Get photo */
 	function get_photo()
 	{
-		global $d, $func, $curPage, $item, $type, $kind, $val, $idc, $com;
+		global $d, $func, $curPage, $item, $type, $kind, $val, $idc, $com,$jsons;
 
 		$id = (isset($_GET['id'])) ? (int)htmlspecialchars($_GET['id']):0;
 
 		if(empty($id)) $func->transfer("Không nhận được dữ liệu", "index.php?com=".$com."&act=man_photo&idc=".$idc."&type=".$type."&kind=".$kind."&val=".$val."&p=".$curPage, false);
 
 		$item = $d->rawQueryOne("select * from #_gallery where id_photo = ? and com = ? and type = ? and kind = ? and val = ? and id = ? order by stt,id desc",array($idc,$com,$type,$kind,$val,$id));
-
+		$jsons=json_decode($item['json_product'],true);
 		if(empty($item['id'])) $func->transfer("Dữ liệu không có thực", "index.php?com=".$com."&act=man_photo&idc=".$idc."&type=".$type."&kind=".$kind."&val=".$val."&p=".$curPage, false);
 	}
 
@@ -100,6 +100,7 @@
 			
 			
 			$data['hienthi'] = ($data['hienthi']) ? 1 : 0;
+			if(!empty($_POST['json']['id_product'])) $data['json_product'] = json_encode($_POST['json'],JSON_UNESCAPED_UNICODE );
 
 			$d->where('id', $id);
 			$d->where('com', $com);
@@ -118,6 +119,7 @@
 				for($i=0;$i<count($dataMultiTemp);$i++)
 				{
 					$dataMulti = $dataMultiTemp[$i];
+					$jsons=$_POST['json'][$i];
 					$dataMulti['id_mau'] = $data['id_mau'];
 					$dataMulti['hienthi'] = ($dataMultiTemp[$i]['hienthi']) ? 1 : 0;
 					$dataMulti['com'] = $com;
@@ -125,7 +127,8 @@
 					$dataMulti['kind'] = $kind;
 					$dataMulti['val'] = $val;
 					$dataMulti['id_photo'] = $idc;
-
+					if(!empty($jsons['id_product'])) $dataMulti['json_product'] = json_encode($jsons,JSON_UNESCAPED_UNICODE );
+					
 					if(isset($config[$com][$type][$dfgallery][$val]['file_photo']) && $config[$com][$type][$dfgallery][$val]['file_photo']==true)
 					{
 						$file_name = $func->uploadName($_FILES["file-taptin".$i]["name"]);
@@ -146,7 +149,7 @@
 					}
 					else
 					{
-						if($dataMulti['tenvi']!='' || $dataMulti['mau']!='' || $dataMulti['link']!='' || $dataMulti['link_video']!='')
+						if($dataMulti['tenvi']!='' || $dataMulti['mau']!='' || $dataMulti['link']!='' || $dataMulti['link_video']!='' || $dataMulti['json_product'])
 						{
 							if(!$d->insert('gallery',$dataMulti)) $func->transfer("Lưu dữ liệu bị lỗi", "index.php?com=".$com."&act=man_photo&idc=".$idc."&type=".$type."&kind=".$kind."&val=".$val."&p=".$curPage, false);
 						}

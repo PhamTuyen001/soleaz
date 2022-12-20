@@ -188,4 +188,5 @@ define("loadmore","Load more");
 define("guilienhethatbai","Contact sending failed. Please try again later");
 define("guilienhethanhcong","Contact sent successfully");
 define("xemchitiet","See details");
+define("productsinoutfit","Products in Outfit");
 ?>

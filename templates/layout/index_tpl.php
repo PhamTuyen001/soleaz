@@ -1,3 +1,4 @@
+<?php if(!empty($product_noibat)){?>
 <section class="product-noibat py-5">
 	<div class="container">
 		<div class="title-product mb-5">
@@ -11,15 +12,6 @@
 				<div class="col-product">
 					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
 				</div>
-				<div class="col-product">
-					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-				</div>
-				<div class="col-product">
-					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-				</div>
-				<div class="col-product">
-					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-				</div>
 				<?php }?>
 			</div>
 		</div>
@@ -29,7 +21,8 @@
 		</div>
 	</div>
 </section>
-
+<?php }?>
+<?php if(!empty($product_moi)){?>
 <section class="product-noibat py-5">
 	<div class="container">
 		<div class="title-product mb-5">
@@ -37,18 +30,9 @@
 		</div>
 		<div class="row-products">
 			<div class="slick in-page" data-dots="0" data-infinite="0" data-arrows="0" data-autoplay='1' data-slidesDefault="4:1" data-lg-items='4:1' data-md-items='4:1' data-sm-items='4:1' data-xs-items="4:1" data-vertical="0">
-				<?php foreach ($product_noibat as $v) {
+				<?php foreach ($product_moi as $v) {
 					$row_color=$d->rawQuery("select mau,id from #_product_mau where id in (select id_mau from #_product where id_product = ? and hienthi=1)",array($v['id']));
 				?>
-				<div class="col-product">
-					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-				</div>
-				<div class="col-product">
-					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-				</div>
-				<div class="col-product">
-					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-				</div>
 				<div class="col-product">
 					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
 				</div>
@@ -61,6 +45,8 @@
 		</div>
 	</div>
 </section>
+<?php }?>
+<?php if(!empty($product_sale)){?>
 <section class="product-noibat py-5">
 	<div class="container">
 		<div class="title-product mb-5">
@@ -68,18 +54,9 @@
 		</div>
 		<div class="row-products">
 			<div class="slick in-page" data-dots="0" data-infinite="0" data-arrows="0" data-autoplay='1' data-slidesDefault="4:1" data-lg-items='4:1' data-md-items='4:1' data-sm-items='4:1' data-xs-items="4:1" data-vertical="0">
-				<?php foreach ($product_noibat as $v) {
+				<?php foreach ($product_sale as $v) {
 					$row_color=$d->rawQuery("select mau,id from #_product_mau where id in (select id_mau from #_product where id_product = ? and hienthi=1)",array($v['id']));
 				?>
-				<div class="col-product">
-					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-				</div>
-				<div class="col-product">
-					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-				</div>
-				<div class="col-product">
-					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-				</div>
 				<div class="col-product">
 					<?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
 				</div>
@@ -92,6 +69,8 @@
 		</div>
 	</div>
 </section>
+<?php }?>
+<?php if(!empty($outfit)){?>
 <section class="product-noibat py-5">
 	<div class="container">
 		<div class="title-product mb-5">
@@ -121,3 +100,4 @@
 		</div>
 	</div>
 </section>
+<?php }?>

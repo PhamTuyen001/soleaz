@@ -10,7 +10,7 @@
 
         $row = $d->rawQuery("select tenen, id from #_product_list where type = ? order by stt,id desc",array('san-pham'));
 
-        $str = '<select id="id_list'.$i.'" name="json[id_list]" data-level="0" data-type="san-pham" data-table="#_product_cat" data-child="id_cat'.$i.'" class="form-control select2 select-category"><option value="0">Chọn danh mục</option>';
+        $str = '<select id="id_list'.$i.'" name="json['.$i.'][id_list]" data-level="0" data-type="san-pham" data-table="#_product_cat" data-child="id_cat'.$i.'" class="form-control select2 select-category"><option value="0">Chọn danh mục</option>';
         foreach($row as $v)
         {
         	$id_list = isset($_REQUEST['id_list']) ? $_REQUEST['id_list']:'';
@@ -31,7 +31,7 @@
         $id_list = isset($_REQUEST['id_list']) ? $_REQUEST['id_list']:'';
         $row = $d->rawQuery("select tenen, id from #_product_cat where id_list = ? and type = ? order by stt,id desc",array($id_list,'san-pham'));
 
-		$str = '<select id="id_cat'.$i.'" name="json[id_cat]" data-level="1" data-type="san-pham" data-table="#_product" data-child="id_product'.$i.'" class="form-control select2 select-category"><option value="0">Chọn danh mục</option>';
+		$str = '<select id="id_cat'.$i.'" name="json['.$i.'][id_cat]" data-level="1" data-type="san-pham" data-table="#_product" data-child="id_product'.$i.'" class="form-control select2 select-category"><option value="0">Chọn danh mục</option>';
 		foreach($row as $v)
         {
         	$id_cat = isset($_REQUEST['id_cat']) ? $_REQUEST['id_cat']:'';
@@ -53,7 +53,7 @@
         $id_cat = isset($_REQUEST['id_cat']) ? $_REQUEST['id_cat']:'';
         $row = $d->rawQuery("select tenen, id from #_product_item where id_list = ? and id_cat = ? and type = ? order by stt,id desc",array($id_list,$id_cat,'san-pham'));
 
-		$str = '<select id="id_item'.$i.'" name="json[id_item]" data-level="3" data-type="san-pham" data-table="#_product" data-child="id_product'.$i.'" class="form-control select2 select-category"><option value="0">Chọn danh mục</option>';
+		$str = '<select id="id_item'.$i.'" name="json['.$i.'][id_item]" data-level="3" data-type="san-pham" data-table="#_product" data-child="id_product'.$i.'" class="form-control select2 select-category"><option value="0">Chọn danh mục</option>';
 		foreach($row as $v)
         {
         	$id_item = isset($_REQUEST['id_item']) ? $_REQUEST['id_item']:'';
@@ -74,7 +74,7 @@
         $id_item = isset($_REQUEST['id_item']) ? $_REQUEST['id_item']:'';
         $row = $d->rawQuery("select tenen, id from #_product where id_item = ? and id_cat = ? and type = ? order by stt,id desc",array($id_item,$id_cat,'san-pham'));
 
-		$str = '<select id="id_product'.$i.'" name="json[id_product]" class="form-control select2 select-category"><option value="0">Chọn sản phẩm</option>';
+		$str = '<select id="id_product'.$i.'" name="json['.$i.'][id_product]" class="form-control select2 select-category"><option value="0">Chọn sản phẩm</option>';
 		foreach($row as $v)
         {
         	$id_product = isset($_REQUEST['id_product']) ? $_REQUEST['id_product']:'';

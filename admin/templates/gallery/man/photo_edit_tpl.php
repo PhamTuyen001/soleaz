@@ -2,6 +2,64 @@
     $gallery_config = $config[$com][$type][$dfgallery][$val];
 	$linkMan = "index.php?com=".$com."&act=man_photo&idc=".$idc."&kind=".$kind."&val=".$val."&type=".$type."&p=".$curPage;
     $linkSave = "index.php?com=".$com."&act=save_photo&idc=".$idc."&kind=".$kind."&val=".$val."&type=".$type."&p=".$curPage;
+
+    function get_main_list($id)
+    {
+        global $d;
+
+        $row = $d->rawQuery("select tenen, id from #_product_list where type = ? order by stt,id desc",array('san-pham'));
+
+        $str = '<select id="id_list" name="json[id_list]" data-level="0" data-type="san-pham" data-table="#_product_cat" data-child="id_cat" class="form-control select2 select-category"><option value="0">Chọn danh mục</option>';
+        foreach($row as $v)
+        {
+            if($v["id"] == (int)$id) $selected = "selected";
+            else $selected = "";
+
+            $str .= '<option value='.$v["id"].' '.$selected.'>'.$v["tenen"].'</option>';
+        }
+        $str .= '</select>';
+
+        return $str;
+    }
+
+    function get_main_cat($id,$id_list)
+    {
+        global $d;
+
+        $row = $d->rawQuery("select tenen, id from #_product_cat where id_list = ? and type = ? order by stt,id desc",array($id_list,'san-pham'));
+
+        $str = '<select id="id_cat" name="json[id_cat]" data-level="1" data-type="san-pham" data-table="#_product" data-child="id_product" class="form-control select2 select-category"><option value="0">Chọn danh mục</option>';
+        foreach($row as $v)
+        {
+            if($v["id"] == (int)$id) $selected = "selected";
+            else $selected = "";
+
+            $str .= '<option value='.$v["id"].' '.$selected.'>'.$v["tenen"].'</option>';
+        }
+        $str .= '</select>';
+
+        return $str;
+    }
+
+
+    function get_main($id,$id_list,$id_cat)
+    {
+        global $d;
+
+        $row = $d->rawQuery("select tenen, id from #_product where id_list = ? and id_cat = ? and type = ? order by stt,id desc",array($id_list,$id_cat,'san-pham'));
+
+        $str = '<select id="id_product" name="json[id_product]" class="form-control select2 select-category"><option value="0">Chọn sản phẩm</option>';
+        foreach($row as $v)
+        {
+            if($v["id"] == (int)$id) $selected = "selected";
+            else $selected = "";
+
+            $str .= '<option value='.$v["id"].' '.$selected.'>'.$v["tenen"].'</option>';
+        }
+        $str .= '</select>';
+
+        return $str;
+    }
 ?>
 <!-- Content Header -->
 <section class="content-header text-sm">
@@ -118,6 +176,21 @@
                     <div class="form-group">
                         <label for="link_video">Video preview:</label>
                         <div><iframe id="loadVideo" width="250" src="//www.youtube.com/embed/<?=$func->getYoutube($item['link_video'])?>" <?=($item["link_video"]=="")?"height='0'":"height='150'";?> frameborder="0" allowfullscreen></iframe></div>
+                    </div>
+                <?php } ?>
+                <?php if(!empty($gallery_config['product_photo']) && $gallery_config['product_photo']==true) { ?>
+                    <div class="form-group">
+                        <label for="id_list<?=$i?>">Danh mục cấp 1:</label>
+                        <?=get_main_list($jsons['id_list'])?>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_list<?=$i?>">Danh mục cấp 2:</label>
+                        <?=get_main_cat($jsons['id_cat'],$jsons['id_list'])?>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="id_list<?=$i?>">Danh mục sản phẩm:</label>
+                        <?=get_main($jsons['id_product'],$jsons['id_list'],$jsons['id_cat'])?>
                     </div>
                 <?php } ?>
                 <div class="form-group">

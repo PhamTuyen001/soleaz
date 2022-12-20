@@ -3,6 +3,8 @@
     $slider = $d->rawQuery("SELECT ten$lang, photo, link FROM #_photo WHERE type = ? AND hienthi=1 ORDER BY stt asc,id DESC",array('slide'));
     
     $product_noibat = $d->rawQuery("SELECT id,tenkhongdauvi,tenkhongdauen,tenkhongdautl,tenvi,tenen,tentl,photo,photo2,gia,giakm,giamoi,moi FROM #_product WHERE hienthi=1 AND type = ? AND noibat>0 ORDER BY stt,id DESC",array('san-pham'));
+    $product_moi = $d->rawQuery("SELECT id,tenkhongdauvi,tenkhongdauen,tenkhongdautl,tenvi,tenen,tentl,photo,photo2,gia,giakm,giamoi,moi FROM #_product WHERE hienthi=1 AND type = ? AND moi>0 ORDER BY stt,id DESC",array('san-pham'));
+    $product_sale = $d->rawQuery("SELECT id,tenkhongdauvi,tenkhongdauen,tenkhongdautl,tenvi,tenen,tentl,photo,photo2,gia,giakm,giamoi,moi FROM #_product WHERE hienthi=1 AND type = ? AND khuyenmai>0 ORDER BY stt,id DESC",array('san-pham'));
     $newsnb = $d->rawQuery("SELECT ten$lang, tenkhongdauvi, tenkhongdauen, mota$lang, ngaytao, id, photo FROM #_news WHERE hienthi=1 AND type = ? AND noibat>0 ORDER BY stt,id DESC",array('tin-tuc'));
     $outfit = $d->rawQuery("SELECT ten$lang, tenkhongdauvi, tenkhongdauen, id, photo,photo2 FROM #_product WHERE hienthi=1 AND type = ? AND noibat>0 ORDER BY stt,id DESC",array('outfit'));
     $static_gioithieu = $d->rawQueryOne("select id, type, ten$lang as ten, mota$lang as mota, photo FROM #_static WHERE type = ? LIMIT 0,1",array('gioi-thieu'));

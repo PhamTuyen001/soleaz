@@ -44,15 +44,6 @@
                 <div class="col-product">
                     <?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
                 </div>
-                <div class="col-product">
-                    <?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-                </div>
-                <div class="col-product">
-                    <?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-                </div>
-                <div class="col-product">
-                    <?php include TEMPLATE.LAYOUT."sanpham.php"; ?>
-                </div>
                 <?php }?>
             </div>
         </div>
