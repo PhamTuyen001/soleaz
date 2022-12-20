@@ -5,7 +5,7 @@
 ?>
 <section class="warp-banner-inpage">
     <p class="text-center">
-        <img src="<?=UPLOAD_PRODUCT_L.$banner['photo']?>" alt="<?=$setting['ten'.$lang]?>">
+        <img class="w-100" src="<?=UPLOAD_PHOTO_L.$banner['photo']?>" alt="<?=$setting['ten'.$lang]?>">
     </p>
 </section>
 <?php include TEMPLATE.LAYOUT."breadcrumb.php" ?>
@@ -27,7 +27,7 @@
                         <div class="col-6 col-sm-4 col-md-4 p-3">
                             <p>
                                 <a href="<?=UPLOAD_NEWS_L.$v['photo']?>" data-fancybox>
-                                    <img src="<?=THUMBS?>/350x350x1/<?=UPLOAD_NEWS_L.$v['photo']?>" alt="shop on instagram">
+                                    <img class="w-100" src="<?=THUMBS?>/350x350x1/<?=UPLOAD_NEWS_L.$v['photo']?>" alt="shop on instagram">
                                 </a>
                             </p>
                         </div>

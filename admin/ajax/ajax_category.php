@@ -28,11 +28,11 @@
 				break;
 		}
 
-		$row = $d->rawQuery("select tenvi, id from $table where $id_temp = ? and type = ? order by stt,id desc",array($id,$type));
+		$row = $d->rawQuery("select tenvi,tenen, id from $table where $id_temp = ? and type = ? order by stt,id desc",array($id,$type));
 
 		$str = '<option value="0">Chọn danh mục</option>';
 		if(!empty($row)){
-			foreach($row as $v) $str .= '<option value='.$v["id"].'>'.$v["tenvi"].'</option>';			
+			foreach($row as $v) $str .= '<option value='.$v["id"].'>'.$v["tenen"].'</option>';			
 		}
 		echo $str;
 	}

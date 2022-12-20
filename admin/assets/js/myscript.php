@@ -638,16 +638,13 @@
 				{
 					$('body').on("keyup","#"+ten,function(){
 						var title = $("#"+ten).val();
-
 						if((!id || $("#slugchange").prop("checked")) && seourlstatic)
 						{
 							/* Slug preivew */
 							slugPreview(title,lang);
 						}
-
 						/* Slug preivew title seo */
 						slugPreviewTitleSeo(title,lang);
-
 						/* slug Alert */
 						slugAlert(2,lang);
 					})
@@ -657,10 +654,8 @@
 				{
 					$('body').on("keyup","#slug"+lang,function(){
 						var title = $("#slug"+lang).val();
-
 						/* Slug preivew */
 						slugPreview(title,lang);
-
 						/* slug Alert */
 						slugAlert(2,lang);
 					})

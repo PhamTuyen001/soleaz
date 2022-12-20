@@ -59,11 +59,11 @@
     $config['product'][$nametype]['file_type'] = 'doc|docx|pdf|rar|zip|ppt|pptx|DOC|DOCX|PDF|RAR|ZIP|PPT|PPTX|xls|jpg|png|gif|JPG|PNG|GIF|xls|XLS';
 
     /* Sản phẩm (Size) */
-    $config['product'][$nametype]['size_gia'] = true;
+    $config['product'][$nametype]['size_gia'] = false;
 
     /* Sản phẩm (Màu) */
-    $config['product'][$nametype]['mau_images'] = true;
-    $config['product'][$nametype]['mau_gia'] = true;
+    $config['product'][$nametype]['mau_images'] = false;
+    $config['product'][$nametype]['mau_gia'] = false;
     $config['product'][$nametype]['mau_mau'] = true;
     $config['product'][$nametype]['mau_loai'] = true;
     $config['product'][$nametype]['width_mau'] = 30;
@@ -92,7 +92,7 @@
     $config['product'][$nametype]['slug_cat'] = true;
     $config['product'][$nametype]['check_cat'] = array();
     $config['product'][$nametype]['mota_cat'] = false;
-    $config['product'][$nametype]['seo_cat'] = false;
+    $config['product'][$nametype]['seo_cat'] = true;
     $config['product'][$nametype]['width_cat'] = 75*4;
     $config['product'][$nametype]['height_cat'] = 50*4;
     $config['product'][$nametype]['thumb_cat'] = '100x100x1';
@@ -105,24 +105,86 @@
     $config['product'][$nametype]['slug_item'] = true;
     $config['product'][$nametype]['check_item'] = array();
     $config['product'][$nametype]['mota_item'] = false;
-    $config['product'][$nametype]['seo_item'] = false;
+    $config['product'][$nametype]['seo_item'] = true;
     $config['product'][$nametype]['width_item'] = 75*4;
     $config['product'][$nametype]['height_item'] = 50*4;
     $config['product'][$nametype]['thumb_item'] = '100x100x1';
     $config['product'][$nametype]['img_type_item'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
 
-    /* Sản phẩm (Sub) */
-    $config['product'][$nametype]['title_main_sub'] = "Sản phẩm cấp 4";
-    $config['product'][$nametype]['images_sub'] = false;
-    $config['product'][$nametype]['show_images_sub'] = false;
-    $config['product'][$nametype]['slug_sub'] = true;
-    $config['product'][$nametype]['check_sub'] = array();
-    $config['product'][$nametype]['mota_sub'] = false;
-    $config['product'][$nametype]['seo_sub'] = false;
-    $config['product'][$nametype]['width_sub'] = 75*4;
-    $config['product'][$nametype]['height_sub'] = 50*4;
-    $config['product'][$nametype]['thumb_sub'] = '100x100x1';
-    $config['product'][$nametype]['img_type_sub'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
+    
+
+
+    $nametype = "outfit";
+    $config['product'][$nametype]['title_main'] = "Bộ sưu tập";
+    $config['product'][$nametype]['dropdown'] = true;
+    $config['product'][$nametype]['list'] = true;
+    $config['product'][$nametype]['cat'] = true;
+    $config['product'][$nametype]['item'] = false;
+    $config['product'][$nametype]['sub'] = false;
+    $config['product'][$nametype]['brand'] = false;
+    $config['product'][$nametype]['schema'] = false;
+    $config['product'][$nametype]['mau'] = false;
+    $config['product'][$nametype]['size'] = false;
+    $config['product'][$nametype]['tags'] = false;
+    $config['product'][$nametype]['import'] = false;
+    $config['product'][$nametype]['export'] = false;
+    $config['product'][$nametype]['view'] = false;
+    $config['product'][$nametype]['copy'] = true;
+    $config['product'][$nametype]['copy_image'] = false;
+    $config['product'][$nametype]['slug'] = true;
+    $config['product'][$nametype]['check'] = array("noibat" => "Nổi bật");
+    $config['product'][$nametype]['images'] = true;
+    $config['product'][$nametype]['images2'] = true;
+    $config['product'][$nametype]['show_images'] = true;
+    $config['product'][$nametype]['show_gallery'] = true;
+    $config['product'][$nametype]['gallery'] = array();
+    $config['product'][$nametype]['link'] = false;
+    $config['product'][$nametype]['file'] = false;
+    $config['product'][$nametype]['ma'] = false;
+    $config['product'][$nametype]['tinhtrang'] = false;
+    $config['product'][$nametype]['video'] = false;
+    $config['product'][$nametype]['gia'] = false;
+    $config['product'][$nametype]['giamoi'] = false;
+    $config['product'][$nametype]['giakm'] = false;
+    $config['product'][$nametype]['mota'] = false;
+    $config['product'][$nametype]['mota_cke'] = false;
+    $config['product'][$nametype]['noidung'] = true;
+    $config['product'][$nametype]['noidung_cke'] = true;
+    $config['product'][$nametype]['seo'] = true;
+    $config['product'][$nametype]['width'] = 450;
+    $config['product'][$nametype]['height'] = 660;
+    $config['product'][$nametype]['thumb'] = '450x660x2';
+    $config['product'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
+    $config['product'][$nametype]['file_type'] = 'doc|docx|pdf|rar|zip|ppt|pptx|DOC|DOCX|PDF|RAR|ZIP|PPT|PPTX|xls|jpg|png|gif|JPG|PNG|GIF|xls|XLS';
+
+
+
+    /* Sản phẩm (List) */
+    $config['product'][$nametype]['title_main_list'] = "Sản phẩm cấp 1";
+    $config['product'][$nametype]['images_list'] = false;
+    $config['product'][$nametype]['show_images_list'] = false;
+    $config['product'][$nametype]['slug_list'] = true;
+    $config['product'][$nametype]['check_list'] = array();
+    $config['product'][$nametype]['gallery_list'] = array();
+    $config['product'][$nametype]['mota_list'] = false;
+    $config['product'][$nametype]['seo_list'] = true;
+    $config['product'][$nametype]['width_list'] = 65;
+    $config['product'][$nametype]['height_list'] = 65;
+    $config['product'][$nametype]['thumb_list'] = '65x65x2';
+    $config['product'][$nametype]['img_type_list'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF|.svg|.SVG';
+
+    /* Sản phẩm (Cat) */
+    $config['product'][$nametype]['title_main_cat'] = "Sản phẩm cấp 2";
+    $config['product'][$nametype]['images_cat'] = false;
+    $config['product'][$nametype]['show_images_cat'] = false;
+    $config['product'][$nametype]['slug_cat'] = true;
+    $config['product'][$nametype]['check_cat'] = array();
+    $config['product'][$nametype]['mota_cat'] = false;
+    $config['product'][$nametype]['seo_cat'] = true;
+    $config['product'][$nametype]['width_cat'] = 75*4;
+    $config['product'][$nametype]['height_cat'] = 50*4;
+    $config['product'][$nametype]['thumb_cat'] = '100x100x1';
+    $config['product'][$nametype]['img_type_cat'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
 
 
     /* Đăng ký nhận tin */
@@ -335,7 +397,6 @@
     $config['photo']['man_photo'][$nametype]['img_type_photo'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
 
 
-
     /* Mạng xã hội */
     $nametype = "mangxahoi1";
     $config['photo']['man_photo'][$nametype]['title_main_photo'] = "Mạng xã hội footer";
@@ -347,6 +408,18 @@
     $config['photo']['man_photo'][$nametype]['height_photo'] = 30;
     $config['photo']['man_photo'][$nametype]['thumb_photo'] = '30x30x1';
     $config['photo']['man_photo'][$nametype]['img_type_photo'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
+
+
+    $nametype = "icon-lienhe";
+    $config['photo']['man_photo'][$nametype]['title_main_photo'] = "Icon liên hệ";
+    $config['photo']['man_photo'][$nametype]['number_photo'] = 4;
+    $config['photo']['man_photo'][$nametype]['images_photo'] = true;
+    $config['photo']['man_photo'][$nametype]['avatar_photo'] = true;
+    $config['photo']['man_photo'][$nametype]['tieude_photo'] = true;
+    $config['photo']['man_photo'][$nametype]['width_photo'] = 65;
+    $config['photo']['man_photo'][$nametype]['height_photo'] = 65;
+    $config['photo']['man_photo'][$nametype]['thumb_photo'] = '65x65x1';
+    $config['photo']['man_photo'][$nametype]['img_type_photo'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF|.svg|.SVG';
 
 
     $nametype = "popup";
@@ -391,18 +464,6 @@
     $config['photo']['photo_static'][$nametype]['thumb'] = '1440x400x1';
     $config['photo']['photo_static'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
 
-    /* Đối tác */
-   /* $nametype = "doitac";
-    $config['photo']['man_photo'][$nametype]['title_main_photo'] = "Đối tác";
-    $config['photo']['man_photo'][$nametype]['number_photo'] = 5;
-    $config['photo']['man_photo'][$nametype]['images_photo'] = true;
-    $config['photo']['man_photo'][$nametype]['avatar_photo'] = true;
-    $config['photo']['man_photo'][$nametype]['link_photo'] = true;
-    $config['photo']['man_photo'][$nametype]['tieude_photo'] = true;
-    $config['photo']['man_photo'][$nametype]['width_photo'] = 175;
-    $config['photo']['man_photo'][$nametype]['height_photo'] = 95;
-    $config['photo']['man_photo'][$nametype]['thumb_photo'] = '175x95x1';
-    $config['photo']['man_photo'][$nametype]['img_type_photo'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';*/
 
     /* Setting */
     $config['setting']['diachi'] = true;
@@ -418,11 +479,11 @@
 
     /* Seo page */
     $config['seopage']['page'] = array(
-        "tin-tuc" => "Tin tức",
-        "to-chuc-su-kien" => "Tổ chức sự kiện",
-        "thiet-bi-su-kien" => "Thiết bị sự kiện",
-        "chinh-sach" => "Chính sách",
-        "thu-vien-anh" => "Hoạt động",
+        "trang-chu" => "Trang chủ",
+        "blog" => "Blog",
+        "san-pham" => "Sản phẩm",
+        "outfit" => "Outfit",
+        "intro" => "Giới thiệu",
         "lien-he" => "Liên hệ"
     );
     $config['seopage']['width'] = 75*4;

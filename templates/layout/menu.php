@@ -15,7 +15,7 @@
                 <a class="transition <?php if($com=='intro') echo 'active'; ?>" href="intro" title="intro">intro</a>
             </li>
             <li>
-                <a class="transition <?php if($com=='san-pham') echo 'active'; ?>" href="san-pham" title="<?=sanpham?>"><?=sanpham?> <i class="fal fa-angle-down"></i></a>
+                <a class="transition <?php if($com=='products') echo 'active'; ?>" href="products" title="<?=sanpham?>"><?=sanpham?> <i class="fal fa-angle-down"></i></a>
                 <?php if(count($splistmenu)) { ?>
                     <ul>
                         <?php foreach ($splistmenu as $k => $v) {

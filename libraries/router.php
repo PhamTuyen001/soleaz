@@ -84,10 +84,11 @@
 	/* Tối ưu link */
 	$requick = array(
 		/* Sản phẩm */
-		array("tbl"=>"product_list","field"=>"idl","source"=>"product","com"=>"san-pham","type"=>"san-pham"),
-		array("tbl"=>"product_cat","field"=>"idc","source"=>"product","com"=>"san-pham","type"=>"san-pham"),
+		array("tbl"=>"product_list","field"=>"idl","source"=>"product","com"=>"products","type"=>"san-pham"),
+		array("tbl"=>"product_cat","field"=>"idc","source"=>"product","com"=>"products","type"=>"san-pham"),
+		array("tbl"=>"product_item","field"=>"idi","source"=>"product","com"=>"products","type"=>"san-pham"),
 		array("tbl"=>"product_brand","field"=>"idb","source"=>"product","com"=>"thuong-hieu","type"=>"san-pham"),
-		array("tbl"=>"product","field"=>"id","source"=>"product","com"=>"san-pham","type"=>"san-pham",'menu'=>true),
+		array("tbl"=>"product","field"=>"id","source"=>"product","com"=>"products","type"=>"san-pham",'menu'=>true),
 		
 		/* Tags */
 		/*array("tbl"=>"tags","tbltag"=>"product","field"=>"id","source"=>"tags","com"=>"tags-san-pham","type"=>"san-pham",'menu'=>true),
@@ -188,7 +189,7 @@
 
 		case 'chinh-sach':
 			$source = "news";
-			$template = isset($_GET['id']) ? "news/news_detail" : "";
+			$template = isset($_GET['id']) ? "static/static":"";
 			$seo->setSeo('type','article');
 			$type = $com;
 			break;
@@ -200,11 +201,11 @@
 			$type = 'san-pham';
 			break;
 
-		case 'san-pham':
+		case 'products':
 			$source = "product";
 			$template = isset($_GET['id']) ? "product/product_detail" : "product/product";
 			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
-			$type = $com;
+			$type = 'san-pham';
 			$title_crumb = sanpham;
 			break;
 

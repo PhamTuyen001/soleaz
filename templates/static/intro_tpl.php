@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="one-content-page text-center">
-			<img src="<?=UPLOAD_NEWS_L.$about[0]['photo']?>" alt="<?=$about[0]['ten'.$lang]?>">
+			<img class="w-100" src="<?=UPLOAD_NEWS_L.$about[0]['photo']?>" alt="<?=$about[0]['ten'.$lang]?>">
 		</div>
 	</div>
 </section>
@@ -46,7 +46,7 @@
 <section class="intro-page-one py-4">
 	<div class="container">
 		<div class="one-content-page text-center mb-5">
-			<img src="<?=UPLOAD_NEWS_L.$v['photo']?>" alt="<?=$v['ten'.$lang]?>">
+			<img class="w-100" src="<?=UPLOAD_NEWS_L.$v['photo']?>" alt="<?=$v['ten'.$lang]?>">
 		</div>
 		<div class="one-content-page text-center">
 			<div class="row d-flex align-items-center justify-content-between">

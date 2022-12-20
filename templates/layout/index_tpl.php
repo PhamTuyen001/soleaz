@@ -434,78 +434,26 @@
 			<h6><?=soleoutfit?></h6>
 		</div>
 		<div class="row">
+			<?php foreach ($outfit as $v) {?>
 			<div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center">
 				<div class="box-soleoutfit text-center">
 					<div class="img-soleoutfit">
-						<a href="">
-							<img src="https://levents.asia/wp-content/uploads/2022/09/A1-font-552x944-100.jpg" alt="">
-							<img src="https://levents.asia/wp-content/uploads/2022/09/A3-font-552x944-100.jpg" alt="">
+						<a href="<?=$v[$sluglang]?>">
+							<img src="<?=THUMBS?>/450x660x2/<?=UPLOAD_PRODUCT_L.$v['photo']?>" alt="<?=$v['ten'.$lang]?>">
+							<img src="<?=THUMBS?>/450x660x2/<?=UPLOAD_PRODUCT_L.$v['photo2']?>" alt="<?=$v['ten'.$lang]?>">
 						</a>
 					</div>
 					<div class="info-soleoutfit">
 						<h3>
-							<a href="">SOLE FW22 2ND DROP</a>
+							<a href="<?=$v[$sluglang]?>"><?=$v['ten'.$lang]?></a>
 						</h3>
 						<p>
-							<a href=""><?=viewcollection?></a>
+							<a href="<?=$v[$sluglang]?>"><?=viewcollection?></a>
 						</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center">
-				<div class="box-soleoutfit">
-					<div class="img-soleoutfit">
-						<a href="">
-							<img src="https://levents.asia/wp-content/uploads/2022/09/A3-font-552x944-100.jpg" alt="">
-							<img src="https://levents.asia/wp-content/uploads/2022/09/A2-font-552x944-100.jpg" alt="">
-						</a>
-					</div>
-					<div class="info-soleoutfit">
-						<h3>
-							<a href="">SOLE FW22 2ND DROP</a>
-						</h3>
-						<p>
-							<a href="">View Collection</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center">
-				<div class="box-soleoutfit">
-					<div class="img-soleoutfit">
-						<a href="">
-							<img src="https://levents.asia/wp-content/uploads/2022/09/A2-font-552x944-100.jpg" alt="">
-							<img src="https://levents.asia/wp-content/uploads/2022/09/C1-font-552x944-100.jpg" alt="">
-						</a>
-					</div>
-					<div class="info-soleoutfit">
-						<h3>
-							<a href="">SOLE FW22 2ND DROP</a>
-						</h3>
-						<p>
-							<a href="">View Collection</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center">
-				<div class="box-soleoutfit">
-					<div class="img-soleoutfit">
-						<a href="">
-							<img src="https://levents.asia/wp-content/uploads/2022/09/C1-font-552x944-100.jpg" alt="">
-							<img src="https://levents.asia/wp-content/uploads/2022/09/A1-font-552x944-100.jpg" alt="">
-						</a>
-					</div>
-					<div class="info-soleoutfit">
-						<h3>
-							<a href="">SOLE FW22 2ND DROP</a>
-						</h3>
-						<p>
-							<a href="">View Collection</a>
-						</p>
-					</div>
-				</div>
-			</div>
+			<?php }?>
 		</div>
 	</div>
 </section>

@@ -1,6 +1,6 @@
 <?php 
 	if(!defined('SOURCES')) die("Error");
-
+	
 	if(isset($_POST['submit-contact']))
 	{
         $responseCaptcha = $_POST['recaptcha_response_contact'];
@@ -28,8 +28,7 @@
 		    $emailer->setEmail('tennguoigui',$data['ten']);
 		    $emailer->setEmail('emailnguoigui',$data['email']);
 		    $emailer->setEmail('dienthoainguoigui',$data['dienthoai']);
-		    $emailer->setEmail('diachinguoigui',$data['diachi']);
-		    $emailer->setEmail('tieudelienhe',$data['tieude']);
+		    $emailer->setEmail('tieudelienhe','Contact information from '.$setting['ten'.$lang]);
 		    $emailer->setEmail('noidunglienhe',$data['noidung']);
 		    if($emailer->getEmail('tennguoigui'))
 		    {
@@ -264,17 +263,17 @@
 						"email" => $emailer->getEmail('emailnguoigui')
 					)
 				);
-				$subject = "Thư liên hệ từ ".$setting['ten'.$lang];
+				$subject = "Contact letter from ".$setting['ten'.$lang];
 				$message = $contentCustomer;
 				$file = 'file';
 
-				if($emailer->sendEmail("customer", $arrayEmail, $subject, $message, $file)) $func->transfer("Gửi liên hệ thành công",$config_base);
+				if($emailer->sendEmail("customer", $arrayEmail, $subject, $message, $file)) $func->transfer(guilienhethanhcong,$config_base);
 			}
-			else $func->transfer("Gửi liên hệ thất bại. Vui lòng thử lại sau",$config_base, false);
+			else $func->transfer(guilienhethatbai,$config_base, false);
 		}
 		else
 		{
-			$func->transfer("Gửi liên hệ thất bại. Vui lòng thử lại sau",$config_base, false);
+			$func->transfer(guilienhethatbai,$config_base, false);
 		}
 	}
 
@@ -298,7 +297,7 @@
 	$seo->setSeo('photo:type',$img_json_bar['m']);
 	
     $lienhe = $d->rawQueryOne("select noidung$lang from #_static where type = ?",array('lienhe'));
-
+    $icon = $d->rawQuery("SELECT ten$lang, photo, link FROM #_photo WHERE type = ? AND hienthi=1 ORDER BY stt asc,id DESC",array('icon-lienhe'));
 	/* breadCrumbs */
 	if($title_crumb) $breadcr->setBreadCrumbs($com,$title_crumb);
 	$breadcrumbs = $breadcr->getBreadCrumbs();

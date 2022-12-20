@@ -185,4 +185,6 @@ define("viewcollection","View Collection");
 define("gotoourinstagram","Go to our Instagram");
 define("viewdetails","View details");
 define("loadmore","Load more");
+define("guilienhethatbai","Contact sending failed. Please try again later");
+define("guilienhethanhcong","Contact sent successfully");
 ?>

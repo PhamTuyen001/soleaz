@@ -68,7 +68,7 @@
                                     <input type="number" class="form-control form-control-mini m-auto update-stt" min="0" value="<?=$items[$i]['stt']?>" data-id="<?=$items[$i]['id']?>" data-table="product_size">
                                 </td>
                                 <td class="align-middle">
-                                    <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['tenvi']?>"><?=$items[$i]['tenvi']?></a>
+                                    <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['ten'.$config['website']['lang-doc']]?>"><?=$items[$i]['ten'.$config['website']['lang-doc']]?></a>
                                 </td>
 								<td class="align-middle text-center">
                                 	<div class="custom-control custom-checkbox my-checkbox">

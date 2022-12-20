@@ -1,7 +1,7 @@
 <?php $banner = $d->rawQueryOne("SELECT id, photo FROM #_photo WHERE type = ? AND act = ? limit 0,1",array('bn-'.$com,'photo_static')); ?>
 <section class="warp-banner-inpage">
     <p class="text-center">
-        <img src="<?=UPLOAD_PRODUCT_L.$banner['photo']?>" alt="<?=$setting['ten'.$lang]?>">
+        <img class="w-100" src="<?=UPLOAD_PHOTO_L.$banner['photo']?>" alt="<?=$setting['ten'.$lang]?>">
     </p>
 </section>
 <?php include TEMPLATE.LAYOUT."breadcrumb.php" ?>
@@ -53,41 +53,16 @@
     <div class="container">
         <div class="row-icon-contact">
             <div class="slick in-page" data-dots="0" data-infinite="0" data-arrows="0" data-autoplay='1' data-slidesDefault="4:1" data-lg-items='4:1' data-md-items='4:1' data-sm-items='4:1' data-xs-items="4:1" data-vertical="0">
+                <?php foreach ($icon as $v) {?>
                 <div class="col-icon-contact">
                     <div class="box-icon-contact">
                         <span>
-                            <img src="assets/images/lh1.svg" alt="Membership Policy">
+                            <img src="<?=UPLOAD_PHOTO_L.$v['photo']?>" alt="<?=$v['ten'.$lang]?>">
                         </span>
-                        <p>Membership Policy</p>
+                        <p><?=$v['ten'.$lang]?></p>
                     </div>
                 </div>
-
-                <div class="col-icon-contact">
-                    <div class="box-icon-contact">
-                        <span>
-                            <img src="assets/images/lh2.svg" alt="Membership Policy">
-                        </span>
-                        <p>Shopping Guide</p>
-                    </div>
-                </div>
-
-                <div class="col-icon-contact">
-                    <div class="box-icon-contact">
-                        <span>
-                            <img src="assets/images/lh3.svg" alt="Membership Policy">
-                        </span>
-                        <p>Warranty Policy</p>
-                    </div>
-                </div>
-
-                <div class="col-icon-contact">
-                    <div class="box-icon-contact">
-                        <span>
-                            <img src="assets/images/lh4.svg" alt="Membership Policy">
-                        </span>
-                        <p>Q & A</p>
-                    </div>
-                </div> 
+                <?php }?>
             </div>
         </div>
     </div>

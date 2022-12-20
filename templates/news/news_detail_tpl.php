@@ -1,7 +1,7 @@
 <?php include TEMPLATE.LAYOUT."breadcrumb.php" ?>
 <section class="news-detail">
     <div class="container">
-        <div class="title-main-news"><h1><span><?=$row_detail['ten'.$lang]?></span></h1></div>
+        <div class="title-main-news mb-3"><h1><span><?=$row_detail['ten'.$lang]?></span></h1></div>
         <?php if($row_detail['noidung'.$lang]) { ?>
         <div class="meta-toc">
             <div class="box-readmore">
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="content-main info-news-detail" id="toc-content"><?=htmlspecialchars_decode($row_detail['noidung'.$lang])?></div>
-        <div class="share mt-3">
+        <div class="share mt-3 d-none">
             <b><?=chiase?>:</b>
             <div class="social-plugin">
                 <div class="addthis_inline_share_toolbox_qj48"></div>

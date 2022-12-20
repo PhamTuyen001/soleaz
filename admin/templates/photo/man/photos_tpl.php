@@ -74,7 +74,7 @@
                                 </td>
                                 <?php if(isset($photo_config['avatar_photo']) && $photo_config['avatar_photo']==true) { ?>
 	                                <td class="align-middle text-center">
-	                                    <a href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['tenen']?>"><img class="rounded img-preview" onerror="src='assets/images/noimage.png'" src="<?=THUMBS?>/<?=$photo_config['thumb_photo']?>/<?=UPLOAD_PHOTO_L.$items[$i]['photo']?>" alt="<?=$items[$i]['tenen']?>"></a>
+	                                    <a href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['tenen']?>"><img class="rounded img-preview" onerror="src='assets/images/noimage.png'" src="<?=UPLOAD_PHOTO.$items[$i]['photo']?>" alt="<?=$items[$i]['tenen']?>"></a>
 	                                </td>
 	                            <?php } ?>
                                 <?php if(isset($photo_config['tieude_photo']) && $photo_config['tieude_photo']==true) { ?>

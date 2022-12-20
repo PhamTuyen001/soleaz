@@ -4,6 +4,7 @@
     
     $pronb = $d->rawQuery("SELECT id FROM #_product WHERE hienthi=1 AND type = ? AND noibat>0",array('san-pham'));
     $newsnb = $d->rawQuery("SELECT ten$lang, tenkhongdauvi, tenkhongdauen, mota$lang, ngaytao, id, photo FROM #_news WHERE hienthi=1 AND type = ? AND noibat>0 ORDER BY stt,id DESC",array('tin-tuc'));
+    $outfit = $d->rawQuery("SELECT ten$lang, tenkhongdauvi, tenkhongdauen, id, photo,photo2 FROM #_product WHERE hienthi=1 AND type = ? AND noibat>0 ORDER BY stt,id DESC",array('outfit'));
     $static_gioithieu = $d->rawQueryOne("select id, type, ten$lang as ten, mota$lang as mota, photo FROM #_static WHERE type = ? LIMIT 0,1",array('gioi-thieu'));
 
     $videonb = $d->rawQuery("SELECT link_video, id, ten$lang,photo FROM #_photo WHERE hienthi=1 AND noibat>0 AND type = ?",array('video'));
