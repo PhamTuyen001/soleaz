@@ -443,9 +443,9 @@ $window.resize(function(){
 });
 $window.scroll(function() {
     if($window.scrollTop() >= $(".header").height()){
-        //$(".wrap-header").css({position:"fixed",left:'0px',right:'0px',top:'0px',zIndex:'999'});
+        $(".wrap-header").css({position:"fixed",left:'0px',right:'0px',top:'0px',zIndex:'999'});
     }else{
-        //$(".wrap-header").css({position:"relative"});
+        $(".wrap-header").css({position:"relative"});
     }
     if(!$('.scrollToTop').length){
         $("body").append('<div class="scrollToTop"><img src="'+GOTOP+'" alt="Go Top"/></div>');
@@ -501,6 +501,16 @@ $document.ready(function() {
 		})
 		
 	});
+	$("#price-range-slider").ionRangeSlider({
+        skin: "sharp",
+        min: $("#price-range-slider").attr('min'),
+        max: $("#price-range-slider").attr('max'),
+        from: $("#price-range-slider").attr('data-from'),
+        to:$("#price-range-slider").attr('data-to'),
+        type: "double",
+        grid: true,
+        postfix: " USD"
+    });
 	NN_FRAMEWORK.menuMobile(),
 	NN_FRAMEWORK.galleryPage(),
 	NN_FRAMEWORK.aweOwlPage(),

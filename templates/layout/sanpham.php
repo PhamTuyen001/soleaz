@@ -20,10 +20,10 @@
 		</h3>
 		<div class="price-product">
             <?php if($v['giakm']) { ?>
-                <span class="price-new">$<?=number_format($v['giamoi'], 2, '.', '')?></span>
-                <span class="price-old">$<?=number_format($v['gia'], 2, '.', '')?></span>
+                <span class="price-new">$ <?=number_format($v['giamoi'], 2, '.', '')?></span>
+                <span class="price-old">$ <?=number_format($v['gia'], 2, '.', '')?></span>
             <?php } else { ?>
-                <span class="price-new price-new-one"><?=($v['gia'])?('$'.number_format($v['gia'], 2, '.', '')):lienhe?></span>
+                <span class="price-new price-new-one"><?=($v['gia'])?('$ '.number_format($v['gia'], 2, '.', '')):lienhe?></span>
             <?php } ?>
         </div>
 	</div>

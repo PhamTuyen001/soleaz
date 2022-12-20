@@ -53,7 +53,7 @@ define("hinh","");
 define("soluong","");
 define("thanhtien","");
 define("tinhthanh","");
-define("nhaptukhoatimkiem","");
+define("nhaptukhoatimkiem","Ilagay ang keyword...");
 define("tinhtrang","");
 define("hethang","");
 define("dangcapnhat","");
@@ -189,4 +189,11 @@ define("guilienhethatbai","Nabigo ang pagpapadala ng contact. Subukang muli mama
 define("guilienhethanhcong","Matagumpay na naipadala ang contact");
 define("xemchitiet","Tignan ang detalye");
 define("productsinoutfit","Mga Produkto sa Outfit");
+define("categories","Mga kategorya");
+define("allcategories","Lahat ng kategorya");
+define("producttype","Uri ng produkto");
+define("all","Lahat");
+define("color","Kulay");
+define("price","presyo");
+define("apply","Mag-apply");
 ?>

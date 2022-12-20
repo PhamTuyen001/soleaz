@@ -20,6 +20,12 @@
 						<div class="icon_tool__btn__child" data-action="search">
 							<img src="assets/images/search.svg" alt="">
 						</div>
+						<div class="v_Search">
+				        	<div class="w_timk">
+				                <input type="text" id="keyword" placeholder="<?=nhaptukhoatimkiem?>" onkeypress="doEnter(event,'keyword');">
+				                <i class="fas fa-search" onclick="onSearch('keyword');"></i>
+				            </div>
+		        		</div>
 					</div>
 				</div>
 				<div class="hd__icon_tool">

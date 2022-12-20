@@ -29,6 +29,7 @@
     $js->setJs("./assets/js/functions.js");
     $js->setJs("./assets/engine1/wowslider.js");
     $js->setJs("./assets/engine1/script.js");
+    $js->setJs("./assets/js/ion.rangeSlider.min.js");
     $js->setJs("./assets/js/app.js");
     echo $js->getJs();
 ?>

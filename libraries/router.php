@@ -160,13 +160,6 @@
 			$title_crumb = gioithieu;
 			break;
 
-		case 'tin-tuc':
-			$source = "news";
-			$template = isset($_GET['id']) ? "news/news_detail" : "news/news";
-			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
-			$type = $com;
-			$title_crumb = tintuc;
-			break;
 
 		case 'blog':
 			$source = "news";
@@ -176,21 +169,6 @@
 			$title_crumb = blog;
 			break;
 
-		case 'thiet-bi-su-kien':
-			$source = "news";
-			$template = isset($_GET['id']) ? "news/news_detail" : "news/news";
-			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
-			$type = $com;
-			$title_crumb = thietbisukien;
-			break;
-
-		case 'dich-vu':
-			$source = "news";
-			$template = isset($_GET['id']) ? "news/news_detail" : "news/news";
-			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
-			$type = $com;
-			$title_crumb = dichvu;
-			break;
 
 		case 'chinh-sach':
 			$source = "news";
@@ -208,10 +186,34 @@
 
 		case 'products':
 			$source = "product";
-			$template = isset($_GET['id']) ? "product/product_detail" : "product/product";
+			$template = (!empty($_GET['id'])) ? "product/product_detail": ((empty($_GET['idl']) && empty($_GET['idc']) && empty($_GET['idi'])) ? "product/product":"product/product_all" );
 			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
 			$type = 'san-pham';
 			$title_crumb = sanpham;
+			break;
+
+		case 'sale':
+			$source = "product";
+			$template = "product/product_all";
+			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
+			$type = 'san-pham';
+			$title_crumb = sale;
+			break;
+
+		case 'featured-products':
+			$source = "product";
+			$template = "product/product_all";
+			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
+			$type = 'san-pham';
+			$title_crumb = featuredproducts;
+			break;
+
+		case 'new-collection':
+			$source = "product";
+			$template = "product/product_all";
+			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
+			$type = 'san-pham';
+			$title_crumb = newcollection;
 			break;
 
 		case 'outfit':
@@ -227,38 +229,6 @@
 			$template = "news/news";
 			$seo->setSeo('type','object');
 			$title_crumb = timkiem;
-			break;
-
-		case 'tags-san-pham':
-			$source = "tags";
-			$template = "product/product";
-			$type = $url_type;
-			$table = $url_tbltag;
-			$seo->setSeo('type','object');
-			break;
-
-		case 'tags-tin-tuc':
-			$source = "tags";
-			$template = "news/news";
-			$type = $url_type;
-			$table = $url_tbltag;
-			$seo->setSeo('type','object');
-			break;
-
-		case 'thu-vien-anh':
-			$source = "product";
-			$template = isset($_GET['id']) ? "album/album_detail" : "album/album";
-			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
-			$type = $com;
-			$title_crumb = hoatdong;
-			break;
-		
-		case 'video':
-			$source = "video";
-			$template = "video/video";
-			$type = $com;
-			$seo->setSeo('type','object');
-			$title_crumb = "Video";
 			break;
 
 		case 'gio-hang':
