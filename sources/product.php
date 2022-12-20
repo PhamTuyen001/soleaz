@@ -86,7 +86,7 @@
 		$seo->setSeo('photo:height',$img_json_bar['h']);
 		$seo->setSeo('photo:type',$img_json_bar['m']);
 		/* breadCrumbs */
-		if($title_crumb) $breadcr->setBreadCrumbs($com,$title_crumb);
+		//if($title_crumb) $breadcr->setBreadCrumbs($com,$title_crumb);
 		//$breadcr->setBreadCrumbs($pro_list[$sluglang],$pro_list['ten'.$lang]);
 		//$breadcr->setBreadCrumbs($pro_cat[$sluglang],$pro_cat['ten'.$lang]);
 		//$breadcr->setBreadCrumbs($pro_item[$sluglang],$pro_item['ten'.$lang]);

@@ -22,7 +22,7 @@
     $config['product'][$nametype]['images'] = true;
     $config['product'][$nametype]['images2'] = true;
     $config['product'][$nametype]['show_images'] = true;
-    $config['product'][$nametype]['show_gallery'] = true;
+    $config['product'][$nametype]['show_gallery'] = false;
     $config['product'][$nametype]['gallery'] = array(
         $nametype => array
         (
@@ -81,7 +81,7 @@
     $config['product'][$nametype]['images'] = true;
     $config['product'][$nametype]['images2'] = true;
     $config['product'][$nametype]['show_images'] = true;
-    $config['product'][$nametype]['show_gallery'] = true;
+    $config['product'][$nametype]['show_gallery'] = false;
     $config['product'][$nametype]['gallery'] = array(
         $nametype => array
         (

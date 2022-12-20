@@ -343,24 +343,7 @@
 					                    <?=get_main_brand()?>
 					                </div>
 							    <?php } ?>
-							    <?php if(!empty($product_type['tags']) && $product_type['tags']) { ?>
-							    	<div class="form-group col-xl-6 col-sm-4">
-					                    <label class="d-block" for="id_tags">Danh mục tags:</label>
-					                    <?=get_tags($item['id'])?>
-					                </div>
-							    <?php } ?>
-							    <?php if(!empty($product_type['mau']) && $product_type['mau']) { ?>
-							    	<div class="form-group col-xl-6 col-sm-4">
-					                    <label class="d-block" for="id_mau">Danh mục màu sắc:</label>
-					                    <?=(!empty($item)) ? get_mau($item['id']):get_mau(0)?>
-					                </div>
-							    <?php } ?>
-							    <?php if(!empty($product_type['size']) && $product_type['size']) { ?>
-							    	<div class="form-group col-xl-6 col-sm-4">
-					                    <label class="d-block" for="id_size">Danh mục kích thước:</label>
-					                    <?=(!empty($item)) ? get_size($item['id']):get_size(0)?>
-					                </div>
-							    <?php } ?>
+							    
 							</div>
 			            </div>
 			        </div>

@@ -6,13 +6,13 @@
 			<img src="<?=THUMBS?>/500x500x2/<?=UPLOAD_PRODUCT_L.$v['photo']?>" alt="<?=$v['ten'.$lang]?>">
 			<img src="<?=THUMBS?>/500x500x2/<?=UPLOAD_PRODUCT_L.$v['photo2']?>" alt="<?=$v['ten'.$lang]?>">
 		</a>
-	</div>
-	<div class="colors-product">
-		<ul>
-			<?php foreach ($row_color as $v_mau) {?>
-			<li style="--color:#<?=$v_mau['mau']?>"></li>
-			<?php }?>
-		</ul>
+		<div class="colors-product">
+			<ul>
+				<?php foreach ($row_color as $v_mau) {?>
+				<li style="--color:#<?=$v_mau['mau']?>"></li>
+				<?php }?>
+			</ul>
+		</div>
 	</div>
 	<div class="info-products">
 		<h3>

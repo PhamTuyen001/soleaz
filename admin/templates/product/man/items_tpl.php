@@ -180,7 +180,7 @@
 							<th class="align-middle">Hình</th>
 						<?php } ?>
 						<th class="align-middle" style="width:30%">Tiêu đề</th>
-                        <?php if(count($config['product'][$type]['gallery']) && (isset($config['product'][$type]['show_images']) && $config['product'][$type]['show_images']==true)) { ?>
+                        <?php if( empty($_GET['id_product']) && $config['product'][$type]['show_gallery']==true) { ?>
                             <th class="align-middle">Gallery</th>
                         <?php } ?>
 						<?php foreach($config['product'][$type]['check'] as $key => $value) { ?>
@@ -240,7 +240,7 @@
                                     	<a class="text-danger" id="delete-item" data-url="<?=$linkDelete?><?=$linkID?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['ten'.$config['website']['lang-doc']]?>"><i class="far fa-trash-alt mr-1"></i>Delete</a>
                                     </div>
                                 </td>
-                                <?php if(count($config['product'][$type]['gallery']) && empty($_GET['id_product']) && (isset($config['product'][$type]['show_images']) && $config['product'][$type]['show_images']==true)) { ?>
+                                <?php if( empty($_GET['id_product']) && $config['product'][$type]['show_gallery']==true) { ?>
                                     <td class="align-middle">
                                         <div class="dropdown">
                                             <button type="button" class="btn btn-sm bg-gradient-success dropdown-toggle" id="dropdown-gallery" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Thêm</button>
