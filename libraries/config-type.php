@@ -359,6 +359,38 @@
     $config['photo']['photo_static'][$nametype]['thumb'] = '700x350x1';
     $config['photo']['photo_static'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
 
+
+    $nametype = "bn-contact-us";
+    $config['photo']['photo_static'][$nametype]['title_main'] = "Banner liên hệ";
+    $config['photo']['photo_static'][$nametype]['images'] = true;
+    $config['photo']['photo_static'][$nametype]['tieude'] = false;
+    $config['photo']['photo_static'][$nametype]['link'] = false;
+    $config['photo']['photo_static'][$nametype]['width'] = 1440;
+    $config['photo']['photo_static'][$nametype]['height'] = 400;
+    $config['photo']['photo_static'][$nametype]['thumb'] = '1440x400x1';
+    $config['photo']['photo_static'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
+
+    $nametype = "bn-products";
+    $config['photo']['photo_static'][$nametype]['title_main'] = "Banner sản phẩm";
+    $config['photo']['photo_static'][$nametype]['images'] = true;
+    $config['photo']['photo_static'][$nametype]['tieude'] = false;
+    $config['photo']['photo_static'][$nametype]['link'] = false;
+    $config['photo']['photo_static'][$nametype]['width'] = 1440;
+    $config['photo']['photo_static'][$nametype]['height'] = 400;
+    $config['photo']['photo_static'][$nametype]['thumb'] = '1440x400x1';
+    $config['photo']['photo_static'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
+
+
+    $nametype = "bn-blog";
+    $config['photo']['photo_static'][$nametype]['title_main'] = "Banner blog";
+    $config['photo']['photo_static'][$nametype]['images'] = true;
+    $config['photo']['photo_static'][$nametype]['tieude'] = false;
+    $config['photo']['photo_static'][$nametype]['link'] = false;
+    $config['photo']['photo_static'][$nametype]['width'] = 1440;
+    $config['photo']['photo_static'][$nametype]['height'] = 400;
+    $config['photo']['photo_static'][$nametype]['thumb'] = '1440x400x1';
+    $config['photo']['photo_static'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
+
     /* Đối tác */
    /* $nametype = "doitac";
     $config['photo']['man_photo'][$nametype]['title_main_photo'] = "Đối tác";

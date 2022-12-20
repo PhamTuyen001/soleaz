@@ -1,10 +1,11 @@
 <?php 
     $instagram = $d->rawQueryOne("SELECT ten$lang, noidung$lang,link,id,type FROM #_static WHERE type = ?",array('shop-on-instagram'));
     $hinhanhsp = $d->rawQuery("select photo from #_gallery where hienthi=1 and id_photo = ? and com='static' and type = ? and kind='static' and val = ? order by stt,id desc",array($instagram['id'],$instagram['type'],$instagram['type']));
+    $banner = $d->rawQueryOne("SELECT id, photo FROM #_photo WHERE type = ? AND act = ? limit 0,1",array('bn-'.$com,'photo_static'));
 ?>
 <section class="warp-banner-inpage">
     <p class="text-center">
-        <img src="assets/images/bg_blog.png" alt="">
+        <img src="<?=UPLOAD_PRODUCT_L.$banner['photo']?>" alt="<?=$setting['ten'.$lang]?>">
     </p>
 </section>
 <?php include TEMPLATE.LAYOUT."breadcrumb.php" ?>

@@ -1,6 +1,7 @@
+<?php $banner = $d->rawQueryOne("SELECT id, photo FROM #_photo WHERE type = ? AND act = ? limit 0,1",array('bn-'.$com,'photo_static')); ?>
 <section class="warp-banner-inpage">
     <p class="text-center">
-        <img src="assets/images/bg-sanpham.png" alt="">
+        <img src="<?=UPLOAD_PRODUCT_L.$banner['photo']?>" alt="<?=$setting['ten'.$lang]?>">
     </p>
 </section>
 <div class="show_list_prodduct py-5">
