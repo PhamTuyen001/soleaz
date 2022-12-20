@@ -87,8 +87,13 @@
 		array("tbl"=>"product_list","field"=>"idl","source"=>"product","com"=>"products","type"=>"san-pham"),
 		array("tbl"=>"product_cat","field"=>"idc","source"=>"product","com"=>"products","type"=>"san-pham"),
 		array("tbl"=>"product_item","field"=>"idi","source"=>"product","com"=>"products","type"=>"san-pham"),
-		array("tbl"=>"product_brand","field"=>"idb","source"=>"product","com"=>"thuong-hieu","type"=>"san-pham"),
 		array("tbl"=>"product","field"=>"id","source"=>"product","com"=>"products","type"=>"san-pham",'menu'=>true),
+
+
+		array("tbl"=>"product_list","field"=>"idl","source"=>"product","com"=>"outfit","type"=>"outfit"),
+		array("tbl"=>"product_cat","field"=>"idc","source"=>"product","com"=>"outfit","type"=>"outfit"),
+		array("tbl"=>"product_item","field"=>"idi","source"=>"product","com"=>"outfit","type"=>"outfit"),
+		array("tbl"=>"product","field"=>"id","source"=>"product","com"=>"outfit","type"=>"outfit",'menu'=>true),
 		
 		/* Tags */
 		/*array("tbl"=>"tags","tbltag"=>"product","field"=>"id","source"=>"tags","com"=>"tags-san-pham","type"=>"san-pham",'menu'=>true),
@@ -207,6 +212,14 @@
 			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
 			$type = 'san-pham';
 			$title_crumb = sanpham;
+			break;
+
+		case 'outfit':
+			$source = "product";
+			$template = isset($_GET['id']) ? "outfit/outfit_detail" : "outfit/outfit";
+			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
+			$type = $com;
+			$title_crumb = outfit;
 			break;
 
 		case 'tim-kiem':

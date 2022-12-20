@@ -187,4 +187,5 @@ define("viewdetails","Tingnan ang mga detalye");
 define("loadmore","Load more");
 define("guilienhethatbai","Nabigo ang pagpapadala ng contact. Subukang muli mamaya");
 define("guilienhethanhcong","Matagumpay na naipadala ang contact");
+define("xemchitiet","Tignan ang detalye");
 ?>
