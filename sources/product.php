@@ -11,7 +11,7 @@
 	if($id!='')
 	{
 		/* Lấy sản phẩm detail */
-		$row_detail = $d->rawQueryOne("select type, id, ten$lang, tenkhongdauvi, tenkhongdauen, mota$lang, noidung$lang, masp, luotxem, id_brand, id_mau, id_size, id_list, id_cat, id_item, id_sub, id_tags, photo, options, giakm, giamoi, gia,photo2 from #_product where hienthi=1 and id = ? and type = ? limit 0,1",array($id,$type));
+		$row_detail = $d->rawQueryOne("select type, id, ten$lang, tenkhongdauvi, tenkhongdauen, mota$lang, noidung$lang, masp, luotxem, id_brand, id_mau, id_size, id_list, id_cat, id_item, id_sub, id_tags, photo, options, giakm, giamoi, gia,photo2 from #_product where hienthi=1 and id = ? and type = ? and id_product=0 limit 0,1",array($id,$type));
 
 		/* Cập nhật lượt xem */
 		$data_luotxem['luotxem'] = $row_detail['luotxem'] + 1;
@@ -50,7 +50,7 @@
 		$product_new = $d->rawQuery("select photo, ten$lang, tenkhongdauvi, tenkhongdauen, giamoi, gia, giakm, id,masp,photo2 from #_product where id!=? and hienthi!=0 order by id desc limit 0,10", array($row_detail['id']));
 		
 		/* Lấy sản phẩm cùng loại */
-		$where = "";
+		$where = "id_product=0 and ";
 		$where = "hienthi=1 and id <> ? and id_list = ? and type = ?";
 		$params = array($id,$row_detail['id_list'],$type);
 
@@ -109,6 +109,9 @@
 		$seo->setSeo('description',$seoDB['description'.$seolang]);
 		$seo->setSeo('url',$func->getPageURL());
 
+		
+
+
 		$img_json_bar = json_decode($pro_list['options'],true);
 		if($img_json_bar['p'] != $pro_list['photo'])
 		{
@@ -120,8 +123,22 @@
 		$seo->setSeo('photo:height',$img_json_bar['h']);
 		$seo->setSeo('photo:type',$img_json_bar['m']);
 		/* Lấy sản phẩm */
-		$where = "";
+		$where = "id_product=0 and ";
 		$where = "id_list = ? and type = ? and hienthi=1";
+
+		if(!empty($_GET['id_list'])){
+			$where .=" and id_list in(".$_GET['id_list'].")";
+		}
+		if(!empty($_GET['id_cat'])){
+			$where .=" and id_cat in(".$_GET['id_cat'].")";
+		}
+		if(!empty($_GET['price'])){
+			$price=explode(',',$_GET['price']);
+			$where .=" and if(giamoi>0,giamoi,gia) BETWEEN ".$price[0]." AND ".$price[1];
+		}
+		if(!empty($_GET['color'])){
+			$where .= " and id in (select id_product from #_product where id_mau in (".$_GET['color']."))";
+		}
 		$params = array($idl,$type);
 
 		$curPage = $get_page;
@@ -135,11 +152,11 @@
 		$total = $count['num'];
 		$url = $func->getCurrentPageURL();
 		$paging = $func->pagination($total,$per_page,$curPage,$url);
-
 		/* breadCrumbs */
 		if($title_crumb) $breadcr->setBreadCrumbs($com,$title_crumb);
 		$breadcr->setBreadCrumbs($pro_list[$sluglang],$pro_list['ten'.$lang]);
 		$breadcrumbs = $breadcr->getBreadCrumbs();	
+
 	}
 	else if($idc!='')
 	{
@@ -150,7 +167,7 @@
 		$pro_list = $d->rawQueryOne("select id, ten$lang, tenkhongdauvi, tenkhongdauen from #_product_list where id = ? and type = ? limit 0,1",array($pro_cat['id_list'],$type));
 
 		/* Lấy sản phẩm */
-		$where = "";
+		$where = "id_product=0 and ";
 		$where = "id_cat = ? and type = ? and hienthi=1";
 		$params = array($idc,$type);
 
@@ -203,7 +220,7 @@
 		$pro_cat = $d->rawQueryOne("select id, ten$lang, tenkhongdauvi, tenkhongdauen from #_product_cat where id_list = ? and id = ? and type = ? limit 0,1",array($pro_item['id_list'],$pro_item['id_cat'],$type));
 
 		/* Lấy sản phẩm */
-		$where = "";
+		$where = "id_product=0 and ";
 		$where = "id_item = ? and type = ? and hienthi=1";
 		$params = array($idi,$type);
 
@@ -261,7 +278,7 @@
 		$pro_item = $d->rawQueryOne("select id, ten$lang, tenkhongdauvi, tenkhongdauen from #_product_item where id_list = ? and id_cat = ? and id = ? and type = ? limit 0,1",array($pro_sub['id_list'],$pro_sub['id_cat'],$pro_sub['id_item'],$type));
 
 		/* Lấy sản phẩm */
-		$where = "";
+		$where = "id_product=0 and ";
 		$where = "id_sub = ? and type = ? and hienthi=1";
 		$params = array($ids,$type);
 
@@ -330,7 +347,7 @@
 		$seo->setSeo('photo:height',$img_json_bar['h']);
 		$seo->setSeo('photo:type',$img_json_bar['m']);
 		/* Lấy sản phẩm */
-		$where = "";
+		$where = "id_product=0 and ";
 		$where = "id_brand = ? and type = ? and hienthi=1";
 		$params = array($pro_brand['id'],$type);
 
@@ -372,8 +389,21 @@
 		$seo->setSeo('photo:height',$img_json_bar['h']);
 		$seo->setSeo('photo:type',$img_json_bar['m']);
 		/* Lấy tất cả sản phẩm */
-		$where = "";
+		$where = "id_product=0 and ";
+
 		$where = "hienthi=1 and type = ?";
+
+		if(!empty($_GET['id_list'])){
+			$where .=" and id_list in(".$_GET['id_list'].")";
+		}
+		if(!empty($_GET['id_cat'])){
+			$where .=" and id_cat in(".$_GET['id_cat'].")";
+		}
+		if(!empty($_GET['price'])){
+			$price=explode(',',$_GET['price']);
+			$where .=" and if(giamoi>0,giamoi,gia) BETWEEN ".$price[0]." AND ".$price[1];
+		}
+
 		$params = array($type);
 
 		$curPage = $get_page;

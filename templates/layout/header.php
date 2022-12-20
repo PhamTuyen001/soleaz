@@ -28,14 +28,14 @@
 		        		</div>
 					</div>
 				</div>
-				<div class="hd__icon_tool">
+				<!-- <div class="hd__icon_tool">
 					<div class="icon_tool__btn">
 						<div class="icon_tool__btn__child" data-action="notification">
 							<img src="assets/images/notification.svg" alt="">
 							<div class="cart__num">2</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="hd__icon_tool">
 					<div class="icon_tool__btn">
 						<div class="icon_tool__btn__child" data-action="wishlist">

@@ -628,7 +628,7 @@ div.filter-options-content{position:relative;margin-top:-22px;}
 div.filter-options-content .irs--sharp .irs-line{background-color:#808080;}
 div.filter-options-content .irs--sharp .irs-min,div.filter-options-content .irs--sharp .irs-max,div.filter-options-content .irs-with-grid .irs-grid{display:none!important;}
 div.filter-options-content .irs--sharp .irs-bar{background:#000;}
-div.filter-options-content .irs--sharp .irs-from,div.filter-options-content .irs--sharp .irs-to{font-weight:400;font-size:12px;line-height:14px;color:#333;background-color:transparent;padding:0;width:auto;top:46px;font-size:14px;font-weight:500;}
+div.filter-options-content .irs--sharp .irs-from,div.filter-options-content .irs--sharp .irs-to{font-weight:400;font-size:12px;line-height:14px;color:#333;background-color:transparent;padding:0;width:auto;top:46px;font-size:14px;font-weight:500;visibility: visible !important;display: block;}
 div.filter-options-content .irs--sharp .irs-from{left:0!important;right:auto!important;}
 div.filter-options-content .irs--sharp .irs-to{right:0!important;left:auto!important;}
 div.filter-options-content .irs--sharp .irs-from:before,div.filter-options-content .irs--sharp .irs-to:before,div.filter-options-content .irs--sharp .irs-single:before{display:none}
@@ -659,9 +659,46 @@ div.main-blocks ul.ul-color li label span{position:relative;padding-left:30px;co
 div.main-blocks ul.ul-color li label input:checked ~ span{color:#000;}
 div.main-blocks ul.ul-color li label span:after{content:'';position:absolute;left:0;top:0px;width:18px;height:18px;background:var(--color);box-shadow:0px 1px 5px
 rgba(0,0,0,0.1);border-radius:2px;/* Inside auto layout */flex:none;order:0;flex-grow:0;display:flex;}
-div.wrap-block-search button{}
-div.wrap-block-search button:hover{}
-div.wrap-block-search button:active{}
+div.wrap-block-search button{
+    width: 100%;
+    padding: 8px;
+    margin-top: 7px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 0.5px solid #000000;
+    background: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+div.wrap-block-search button:hover{
+    box-shadow: 9px 10px 19px rgb(0 0 0 / 10%);
+}
+div.wrap-block-search button:active{
+    background: #000;
+    color: #fff;
+}
+.loading-mask {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    display: none;
+    background: rgba(255,255,255,.5);
+}
+.loading-mask .loader>img {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
 @media screen and (max-width:1080px){
 	.menu ul li a h2{padding:12px 15px 13px;}
 }
