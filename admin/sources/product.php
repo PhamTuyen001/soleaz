@@ -205,7 +205,7 @@
 	{
 		global $d, $func, $strUrl, $curPage, $items, $paging, $type;
 
-		$where = "";
+		$where = " and id_product=0";
 		$idlist = (isset($_REQUEST['id_list'])) ? htmlspecialchars($_REQUEST['id_list']):'';
 		$idcat = (isset($_REQUEST['id_cat'])) ? htmlspecialchars($_REQUEST['id_cat']):'';
 		$iditem = (isset($_REQUEST['id_item'])) ? htmlspecialchars($_REQUEST['id_item']):'';

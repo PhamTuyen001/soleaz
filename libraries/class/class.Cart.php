@@ -16,14 +16,16 @@
 		
 		public function get_product_mau($mau=0)
 		{
-			$row = $this->d->rawQueryOne("select tenvi from #_product_mau where id = ?",array($mau));
-			return $row['tenvi'];
+			global $d;
+			$row = $this->d->rawQueryOne("select ten$lang as ten from #_product_mau where id = ?",array($mau));
+			return $row['ten'];
 		}
 		
 		public function get_product_size($size=0)
 		{
-			$row = $this->d->rawQueryOne("select tenvi from #_product_size where id = ?",array($size));
-			return $row['tenvi'];
+			global $d;
+			$row = $this->d->rawQueryOne("select ten$lang as ten from #_product_size where id = ?",array($size));
+			return $row['ten'];
 		}
 		
 		public function remove_product($code)

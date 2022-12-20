@@ -104,15 +104,6 @@
                                     </div>
                                 </td>
                                 <td class="align-middle text-center text-md text-nowrap">
-                                	<?php if(isset($config['product'][$type]['copy']) && $config['product'][$type]['copy']==true) { ?>
-                                    	<div class="dropdown d-inline-block align-middle">
-		                            		<a id="dropdownCopy" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle text-success p-0 pr-2"><i class="far fa-clone"></i></a>
-								            <ul aria-labelledby="dropdownCopy" class="dropdown-menu border-0 shadow">
-								                <li><a href="#" class="dropdown-item copy-now" data-id="<?=$items[$i]['id']?>" data-table="product"><i class="far fa-caret-square-right text-secondary mr-2"></i>Sao chép ngay</a></li>
-								                <li><a href="<?=$linkCopy?><?=$linkID?>&id=<?=$items[$i]['id']?>" class="dropdown-item"><i class="far fa-caret-square-right text-secondary mr-2"></i>Chỉnh sửa thông tin</a></li>
-								            </ul>
-		                            	</div>
-                                    <?php } ?>
                                     <a class="text-primary mr-2" href="<?=$linkEdit?><?=$linkID?>&id=<?=$items[$i]['id']?>" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
                                     <a class="text-danger" id="delete-item" data-url="<?=$linkDelete?><?=$linkID?>&id=<?=$items[$i]['id']?>" title="Xóa"><i class="fas fa-trash-alt"></i></a>
                                 </td>

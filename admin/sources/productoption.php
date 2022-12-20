@@ -102,24 +102,25 @@
 	/* Edit man */
 	function get_item()
 	{
-		global $d, $func, $strUrl, $curPage, $item, $gallery, $type, $com,$id_product;
+		global $d, $func, $strUrl, $curPage, $item, $gallery, $type, $com,$id_product,$get_size;
 
 		$id = (isset($_GET['id'])) ? (int)htmlspecialchars($_GET['id']):0;
 
 		if(empty($id)) $func->transfer("Không nhận được dữ liệu", "index.php?com=product&act=man&type=".$type."&p=".$curPage.$strUrl, false);
 
-		$item = $d->rawQueryOne("select * from #_product where id = ? and type = ? and id_product=?",array($id,$id_product));
+		$item = $d->rawQueryOne("select * from #_product where id = ?",array($id));
 
 		if(empty($item['id'])) $func->transfer("Dữ liệu không có thực", "index.php?com=product&act=man&type=".$type."&p=".$curPage.$strUrl, false);
 
 		/* Lấy hình ảnh con */
 		$gallery = $d->rawQuery("select * from #_gallery where id_photo = ? and com = ? and type = ? and kind = ? and val = ? order by stt,id desc",array($id,$com,$type,'man',$type));
+		$get_size = $d->rawQuery("select * from #_product_optionsize where id_product = ? order by stt,id desc",array($id));
 	}
 
 	/* Save man */
 	function save_item()
 	{
-		global $d, $strUrl, $func, $curPage, $config, $com, $act, $type, $config_base, $setting,$id_product;
+		global $d, $strUrl, $func, $curPage, $config, $com, $act, $type, $config_base, $cart,$id_product;
 
 		if(empty($_POST)) $func->transfer("Không nhận được dữ liệu", "index.php?com=product&act=man&type=".$type."&p=".$curPage.$strUrl, false);
 
@@ -129,45 +130,21 @@
 		/* Post dữ liệu */
 		$data = (isset($_POST['data'])) ? $_POST['data']:null;
 		if(!empty($data)) { foreach($data as $column => $value) $data[$column] = htmlspecialchars($value); }
-		if(isset($_POST['slugvi'])) $data['tenkhongdauvi'] = $func->changeTitle(htmlspecialchars($_POST['slugvi']));
-		else $data['tenkhongdauvi'] = $func->changeTitle($data['tenvi']);
-		if(isset($_POST['slugen'])) $data['tenkhongdauen'] = $func->changeTitle(htmlspecialchars($_POST['slugen']));
-		else $data['tenkhongdauen'] = (isset($data['tenen'])) ? $func->changeTitle($data['tenen']):'';
-		if(isset($config['product'][$type]['size']) && $config['product'][$type]['size']==true) 
-		{
-			if(!empty($_POST['size_group']) && $_POST['size_group']!='') $data['id_size'] = implode(",", $_POST['size_group']);
-			else $data['id_size'] = "";
+		if(!empty($data['id_product'])){
+			$proinfo=$cart->get_product_info($data['id_product']);
+			$proinfoColor = $d->rawQueryOne("select tenen,tentl from #_product_mau where id = ?",array($data['id_mau']));
+			$data['tenen']=$proinfo['tenen'].' '.$proinfoColor['tenen'];
+			$data['tentl']=$proinfo['tenen'].' '.$proinfoColor['tentl'];
 		}
-		if(isset($config['product'][$type]['mau']) && $config['product'][$type]['mau']==true) 
-		{
-			if(!empty($_POST['mau_group']) && $_POST['mau_group']!='') $data['id_mau'] = implode(",", $_POST['mau_group']);
-			else $data['id_mau'] = "";
-		}
-		if(isset($config['product'][$type]['tags']) && $config['product'][$type]['tags']==true) 
-		{
-			if(!empty($_POST['tags_group']) && $_POST['tags_group']!='') $data['id_tags'] = implode(",", $_POST['tags_group']);
-			else $data['id_tags'] = "";
-		}
-		if(isset($config['product'][$type]['id_product']) && $config['product'][$type]['id_product']==true) 
-		{
-			if(!empty($_POST['id_product']) && $_POST['id_product']!='') $data['id_product'] = implode(",", $_POST['id_product']);
-			else $data['id_product'] = "";
-		}
-		$data['gia'] = (isset($data['gia']) && $data['gia'] != '') ? str_replace(",","",$data['gia']) : 0;
-		$data['giamoi'] = (isset($data['giamoi']) && $data['giamoi'] != '') ? str_replace(",","",$data['giamoi']) : 0;
-		$data['giakm'] = (isset($data['giakm']) && $data['giakm'] != '') ? $data['giakm'] : 0;
 		$data['hienthi'] = (isset($data['hienthi'])) ? 1 : 0;
 		$data['type'] = $type;
-
-		/* Post seo */
-		if(isset($config['product'][$type]['seo']) && $config['product'][$type]['seo']==true)
-		{
-			$dataSeo = $_POST['dataSeo'];
-			foreach($dataSeo as $column => $value) $dataSeo[$column] = htmlspecialchars($value);
-		}
+		if(empty($data['id_mau'])) $func->transfer("Chưa chọn màu sắc cho sản phẩm !", "index.php?com=product&act=man&type=".$type."&p=".$curPage.$strUrl, false);
+		
+		
 
 		if($id && $act!='save_copy')
 		{	
+			
 			if(isset($_FILES['file'])){
 				$file_name = $func->uploadName($_FILES['file']["name"]);
 				if($photo = $func->uploadImage("file", $config['product'][$type]['img_type'], UPLOAD_PRODUCT,$file_name)){
@@ -176,26 +153,19 @@
 					if(!empty($row['id'])) $func->delete_file(UPLOAD_PRODUCT.$row['photo']);
 				}
 			}
-
-			if(isset($_FILES['file2'])){
-				$file_name = $func->uploadName($_FILES['file2']["name"]);
-				if($photo2 = $func->uploadImage("file2", $config['product'][$type]['img_type'], UPLOAD_PRODUCT,$file_name)){
-					$data['photo2'] = $photo2;
-					$row = $d->rawQueryOne("select id, photo2 from #_product where id = ? and type = ?",array($id,$type));
-					if(!empty($row['id'])) $func->delete_file(UPLOAD_PRODUCT.$row['photo2']);
+			if(!empty($_POST['option_size'])){
+				$d->rawQuery("delete from #_product_optionsize where id_product = ? and id_mau = ?",array($id,$data['id_mau']));
+				foreach ($_POST['option_size'] as $k_size => $v_size) {
+					$data_size=array();
+					if(empty($v_size) or empty($data['id_mau'])) continue;
+					$data_size['id_product']=$id;
+					$data_size['id_mau']=$data['id_mau'];
+					$data_size['id_size']=$v_size;
+					$data_size['soluong']=(!empty($_POST['soluong'][$k_size]))?$_POST['soluong'][$k_size]:0;
+					$data_size['stt']=$_POST['stt'][$k_size];
+					$d->insert('product_optionsize',$data_size);
 				}
 			}
-			
-			if(isset($_FILES['file-taptin'])){
-				$file_name = $func->uploadName($_FILES['file-taptin']["name"]);
-				if($taptin = $func->uploadImage("file-taptin", $config['product'][$type]['file_type'],UPLOAD_FILE,$file_name)){
-					$data['taptin'] = $taptin;
-					$row = $d->rawQueryOne("select id, taptin from #_product where id = ? and type = ?",array($id,$type));
-					if(!empty($row['id'])) $func->delete_file(UPLOAD_FILE.$row['taptin']);
-				}	
-			}
-			
-
 			/* Cập nhật hình ảnh con */
 			if(isset($_FILES['files'])) 
 			{
@@ -239,61 +209,10 @@
 	        }
 
 			$data['ngaysua'] = time();
-
 			$d->where('id', $id);
 			$d->where('type', $type);
 			if($d->update('product',$data))
 			{
-				/* SEO */
-				if(isset($config['product'][$type]['seo']) && $config['product'][$type]['seo']==true)
-				{
-					$d->rawQuery("delete from #_seo where idmuc = ? and com = ? and act = ? and type = ?",array($id,$com,'man',$type));
-
-					$dataSeo['idmuc'] = $id;
-					$dataSeo['com'] = $com;
-					$dataSeo['act'] = 'man';
-					$dataSeo['type'] = $type;
-					$d->insert('seo',$dataSeo);
-				}
-				if(isset($config['product'][$type]['schema']) && $config['product'][$type]['schema'] == true)
-				{
-					//Kiểm tra nếu tạo Schema tự động
-					if($buildSchema) {
-						foreach($config['website']['seo'] as $k => $v) {
-							//lấy tên danh mục
-							$pro_list = $d->rawQueryOne("select id,ten$k as ten from #_product_list where id = ? and type = ? limit 0,1",array($data['id_list'],$type));
-							//lấy url thuộc vi,en 
-							if($k=='vi' || $k=='en'){
-								$url_pro=$config_base.$data['tenkhongdau'.$k];
-							}else{
-								$url_pro=$config_base.$data['tenkhongdauvi'];
-							}
-							//Kiểm tra hình ảnh
-							if($data['photo']!=''){
-								$url_img_pro=$config_base.UPLOAD_PRODUCT_L.$data['photo'];
-							}else{
-								$img_pro = $d->rawQueryOne("select id, photo from #_product where id = ? and type = ? limit 0,1",array($id,$type));
-								$url_img_pro=$config_base.UPLOAD_PRODUCT_L.$img_pro['photo'];
-							}
-							//Tiến hành build schema product
-							$dataSchema['schema'.$k]=$func->buildSchemaProduct($id,$data['ten'.$k],$url_img_pro,$dataSeo['description'.$k],$data['masp'],$pro_list['ten'],$setting['ten'.$k],$url_pro,$data['gia']);
-						}
-					}else{
-						$dataSchema = (isset($_POST['dataSchema'])) ? $_POST['dataSchema'] : null;
-						if($dataSchema)
-						{
-							foreach($dataSchema as $column => $value)
-							{
-								$dataSchema[$column] = htmlspecialchars($value);
-							}
-						}
-					}
-					$d->where('idmuc', $id);
-					$d->where('com', $com);
-					$d->where('act', 'man');
-					$d->where('type', $type);
-					$d->update('seo',$dataSchema);
-				}
 				if($savehere) $func->transfer("Cập nhật dữ liệu thành công", "index.php?com=product&act=edit&type=".$type."&p=".$curPage.$strUrl."&id=".$id);
 				else $func->transfer("Cập nhật dữ liệu thành công", "index.php?com=product&act=man&type=".$type."&p=".$curPage.$strUrl);
 			}
@@ -312,71 +231,25 @@
 					$data['photo'] = $photo;
 				}
 			}
-			if(isset($_FILES['file2'])){
-				$file_name = $func->uploadName($_FILES['file2']["name"]);
-				if($photo2 = $func->uploadImage("file2", $config['product'][$type]['img_type'], UPLOAD_PRODUCT,$file_name))
-				{
-					$data['photo2'] = $photo2;
-				}
-			}
-
-			if(isset($_FILES['file-taptin'])){
-				$file_name = $func->uploadName($_FILES['file-taptin']["name"]);
-				if($taptin = $func->uploadImage("file-taptin", $config['product'][$type]['file_type'],UPLOAD_FILE,$file_name))
-				{
-					$data['taptin'] = $taptin;		
-				}
-				}
 		
 			$data['ngaytao'] = time();
 
 			if($d->insert('product',$data))
 			{
 				$id_insert = $d->getLastInsertId();
-
-				/* SEO */
-				if(isset($config['product'][$type]['seo']) && $config['product'][$type]['seo']==true)
-				{
-					$dataSeo['idmuc'] = $id_insert;
-					$dataSeo['com'] = $com;
-					$dataSeo['act'] = 'man';
-					$dataSeo['type'] = $type;
-					$d->insert('seo',$dataSeo);
-				}
-				/* Schema */
-				if(isset($config['product'][$type]['schema']) && $config['product'][$type]['schema'] == true)
-				{
-					//Kiểm tra nếu tạo Schema tự động
-					if($buildSchema) {
-						foreach($config['website']['seo'] as $k => $v) {
-							//lấy tên danh mục
-							$pro_list = $d->rawQueryOne("select id,ten$k as ten from #_product_list where id = ? and type = ? limit 0,1",array($data['id_list'],$type));
-							//lấy url thuộc vi,en 
-							if($k=='vi' || $k=='en'){
-								$url_pro=$config_base.$data['tenkhongdau'.$k];
-							}else{
-								$url_pro=$config_base.$data['tenkhongdauvi'];
-							}
-							//Tiến hành build schema product
-							$dataSchema['schema'.$k]=$func->buildSchemaProduct($id_insert,$data['ten'.$k],$config_base.UPLOAD_PRODUCT_L.$data['photo'],$dataSeo['description'.$k],$data['masp'],$pro_list['ten'],$setting['ten'.$k],$url_pro,$data['gia']);
-						}
-					}else{
-						$dataSchema = (isset($_POST['dataSchema'])) ? $_POST['dataSchema'] : null;
-						if($dataSchema)
-						{
-							foreach($dataSchema as $column => $value)
-							{
-								$dataSchema[$column] = htmlspecialchars($value);
-							}
-						}
+				if(!empty($_POST['option_size'])){
+					$d->rawQuery("delete from #_product_optionsize where id_product = ? and id_mau = ?",array($id_insert,$data['id_mau']));
+					foreach ($_POST['option_size'] as $k_size => $v_size) {
+						$data_size=array();
+						if(empty($v_size) or empty($data['id_mau'])) continue;
+						$data_size['id_product']=$id_insert;
+						$data_size['id_mau']=$data['id_mau'];
+						$data_size['id_size']=$v_size;
+						$data_size['soluong']=(!empty($_POST['soluong'][$k_size]))?$_POST['soluong'][$k_size]:0;
+						$data_size['stt']=$_POST['stt'][$k_size];
+						$d->insert('product_optionsize',$data_size);
 					}
-					$d->where('idmuc', $id_insert);
-					$d->where('com', $com);
-					$d->where('act', 'man');
-					$d->where('type', $type);
-					$d->update('seo',$dataSchema);
 				}
-				/* Lưu hình ảnh con */
 				if(isset($_FILES['files'])) 
 				{
 					if(isset($_POST['jfiler-items-exclude-files-0'])){
@@ -388,7 +261,6 @@
 						$arr_file_del = explode(',',$arr_chuoi);
 					}
 					
-
 					$dem = 0;
 		            $myFile = $_FILES['files'];
 		            $fileCount = count($myFile["name"]);

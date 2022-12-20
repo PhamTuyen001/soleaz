@@ -5,7 +5,7 @@ function get_sizess()
 {
 	global $d;
     $row = $d->rawQuery("select tenen, id from #_product_size where type = ? order by stt,id desc",array('san-pham'));
-    $str = '<select name="option_size[]" class="form-control select2"><option value="0">Danh mục màu</option>';
+    $str = '<select name="option_size[]" class="form-control select2"><option value="0">Danh mục size</option>';
     foreach($row as $v)
     {
         $str .= '<option value='.$v["id"].'>'.$v["tenen"].'</option>';
@@ -15,7 +15,7 @@ function get_sizess()
     return $str;
 }
 ?>
-<div class="row">
+<div class="row row-size">
 	<div class="form-group col-xl-4 col-sm-4">
         <label class="d-block">Chọn size:</label>
         <?=get_sizess()?>

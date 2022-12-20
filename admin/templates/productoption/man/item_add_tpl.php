@@ -10,8 +10,7 @@
         $str = '<select id="id_mau" name="data[id_mau]" class="form-control select2"><option value="0">Danh mục màu</option>';
         foreach($row as $v)
         {
-        	$id_mau = isset($_REQUEST['id_mau']) ? $_REQUEST['id_mau']:'';
-            if($v["id"] == (int)$id_mau) $selected = "selected";
+            if($v["id"] == (int)$id) $selected = "selected";
             else $selected = "";
 
             $str .= '<option value='.$v["id"].' '.$selected.'>'.$v["tenen"].'</option>';
@@ -28,7 +27,7 @@
 
         $row = $d->rawQuery("select tenen, id from #_product_size where type = ? order by stt,id desc",array('san-pham'));
 
-        $str = '<select name="option_size[]" class="form-control select2"><option value="0">Danh mục màu</option>';
+        $str = '<select name="option_size[]" class="form-control select2"><option value="0">Danh mục size</option>';
         foreach($row as $v)
         {
             if($v["id"] == (int)$id) $selected = "selected";
@@ -46,11 +45,11 @@
 	else if($act=="edit") $labelAct = "Chỉnh sửa";
 	else if($act=="copy")  $labelAct = "Sao chép";
 
-	$linkMan = "index.php?com=product&act=man&type=".$type."&p=".$curPage;
-	if($act=='add') $linkFilter = "index.php?com=product&act=add&type=".$type."&p=".$curPage;
-	else if($act=='edit') $linkFilter = "index.php?com=product&act=edit&type=".$type."&p=".$curPage."&id=".$id;
-    if($act=="copy") $linkSave = "index.php?com=product&act=save_copy&type=".$type."&p=".$curPage;
-    else $linkSave = "index.php?com=product&act=save&type=".$type."&p=".$curPage;
+	$linkMan = "index.php?com=product&act=man&type=".$type."&id_product=".$_REQUEST['id_product']."&p=".$curPage;
+	if($act=='add') $linkFilter = "index.php?com=product&act=add&type=".$type."&id_product=".$_REQUEST['id_product']."&p=".$curPage;
+	else if($act=='edit') $linkFilter = "index.php?com=product&act=edit&type=".$type."&id_product=".$_REQUEST['id_product']."&p=".$curPage."&id=".$id;
+    if($act=="copy") $linkSave = "index.php?com=product&act=save_copy&type=".$type."&id_product=".$_REQUEST['id_product']."&p=".$curPage;
+    else $linkSave = "index.php?com=product&act=save&type=".$type."&id_product=".$_REQUEST['id_product']."&p=".$curPage;
 
     /* Check cols */
     if(!empty($product_type['gallery'])){
@@ -104,24 +103,26 @@
 		            </div>
 		            <div class="card-body">
 		                <div id="load_size">
-		                	<div class="row">
+		                	<?php foreach ($get_size as $k => $v) {?>
+		                	<div class="row row-size">
 		                		<div class="form-group col-xl-4 col-sm-4">
 				                    <label class="d-block">Chọn size:</label>
-				                    <?=get_size(0)?>
+				                    <?=get_size($v['id_size'])?>
 				                </div>
 				                <div class="form-group col-xl-4 col-sm-4">
 			                        <label class="d-block">Số lượng:</label>
-			                        <input type="text" class="form-control" name="soluong[]"  placeholder="Số lượng" value="">
+			                        <input type="text" class="form-control" name="soluong[]"  placeholder="Số lượng" value="<?=$v['soluong']?>">
 			                    </div>
 			                    <div class="form-group col-xl-2 col-sm-2">
 			                        <label class="d-block">STT:</label>
-			                        <input type="text" class="form-control" name="stt[]"  placeholder="Số thứ tự" value="">
+			                        <input type="text" class="form-control" name="stt[]"  placeholder="Số thứ tự" value="<?=$v['stt']?>">
 			                    </div>
 			                    <div class="form-group col-xl-2 col-sm-2">
 			                    	<label class="d-block" style="opacity: 0">STT:</label>
 			                        <a class="btn bg-gradient-success d-block text-white delete-size">Xóa Size</a>
 			                    </div>
 		                	</div>
+		                	<?php }?>
 		                </div>
 		            </div>
 		        </div>
@@ -174,7 +175,7 @@
 							    <?php if(!empty($product_type['mau']) && $product_type['mau']) { ?>
 							    	<div class="form-group col-xl-12 col-sm-12">
 					                    <label class="d-block" for="id_mau">Danh mục màu sắc:</label>
-					                    <?=(!empty($item)) ? get_mau($item['id']):get_mau(0)?>
+					                    <?=(!empty($item)) ? get_mau($item['id_mau']):get_mau(0)?>
 					                </div>
 							    <?php } ?>
 							</div>
@@ -251,6 +252,7 @@
             <button type="reset" class="btn btn-sm bg-gradient-secondary"><i class="fas fa-redo mr-2"></i>Làm lại</button>
             <a class="btn btn-sm bg-gradient-danger" href="<?=$linkMan?>" title="Thoát"><i class="fas fa-sign-out-alt mr-2"></i>Thoát</a>
             <input type="hidden" name="id" value="<?=@$item['id']?>">
+            <input type="hidden" name="data[id_product]" value="<?=@$_GET['id_product']?>">
         </div>
     </form>
 </section>
@@ -261,9 +263,12 @@
 				url: 'ajax/ajax_loadsize.php',
 				type: 'GET',
 				success:function(data){
-					$('#load_size').html(data);
+					$('#load_size').append(data);
 				}
 			})
+		});
+		$('body').on('click', '.delete-size', function(event) {
+			$(this).parents('.row-size').remove();
 		});
 	});
 </script>
