@@ -1,5 +1,64 @@
 <?php
     /* Sản phẩm */
+    $nametype = "san-pham-thuoc-tinh";
+    $config['product'][$nametype]['title_main'] = "Sản Phẩm thuộc tính";
+    $config['product'][$nametype]['dropdown'] = false;
+    $config['product'][$nametype]['list'] = false;
+    $config['product'][$nametype]['cat'] = false;
+    $config['product'][$nametype]['item'] = false;
+    $config['product'][$nametype]['sub'] = false;
+    $config['product'][$nametype]['brand'] = false;
+    $config['product'][$nametype]['schema'] = false;
+    $config['product'][$nametype]['mau'] = true;
+    $config['product'][$nametype]['size'] = true;
+    $config['product'][$nametype]['tags'] = false;
+    $config['product'][$nametype]['import'] = false;
+    $config['product'][$nametype]['export'] = false;
+    $config['product'][$nametype]['view'] = false;
+    $config['product'][$nametype]['copy'] = false;
+    $config['product'][$nametype]['copy_image'] = false;
+    $config['product'][$nametype]['slug'] = false;
+    $config['product'][$nametype]['check'] = array();
+    $config['product'][$nametype]['images'] = true;
+    $config['product'][$nametype]['images2'] = true;
+    $config['product'][$nametype]['show_images'] = true;
+    $config['product'][$nametype]['show_gallery'] = true;
+    $config['product'][$nametype]['gallery'] = array(
+        $nametype => array
+        (
+            "title_main_photo" => "Hình ảnh sản phẩm",
+            "title_sub_photo" => "Hình ảnh",
+            "number_photo" => 3,
+            "images_photo" => true,
+            "cart_photo" => false,
+            "avatar_photo" => true,
+            "tieude_photo" => true,
+            "width_photo" => 150*4,
+            "height_photo" => 150*4,
+            "thumb_photo" => '600x600x1',
+            "img_type_photo" => '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF'
+        )
+    );
+    $config['product'][$nametype]['link'] = false;
+    $config['product'][$nametype]['file'] = false;
+    $config['product'][$nametype]['ma'] = false;
+    $config['product'][$nametype]['tinhtrang'] = false;
+    $config['product'][$nametype]['video'] = false;
+    $config['product'][$nametype]['gia'] = false;
+    $config['product'][$nametype]['giamoi'] = false;
+    $config['product'][$nametype]['giakm'] = false;
+    $config['product'][$nametype]['mota'] = false;
+    $config['product'][$nametype]['mota_cke'] = false;
+    $config['product'][$nametype]['noidung'] = false;
+    $config['product'][$nametype]['noidung_cke'] = false;
+    $config['product'][$nametype]['seo'] = false;
+    $config['product'][$nametype]['width'] = 300*2;
+    $config['product'][$nametype]['height'] = 300*2;
+    $config['product'][$nametype]['thumb'] = '600x600x1';
+    $config['product'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
+    $config['product'][$nametype]['file_type'] = 'doc|docx|pdf|rar|zip|ppt|pptx|DOC|DOCX|PDF|RAR|ZIP|PPT|PPTX|xls|jpg|png|gif|JPG|PNG|GIF|xls|XLS';
+
+
     $nametype = "san-pham";
     $config['product'][$nametype]['title_main'] = "Sản Phẩm";
     $config['product'][$nametype]['dropdown'] = true;
@@ -30,7 +89,7 @@
             "title_sub_photo" => "Hình ảnh",
             "number_photo" => 3,
             "images_photo" => true,
-            "cart_photo" => true,
+            "cart_photo" => false,
             "avatar_photo" => true,
             "tieude_photo" => true,
             "width_photo" => 150*4,
@@ -130,6 +189,7 @@
     $config['product'][$nametype]['export'] = false;
     $config['product'][$nametype]['view'] = false;
     $config['product'][$nametype]['copy'] = true;
+    $config['product'][$nametype]['id_product'] = true;
     $config['product'][$nametype]['copy_image'] = false;
     $config['product'][$nametype]['slug'] = true;
     $config['product'][$nametype]['check'] = array("noibat" => "Nổi bật");
@@ -137,7 +197,23 @@
     $config['product'][$nametype]['images2'] = true;
     $config['product'][$nametype]['show_images'] = true;
     $config['product'][$nametype]['show_gallery'] = true;
-    $config['product'][$nametype]['gallery'] = array();
+    $config['product'][$nametype]['gallery'] = array(
+        $nametype => array
+        (
+            "title_main_photo" => "Thêm Sản Phẩm",
+            "title_sub_photo" => "Sản Phẩm",
+            "number_photo" => 5,
+            "product_photo" => true,
+            "images_photo" => false,
+            "cart_photo" => false,
+            "avatar_photo" => false,
+            "tieude_photo" => false,
+            "width_photo" => 150*4,
+            "height_photo" => 150*4,
+            "thumb_photo" => '600x600x1',
+            "img_type_photo" => '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF'
+        )
+    );
     $config['product'][$nametype]['link'] = false;
     $config['product'][$nametype]['file'] = false;
     $config['product'][$nametype]['ma'] = false;

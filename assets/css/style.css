@@ -606,7 +606,7 @@ div.sc__content .sc__btn:after{content:"";display:block;width:100%;height:0;back
 div.box-soleoutfit:hover .sc__btn{transition-delay:0.2s;}
 div.box-soleoutfit:hover .sc__title{transform:translateY(0);opacity:1;}
 div.box-soleoutfit:hover .sc__btn{transform:translateY(0);opacity:1;}
-div.sc__content .sc__btn:hover{color:#fff;border:none;box-shadow:1rem 1rem 3rem rgb(0 0 0 / 40%);}
+div.sc__content .sc__btn:hover{color:#fff;border:none;box-shadow: 9px 8px 19px rgb(0 0 0 / 40%);}
 div.sc__content .sc__btn:hover:after{width:100%;}
 @media screen and (max-width:1080px){
 	.menu ul li a h2{padding:12px 15px 13px;}

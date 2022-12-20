@@ -148,6 +148,11 @@
 	}
 	
 	/* Include sources */
-	if(file_exists(SOURCES.$com.'.php')) include SOURCES.$com.".php";
-	else $template = "index";
+	if(!empty($_GET['id_product'])){
+		include SOURCES.'productoption'.".php";
+	}else{
+		if(file_exists(SOURCES.$com.'.php')) include SOURCES.$com.".php";
+		else $template = "index";
+	}
+	
 ?>

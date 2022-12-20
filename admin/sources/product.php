@@ -284,6 +284,11 @@
 			if(!empty($_POST['tags_group']) && $_POST['tags_group']!='') $data['id_tags'] = implode(",", $_POST['tags_group']);
 			else $data['id_tags'] = "";
 		}
+		if(isset($config['product'][$type]['id_product']) && $config['product'][$type]['id_product']==true) 
+		{
+			if(!empty($_POST['id_product']) && $_POST['id_product']!='') $data['id_product'] = implode(",", $_POST['id_product']);
+			else $data['id_product'] = "";
+		}
 		$data['gia'] = (isset($data['gia']) && $data['gia'] != '') ? str_replace(",","",$data['gia']) : 0;
 		$data['giamoi'] = (isset($data['giamoi']) && $data['giamoi'] != '') ? str_replace(",","",$data['giamoi']) : 0;
 		$data['giakm'] = (isset($data['giakm']) && $data['giakm'] != '') ? $data['giakm'] : 0;

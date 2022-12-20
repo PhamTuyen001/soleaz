@@ -22,6 +22,10 @@
 				$id_temp = "id_item";
 				break;
 
+			case '3':
+				$id_temp = "id_item";
+				break;
+
 			default:
 				echo 'error ajax';
 				exit();

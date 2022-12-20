@@ -14,6 +14,7 @@
     $seo = new Seo($d);
     $emailer = new Email($d);
 	$func = new Functions($d);
+	$cart = new Cart($d);
 	$cache = new FileCache($d);
 	require_once LIBRARIES."config-type.php";
 

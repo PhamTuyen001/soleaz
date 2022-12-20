@@ -72,11 +72,11 @@
                                 </td>
                                 <?php if(!empty($config['product'][$type]['mau_images']) && $config['product'][$type]['mau_images']==true) { ?>
                                     <td class="align-middle">
-                                        <a href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['tenvi']?>"><img class="rounded img-preview" onerror="src='assets/images/noimage.png'" src="<?=THUMBS?>/<?=$config['product'][$type]['thumb_mau']?>/<?=UPLOAD_COLOR_L.$items[$i]['photo']?>" alt="<?=$items[$i]['tenvi']?>"></a>
+                                        <a href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['tenen']?>"><img class="rounded img-preview" onerror="src='assets/images/noimage.png'" src="<?=THUMBS?>/<?=$config['product'][$type]['thumb_mau']?>/<?=UPLOAD_COLOR_L.$items[$i]['photo']?>" alt="<?=$items[$i]['tenen']?>"></a>
                                     </td>
                                 <?php } ?>
                                 <td class="align-middle">
-                                    <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['tenvi']?>"><?=$items[$i]['tenvi']?></a>
+                                    <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['tenen']?>"><?=$items[$i]['tenen']?></a>
                                 </td>
 								<td class="align-middle text-center">
                                 	<div class="custom-control custom-checkbox my-checkbox">
