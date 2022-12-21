@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 21, 2022 lúc 01:01 AM
--- Phiên bản máy phục vụ: 10.1.34-MariaDB
--- Phiên bản PHP: 5.6.37
+-- Thời gian đã tạo: Th12 21, 2022 lúc 11:01 AM
+-- Phiên bản máy phục vụ: 10.1.36-MariaDB
+-- Phiên bản PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -3197,7 +3197,26 @@ INSERT INTO `table_counter` (`id`, `tm`, `ip`) VALUES
 (9824, 1671560816, '::1'),
 (9825, 1671561823, '::1'),
 (9826, 1671562917, '::1'),
-(9827, 1671563820, '::1');
+(9827, 1671563820, '::1'),
+(9828, 1671587985, '::1'),
+(9829, 1671590127, '::1'),
+(9830, 1671591828, '::1'),
+(9831, 1671594160, '::1'),
+(9832, 1671596432, '::1'),
+(9833, 1671597376, '::1'),
+(9834, 1671598312, '::1'),
+(9835, 1671602459, '::1'),
+(9836, 1671603366, '::1'),
+(9837, 1671604888, '::1'),
+(9838, 1671605801, '::1'),
+(9839, 1671606901, '::1'),
+(9840, 1671608088, '::1'),
+(9841, 1671609009, '::1'),
+(9842, 1671610023, '::1'),
+(9843, 1671610944, '::1'),
+(9844, 1671611871, '::1'),
+(9845, 1671613267, '::1'),
+(9846, 1671614317, '::1');
 
 -- --------------------------------------------------------
 
@@ -4185,7 +4204,7 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (223, 'matkhaucu', 'Mật khẩu cũ', 'Old password', 1, NULL),
 (250, 'giohang', 'Giỏ hàng', 'My cart', 1, NULL),
 (212, 'hinh', 'Hình', 'Picture', 1, NULL),
-(213, 'soluong', 'Số lượng', 'Number', 1, NULL),
+(213, 'soluong', 'Số lượng', 'Quantity', 1, 'Dami'),
 (214, 'thanhtien', 'Thành tiền', 'Amount', 1, NULL),
 (216, 'tinhthanh', 'Tỉnh/thành phố', 'City', 1, NULL),
 (128, 'nhaptukhoatimkiem', 'Nhập từ khóa cần tìm...', 'Enter the keyword...', 1, 'Ilagay ang keyword...'),
@@ -4205,7 +4224,7 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (200, 'co', 'Có', 'Have', 1, NULL),
 (201, 'danhgia', 'Đánh giá', 'Review', 1, NULL),
 (202, 'xacnhan', 'Xác nhận', 'Confirm', 1, NULL),
-(203, 'sanphamcungloai', 'Sản phẩm cùng loại', 'Product Similar', 1, NULL),
+(203, 'sanphamcungloai', 'Sản phẩm cùng loại', 'Related Products', 1, 'Kaugnay na Mga Produkto'),
 (204, 'conhang', 'Còn hàng', 'Stocking', 1, NULL),
 (165, 'thanhtoan', 'Thanh toán', 'Pay', 1, NULL),
 (167, 'chonvideo', 'Chọn video', 'Choose video', 1, NULL),
@@ -4330,7 +4349,12 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (348, 'all', '', 'All', 0, 'Lahat'),
 (349, 'color', '', 'Color', 0, 'Kulay'),
 (350, 'price', '', 'price', 0, 'presyo'),
-(351, 'apply', '', 'Apply', 0, 'Mag-apply');
+(351, 'apply', '', 'Apply', 0, 'Mag-apply'),
+(352, 'addtocart', '', 'Add to cart', 0, 'Idagdag sa cart'),
+(353, 'buynow', '', 'Buy now', 0, 'Bumili ka na ngayon'),
+(354, 'size', '', 'Size', 0, 'Sukat'),
+(355, 'information', '', 'Information', 0, 'Impormasyon'),
+(356, 'sizelatruongbatbuoc', '', 'Size is a required field!', 0, 'Ang laki ay isang kinakailangang field!');
 
 -- --------------------------------------------------------
 
@@ -5401,9 +5425,9 @@ INSERT INTO `table_product` (`id`, `id_list`, `id_item`, `id_cat`, `id_sub`, `id
 (180, 21, 0, 45, 0, 0, '', 0, '', 1, 0, 'b-2-100-6577.jpg', '', '', 'levents-popular-logo-20-tee-red', '', '', '', '', 'LEVENTS® POPULAR LOGO 2.0 TEE/ RED', '', '', '', '', 0, 0, 0, 0, '', 3, 1, 'outfit', 1671506208, 0, 0, '', '', '', '', 'c2-font-552x944-100-9025.jpg', 0, 0),
 (181, 21, 0, 45, 0, 0, '', 0, '', 1, 0, 'a1-font-552x944-100-9094.jpg', '', '', 'levents-popular-logo-20-tee-red1', '', '', '', '', 'LEVENTS® POPULAR LOGO 2.0 TEE/ RED1', '', '', '', '', 0, 0, 0, 0, '', 2, 1, 'outfit', 1671506230, 0, 0, '', '', '', '', 'b2-font-552x944-100-9215.jpg', 0, 0),
 (182, 20, 0, 44, 0, 0, '', 0, '', 1, 0, 'b2-font-552x944-100-5174.jpg', '{\"p\":\"b2-font-552x944-100-5174.jpg\",\"w\":553,\"h\":945,\"m\":\"image\\/jpeg\"}', '', 'levents-popular-logo-20-tee-red2', '&lt;p&gt;Model: Height 165cm, weight 46kg&lt;/p&gt;\r\n\r\n&lt;p&gt;Wearing: Size 2&lt;/p&gt;\r\n', '', '', '', 'LEVENTS® POPULAR LOGO 2.0 TEE/ RED2', '', '', '', '', 0, 0, 0, 0, '', 1, 1, 'outfit', 1671506253, 1671526721, 20, '', '', '', '', 'b-2-100-2915.jpg', 0, 0),
-(183, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', '', '', 'incipience-black-t-shirt', '', '', '', '', 'Incipience Black T-Shirt', '', '', '', 'HTHM-000280', 250, 0, 0, 0, '', 1, 1, 'san-pham', 1671519316, 1671524952, 0, '', '', '', '', 'z38354743302143097975e2d8f1a6826e019382bd06c0cdf9bfec51e224ba2ae69c88a14df1fe7-4333.jpg', 1, 0),
-(185, 0, 0, 0, 0, 0, '', 9, '', 0, 0, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3836.jpg', '', '', '', '', '', '', '', 'Incipience Black T-Shirt Red', '', '', '', '', 0, 0, 0, 0, '', 1, 1, 'san-pham', 1671522950, 1671523484, 0, 'Incipience Black T-Shirt ', '', '', '', '', 0, 183),
-(186, 0, 0, 0, 0, 0, '', 10, '', 0, 0, 'z38354743302143097975e2d8f1a6826e019382bd06c0cdf9bfec51e224ba2ae69c88a14df1fe7-1716.jpg', '', '', '', '', '', '', '', 'Incipience Black T-Shirt orange', '', '', '', '', 0, 0, 0, 0, '', 1, 1, 'san-pham', 1671523535, 0, 0, 'Incipience Black T-Shirt ', '', '', '', '', 0, 183),
+(183, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', '{\"p\":\"z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg\",\"w\":1000,\"h\":1000,\"m\":\"image\\/jpeg\"}', '', 'levents-poppop-puffer-shoulder-bag-blackpink', '&lt;p&gt;Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.&lt;/p&gt;\r\n', '', '', '', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', '', '', 'HTHM-000280', 250, 40, 150, 0, '', 1, 1, 'san-pham', 1671519316, 1671610741, 185, '', '', '', '', 'z38354743302143097975e2d8f1a6826e019382bd06c0cdf9bfec51e224ba2ae69c88a14df1fe7-4333.jpg', 1, 0),
+(185, 0, 0, 0, 0, 0, '', 9, '', 0, 0, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3836.jpg', '', '', '', '', '', '', '', 'Incipience Black T-Shirt Red', '', '', '', '', 0, 0, 0, 0, '', 2, 1, 'san-pham', 1671522950, 1671523484, 0, 'Incipience Black T-Shirt ', '', '', '', '', 0, 183),
+(186, 0, 0, 0, 0, 0, '', 10, '', 0, 0, 'z38354743302143097975e2d8f1a6826e019382bd06c0cdf9bfec51e224ba2ae69c88a14df1fe7-1716.jpg', '', '', '', '', '', '', '', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink orange', '', '', '', '', 0, 0, 0, 0, '', 1, 1, 'san-pham', 1671523535, 1671613265, 0, 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink ', '', '', '', '', 0, 183),
 (187, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z39696306528023c4093d65866f56da554a6fa37e5298f-1951.jpg', '', '', 'levents-quote-tee-black', '', '', '', '', 'Levents® Quote Tee/ Black', '', '', '', 'BE35VGRT', 350, 45, 193, 0, '', 1, 1, 'san-pham', 1671536390, 0, 0, '', '', '', '', 'z396963064625880473d4b6f19217831138b428c8aa0c1-9998.jpg', 1, 0),
 (188, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z3952944444709c3a2d19b0307881d79878243347ead3b-2371.jpg', '', '', 'levents-poppop-chat-tee-white', '', '', '', '', 'Levents® | Poppop Chat Tee/ White', '', '', '', 'CP5621', 2500, 0, 0, 0, '', 1, 1, 'san-pham', 1671536540, 0, 0, '', '', '', '', 'z3952944441919d3aca33eee61a1a63a01349b3dcb6ce0-2868.jpg', 1, 0),
 (189, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z3952943732607ef28f73ba15504f5f7e76ee50c748b76-7782.jpg', '', '', 'levents-poppop-word-hoodie-zip-hunter', '', '', '', '', 'Levents® | Poppop Word Hoodie Zip/ Hunter', '', '', '', 'CP5621', 2500, 0, 0, 0, '', 1, 1, 'san-pham', 1671536570, 0, 0, '', '', '', '', 'z39529437288508f93139f6bc251555ad17d537dfcbdff-4829.jpg', 1, 0),
@@ -5626,12 +5650,12 @@ CREATE TABLE `table_product_optionsize` (
 --
 
 INSERT INTO `table_product_optionsize` (`id`, `id_product`, `id_size`, `soluong`, `stt`, `id_mau`) VALUES
-(18, 186, 13, 2, 2, 10),
-(17, 186, 12, 10, 1, 10),
+(31, 186, 14, 0, 4, 10),
+(30, 186, 9, 10, 3, 10),
 (16, 185, 14, 10, 2, 9),
 (15, 185, 14, 10, 1, 9),
-(19, 186, 9, 10, 3, 10),
-(20, 186, 14, 4, 4, 10),
+(29, 186, 13, 2, 2, 10),
+(28, 186, 12, 10, 1, 10),
 (24, 191, 13, 10, 2, 12),
 (23, 191, 14, 10, 1, 12),
 (25, 192, 9, 10, 1, 11),
@@ -5831,7 +5855,7 @@ INSERT INTO `table_seo` (`id`, `idmuc`, `com`, `act`, `type`, `titlevi`, `keywor
 (850, 27, 'news', 'man', 'dich-vu', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL),
 (946, 181, 'product', 'man', 'outfit', '', '', '', '', '', '', '', '', ''),
 (952, 182, 'product', 'man', 'outfit', '', '', '', '', '', '', '', '', ''),
-(951, 183, 'product', 'man', 'san-pham', '', '', '', 'Incipience Black T-Shirt', 'Incipience Black T-Shirt', '', '', '', ''),
+(960, 183, 'product', 'man', 'san-pham', '', '', '', 'Incipience Black T-Shirt', 'Incipience Black T-Shirt', '', '', '', ''),
 (938, 42, 'product', 'man_cat', 'outfit', '', '', '', '', '', '', '', '', ''),
 (939, 43, 'product', 'man_cat', 'outfit', '', '', '', '', '', '', '', '', ''),
 (940, 44, 'product', 'man_cat', 'outfit', '', '', '', '', '', '', '', '', ''),
@@ -25975,7 +25999,7 @@ CREATE TABLE `table_user` (
 --
 
 INSERT INTO `table_user` (`id`, `id_nhomquyen`, `username`, `password`, `maxacnhan`, `avatar`, `ten`, `dienthoai`, `email`, `diachi`, `gioitinh`, `login_session`, `user_token`, `lastlogin`, `hienthi`, `quyen`, `ngaysinh`, `stt`, `role`) VALUES
-(1, 0, 'admin', '4e28193860f819b4c3d149b6b5ba872a', '', '', 'ADMIN', '', '', '', 0, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', '8d6ac1225343c56ee102af0aaf2f65d7', '1671561042', 1, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', 0, 0, 3);
+(1, 0, 'admin', '4e28193860f819b4c3d149b6b5ba872a', '', '', 'ADMIN', '', '', '', 0, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', '14ae70cb5a400f0de91c62920ab7bbee', '1671614764', 1, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', 0, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -26062,7 +26086,10 @@ INSERT INTO `table_user_log` (`id`, `id_user`, `ip`, `timelog`, `user_agent`) VA
 (50, 1, '::1', 1671499168, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
 (51, 1, '::1', 1671516507, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
 (52, 1, '::1', 1671536329, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
-(53, 1, '::1', 1671553509, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36');
+(53, 1, '::1', 1671553509, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
+(54, 1, '::1', 1671591790, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
+(55, 1, '::1', 1671604029, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
+(56, 1, '::1', 1671610671, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36');
 
 -- --------------------------------------------------------
 
@@ -26081,7 +26108,7 @@ CREATE TABLE `table_user_online` (
 --
 
 INSERT INTO `table_user_online` (`session`, `time`, `ip`) VALUES
-('2pjuc2hifi0t75pe7mvt7gbli2', 1671564134, '::1');
+('3420r1deev3s7ar86032lr4if5', 1671614896, '::1');
 
 -- --------------------------------------------------------
 
@@ -37030,7 +37057,7 @@ ALTER TABLE `table_contact`
 -- AUTO_INCREMENT cho bảng `table_counter`
 --
 ALTER TABLE `table_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9828;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9847;
 
 --
 -- AUTO_INCREMENT cho bảng `table_coupon`
@@ -37060,7 +37087,7 @@ ALTER TABLE `table_gallery`
 -- AUTO_INCREMENT cho bảng `table_lang`
 --
 ALTER TABLE `table_lang`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=352;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=357;
 
 --
 -- AUTO_INCREMENT cho bảng `table_lang1`
@@ -37180,7 +37207,7 @@ ALTER TABLE `table_product_mau`
 -- AUTO_INCREMENT cho bảng `table_product_optionsize`
 --
 ALTER TABLE `table_product_optionsize`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT cho bảng `table_product_size`
@@ -37204,7 +37231,7 @@ ALTER TABLE `table_pushonesignal`
 -- AUTO_INCREMENT cho bảng `table_seo`
 --
 ALTER TABLE `table_seo`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=958;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=961;
 
 --
 -- AUTO_INCREMENT cho bảng `table_seopage`
@@ -37264,7 +37291,7 @@ ALTER TABLE `table_user_limit`
 -- AUTO_INCREMENT cho bảng `table_user_log`
 --
 ALTER TABLE `table_user_log`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT cho bảng `table_wards`
