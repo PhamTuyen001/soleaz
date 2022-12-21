@@ -119,6 +119,7 @@
                                     </svg>
                                 </a>
                             </div>
+                            <p class="note_cart"></p>
                             <div class="noidung_sanpham">
                                 <p><?=information?></p>
                                 <div class="content-noidung">

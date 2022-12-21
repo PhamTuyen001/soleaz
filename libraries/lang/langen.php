@@ -200,4 +200,5 @@ define("addtocart","Add to cart");
 define("buynow","Buy now");
 define("size","Size");
 define("information","Information");
+define("sizelatruongbatbuoc","Size is a required field!");
 ?>

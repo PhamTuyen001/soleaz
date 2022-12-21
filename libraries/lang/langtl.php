@@ -200,4 +200,5 @@ define("addtocart","Idagdag sa cart");
 define("buynow","Bumili ka na ngayon");
 define("size","Sukat");
 define("information","Impormasyon");
+define("sizelatruongbatbuoc","Ang laki ay isang kinakailangang field!");
 ?>

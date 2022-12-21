@@ -7,7 +7,7 @@ img{max-width:100%!important;vertical-align:middle}
 
 /* Main */
 :root{--color-key:#ed0000;--color-red:#ec2d3f;--color-medium-red:#cc2c32;--color-dark-red:#c31829;--color-green:#28a745;--color-dark-green:#207d36;--color-black:#212529;--color-gray:#6c757d;}
-body{font-size:14px;line-height:1.5;font-family:'Quicksand',sans-serif;font-weight:400;overflow-x:hidden;max-width:1440px;margin:auto;}
+body{font-size:14px;line-height:1.5;font-family:'Quicksand',sans-serif;font-weight:400;overflow-x:hidden;/* max-width:1440px; */margin:auto;}
 a,a:hover{text-decoration:none;}
 a:hover{color:var(--color-key);}
 p,ul{margin-bottom:0px;}
@@ -28,7 +28,15 @@ p,ul{margin-bottom:0px;}
 .cart-fixed span{position:absolute;top:0px;right:-5px;color:#fff;width:25px;height:25px;background:var(--color-red);text-align:center;line-height:25px;font-size:11px;border-radius:100%;}
 .breadCrumbs{}
 .breadCrumbs ol{margin-bottom:0;padding:0.75rem 0;border:0;background:none;}
-
+p.note_cart {
+    position: relative;
+    font-size: 15px;
+    color: red;
+    font-style: italic;
+    position: relative;
+    top: -9px;
+    display: none;
+}
 /*Header*/
 .header{position:relative;background:#F1F1F1;}
 .nav_top{background:#000000;padding:10px 0;}

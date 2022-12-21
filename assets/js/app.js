@@ -63,8 +63,12 @@ NN_FRAMEWORK.pageCart = function(){
 		$("body").on("click", ".addcart",function(){
 			var obj = $(this);
 			var el_input = $(".qty-pro");
-	        var mau = ($(".color-pro-detail input:checked").val()) ? $(".color-pro-detail input:checked").val() : 0;
-	        var size = ($(".size-pro-detail input:checked").val()) ? $(".size-pro-detail input:checked").val() : 0;
+	        if($('input[name="size"]').length > 0 && $('input[name="size"]:checked').length==0){
+	        	$('p.note_cart').text(LANG['sizelatruongbatbuoc']).show();return false;
+	        }
+	        var mau = ($('input[name="colors"]:checked').length)?$('input[name="colors"]:checked').val():0;
+	        var mau = ($('input[name="size"]:checked').length)?$('input[name="size"]:checked').val():0;
+	        var size = 0;
 	        var id = obj.data("id");
 	        var action = obj.data("action");
 	        var qty = (el_input.val()) ? el_input.val() : 1;
@@ -677,12 +681,12 @@ $document.ready(function() {
 			},
 			success:function(data){
 				$('#load_detail_product').html(data);
-				
 				setTimeout(function(){
 					NN_FRAMEWORK.ProductDeatail();
 					$('.loading-mask').hide();
 				},500);
 				$(window).resize();
+				NN_FRAMEWORK.pageCart();
 			}
 		})
 		
