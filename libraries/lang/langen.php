@@ -70,7 +70,7 @@ define("moibanthaoluan","Please discuss. Please enter Vietnamese accented, minim
 define("co","Have");
 define("danhgia","Review");
 define("xacnhan","Confirm");
-define("sanphamcungloai","Product Similar");
+define("sanphamcungloai","Related Products");
 define("conhang","Stocking");
 define("thanhtoan","Pay");
 define("chonvideo","Choose video");

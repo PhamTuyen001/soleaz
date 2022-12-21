@@ -10,6 +10,7 @@
 	
 	$array_list=(!empty($_GET['idl']))?explode(',',$_GET['idl']):( (!empty($_GET['id_list']))?explode(',',$_GET['id_list']):array());
 	$array_cat=(!empty($_GET['idc']))?explode(',',$_GET['idc']):( (!empty($_GET['id_cat']))?explode(',',$_GET['id_cat']):array());
+	$array_color=(!empty($_GET['color']))?explode(',',$_GET['color']):array();
 
 
 ?>
@@ -58,7 +59,7 @@
 					<?php foreach ($colors as $k => $v) {?>
 					<li>
 						<label for="color-<?=$v['id']?>">
-							<input id="color-<?=$v['id']?>" type="checkbox" name="color" value="<?=$v['id']?>">
+							<input <?= in_array($v['id'],$array_color)?'checked':'' ?> id="color-<?=$v['id']?>" type="checkbox" name="color" value="<?=$v['id']?>">
 							<span style="--color:#<?=$v['mau']?>"><?=$v['ten']?></span>
 						</label>
 					</li>	
@@ -69,7 +70,7 @@
 				<p><?=price?></p>
 				<div class="filter-options-content">
 					<div>
-						<input type="text" id="price-range-slider" min="<?=$productmin['gia']?>" max="<?=$productmax['gia']?>" data-from="<?=(empty($price_from))?$productmin['gia']:$price_from?>" data-to="<?=(empty($price_to))?$productmax['gia']:$price_to?>" name="price-range-slider" />
+						<input type="text" id="price-range-slider" min="<?=$productmin['gia']?>" max="<?=$productmax['gia']?>" data-from="<?=(empty($price))?$productmin['gia']:$price[0]?>" data-to="<?=(empty($price))?$productmax['gia']:$price[1]?>" name="price-range-slider" />
 					</div>
 					<input type="hidden" name="price-from" value="0">
 					<input type="hidden" name="price-to" value="0">

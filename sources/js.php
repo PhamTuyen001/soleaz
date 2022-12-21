@@ -21,6 +21,7 @@
     $js->setCache("cached");
     $js->setJs("./assets/bootstrap/js/bootstrap.js");
     $js->setJs("./assets/mmenu/mmenu.js");
+    $js->setJs("./assets/js/swiper-bundle.min.js");
     $js->setJs("./assets/owlcarousel2/owl.carousel.js");
     $js->setJs("./assets/magiczoomplus/magiczoomplus.js");
     $js->setJs("./assets/slick/slick.js");

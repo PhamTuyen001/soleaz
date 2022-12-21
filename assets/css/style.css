@@ -699,6 +699,40 @@ div.wrap-block-search button:active{
     top: 0;
     z-index: 100;
 }
+div.row-album-photo{font-size: 0;}
+div.row-album-photo .thumbs-photo-slick{
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+div.row-album-photo .thumbs-photo-slick .slick-thumbs{}
+div.row-album-photo .thumbs-photo-slick .slick-thumbs p{}
+div.row-album-photo .thumbs-photo-slick .slick-thumbs p a{}
+div.row-album-photo .thumbs-photo-slick .slick-thumbs p a img{}
+div.row-album-photo .main-photo-slick{width: calc(100% - 100px);display: inline-block;position: relative;padding-left: 48px;vertical-align: top;}
+div.row-album-photo .main-photo-slick .slick-main{}
+div.row-album-photo .main-photo-slick .slick-main p{}
+div.row-album-photo .main-photo-slick .slick-main p a{}
+div.row-album-photo .main-photo-slick .slick-main p a img{}
+div.row-album-photo .main-photo-slick .progress{
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 25px;
+    background: #b1afaf;
+}
+div.row-album-photo .main-photo-slick .progress {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    background-image: linear-gradient(to right, black, black);
+    background-repeat: no-repeat;
+    background-size: 0 100%;
+    transition: background-size 0.4s ease-in-out;
+}
+div.row-album-photo .main-photo-slick .progress .slider__label{}
 @media screen and (max-width:1080px){
 	.menu ul li a h2{padding:12px 15px 13px;}
 }

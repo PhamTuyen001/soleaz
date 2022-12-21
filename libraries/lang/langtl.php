@@ -70,7 +70,7 @@ define("moibanthaoluan","");
 define("co","");
 define("danhgia","");
 define("xacnhan","");
-define("sanphamcungloai","");
+define("sanphamcungloai","Kaugnay na Mga Produkto");
 define("conhang","");
 define("thanhtoan","");
 define("chonvideo","");

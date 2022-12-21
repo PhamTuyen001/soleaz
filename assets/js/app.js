@@ -540,9 +540,8 @@ function Searchs($p=0){
 		},
 		success:function(data){
 			let $html=$('<div>'+data+'</div>');
-			$('#load-product .row').html($($html).find('.col-product-search'));
 			setTimeout(function(){
-				
+				$('#load-product .row').html($($html).find('.col-product-search'));
 				$('.loading-mask').hide();
 				window.history.pushState('page2', 'Title', url_search);
 				Price();
@@ -618,6 +617,20 @@ function Price(){
         }
     });
 }
+NN_FRAMEWORK.ProductDeatail = function(){
+	var $slider = $('.slick-main');
+	var $progressBar = $('.progress');
+	$slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {   
+		var calc = ( (nextSlide) / (slick.slideCount-1) ) * 100;
+		$progressBar.css('background-size', '100% ' + calc +'%').attr('aria-valuenow', calc );
+	});
+	$slider.slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		vertical: true,
+		speed: 400
+	});  
+}
 $document.ready(function() {
 	setTimeout(function(){$("#pre-loader").fadeOut(1e3)},400);Price();
 	$('body').on('click', '.click-product', function(event) {
@@ -667,6 +680,7 @@ $document.ready(function() {
 	NN_FRAMEWORK.menuMobile(),
 	NN_FRAMEWORK.galleryPage(),
 	NN_FRAMEWORK.aweOwlPage(),
+	NN_FRAMEWORK.ProductDeatail(),
 	NN_FRAMEWORK.slickPage(),
 	NN_FRAMEWORK.loadPage(),
 	NN_FRAMEWORK.tocDetail(),
