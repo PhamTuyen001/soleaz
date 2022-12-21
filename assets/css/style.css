@@ -169,7 +169,7 @@ div.w_timk input:focus{border-color:#1f72be}
 .quantity-pro-detail span{line-height:25px;padding:0px;width:30px;height:30px;color:#000;cursor:pointer;font-size:19px;display:flex;align-items:center;justify-content:center;}
 .quantity-pro-detail span.quantity-plus-pro-detail{border-left:0px;}
 .quantity-pro-detail span.quantity-minus-pro-detail{border-right:0px;}
-.quantity-pro-detail input{height:30px;border:1px solid #fff;width:calc(100% - 60px);text-align:center;font-size:14px;padding:5px;outline:none;pointer-events:none;}
+.quantity-pro-detail input{height:30px;border:1px solid #fff;width:calc(100% - 60px);text-align:center;font-size:14px;padding:5px;outline:none;pointer-events:none;background: #fff !important;}
 .cart-pro-detail{margin-bottom:1rem;display:flex;align-items:stretch;justify-content:flex-start;}
 .cart-pro-detail a{width:auto;text-align:center;color:#fff!important;cursor:pointer;padding:8px 15px;text-transform:uppercase;border-radius:3px;}
 .cart-pro-detail a.addnow{margin-right:10px;color:#FFF!important;background:#fd6e1d;background:-webkit-gradient(linear,0% 0%,0% 100%,from(#fd6e1d),to(#f59000));background:-webkit-linear-gradient(top,#f59000,#fd6e1d);background:-moz-linear-gradient(top,#f59000,#fd6e1d);background:-ms-linear-gradient(top,#f59000,#fd6e1d);background:-o-linear-gradient(top,#f59000,#fd6e1d);}
@@ -691,6 +691,10 @@ div.info-product-detail .option-colors{margin-bottom:20px;}
 div.info-product-detail .option-colors p{font-size:16px;font-weight:600;}
 div.info-product-detail .option-colors ul{list-style:none;font-size:0;}
 div.info-product-detail .option-colors ul li{display:inline-block;font-size:14px;border:1px solid #D4D4D4;margin-right:10px;margin-top:10px;line-height:28px;}
+div.info-product-detail .option-colors ul li.no-click{
+    opacity: 0.5;
+    pointer-events: none;
+}
 div.info-product-detail .option-colors ul li label{margin-bottom:0;display:block;padding:5px 15px;cursor:pointer;position:relative;}
 div.info-product-detail .option-colors ul li label input{display:none;}
 div.info-product-detail .option-colors ul li label span{}

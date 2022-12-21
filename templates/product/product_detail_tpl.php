@@ -70,10 +70,10 @@
                             <div class="option-colors">
                                 <p><?=color?></p>
                                 <ul>
-                                    <?php foreach ($colors as $v) {?>
+                                    <?php foreach ($colors as $k => $v) {?>
                                     <li>
                                         <label id="color-<?=$v['id']?>">
-                                            <input type="radio" name="colors" data-pid="<?=$row_detail['id']?>" id="color-<?=$v['id']?>" value="<?=$v['id_mau']?>">
+                                            <input type="radio" name="colors" <?=($k==0)?'checked':''?> data-pid="<?=$row_detail['id']?>" id="color-<?=$v['id']?>" value="<?=$v['id_mau']?>">
                                             <span class="d-flex justify-content-center align-items-center">
                                                 <img src="<?=THUMBS?>/30x30x2/<?=UPLOAD_PRODUCT_L.$v['photo']?>" alt="<?=$v['ten'.$lang]?>">
                                                 <i><?=$v['mau']?></i>
@@ -105,7 +105,7 @@
                                 <p><?=soluong?>:</p>
                                 <div class="quantity-pro-detail">
                                     <span class="quantity-minus-pro-detail">-</span>
-                                    <input type="text" class="qty-pro" min="1" value="1" readonly />
+                                    <input type="text" class="qty-pro" min="1" value="1" disabled="" />
                                     <span class="quantity-plus-pro-detail">+</span>
                                 </div>
                             </div>

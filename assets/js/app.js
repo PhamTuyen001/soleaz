@@ -648,15 +648,21 @@ NN_FRAMEWORK.ProductDeatail = function(){
 	  focusOnSelect: true
 	});
 	$('.noidung_sanpham p').click(function(event) {
+		if($(this).hasClass('active')){
+			$('.noidung_sanpham p').removeClass('active');
+			$('.noidung_sanpham .content-noidung').animate({height:0}, 0);
+			return false;
+		}
 		$('.noidung_sanpham p').removeClass('active');
 		$(this).addClass('active');
-		$('.noidung_sanpham .content-noidung').animate({height:0}, 400);
+		$('.noidung_sanpham .content-noidung').animate({height:0}, 0);
 		let height=$(this).next('.content-noidung').find('.show-content-noidung').outerHeight();
-		$(this).next('.content-noidung').animate({height:height}, 400);
+		$(this).next('.content-noidung').animate({height:height}, 0);
 	});
 }
 $document.ready(function() {
 	setTimeout(function(){$("#pre-loader").fadeOut(1e3)},400);Price();
+
 	$('body').on('change', 'input[name="colors"]', function(event) {
 		let id=$(this).val();
 		let pid=$(this).data('pid');
@@ -681,6 +687,7 @@ $document.ready(function() {
 		})
 		
 	});
+
 	$('body').on('click', '.click-product', function(event) {
 		event.preventDefault();
 		LoadMoreProduct();

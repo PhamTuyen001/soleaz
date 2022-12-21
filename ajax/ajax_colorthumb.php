@@ -10,12 +10,7 @@
     $colors=$d->rawQuery("select A.ten$lang,A.id,A.photo,A.id_mau,A.id_product,A.hienthi,B.ten$lang as mau from #_product as A,#_product_mau as B where A.id_product=? and A.id_mau = B.id and A.hienthi=1 order by A.stt asc",array($row_detail['id']));
     if($id_mau){
         $mau_select=$d->rawQueryOne("select * from #_product where id_mau=? and id_product=?",array($id_mau,$idpro));
-
-
-
         $sizes=$d->rawQuery("select A.id,B.ten$lang as ten,A.soluong from #_product_optionsize as A,#_product_size as B where A.id_product=? and A.id_mau=? and A.id_size = B.id order by A.stt asc",array($mau_select['id'],$id_mau));
-
-
         $hinhanhsp = $d->rawQuery("select photo from #_gallery where hienthi=1 and id_photo = ? and com='product' and type = ? and kind='man' and val = ? order by stt,id desc",array($mau_select['id'],'san-pham','san-pham'));
     }
 
@@ -136,7 +131,18 @@
                     </svg>
                 </a>
             </div>
-
+            <div class="noidung_sanpham">
+                <p><?=information?></p>
+                <div class="content-noidung">
+                    <div class="show-content-noidung"><?=htmlspecialchars_decode($row_detail['noidung'.$lang])?></div>
+                </div>
+            </div>
+            <div class="noidung_sanpham">
+                <p><?=information?></p>
+                <div class="content-noidung">
+                    <div class="show-content-noidung"><?=htmlspecialchars_decode($row_detail['noidung'.$lang])?></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

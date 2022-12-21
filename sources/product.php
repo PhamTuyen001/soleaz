@@ -50,6 +50,11 @@
 		
 		if($colors){
 			$sizes=$d->rawQuery("select A.id,B.ten$lang as ten,A.soluong from #_product_optionsize as A,#_product_size as B where A.id_product=? and A.id_mau=? and A.id_size = B.id order by A.stt asc",array($colors[0]['id'],$colors[0]['id_mau']));
+
+			$mau_select=$d->rawQueryOne("select * from #_product where id_mau=? and id_product=?",array($colors[0]['id_mau'],$row_detail['id']));
+	        $sizes=$d->rawQuery("select A.id,B.ten$lang as ten,A.soluong from #_product_optionsize as A,#_product_size as B where A.id_product=? and A.id_mau=? and A.id_size = B.id order by A.stt asc",array($mau_select['id'],$colors[0]['id_mau']));
+	        $hinhanhsp = $d->rawQuery("select photo from #_gallery where hienthi=1 and id_photo = ? and com='product' and type = ? and kind='man' and val = ? order by stt,id desc",array($mau_select['id'],'san-pham','san-pham'));
+
 		}
 
 
