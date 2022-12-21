@@ -46,6 +46,13 @@
 		$hinhanhsp = $d->rawQuery("select photo from #_gallery where hienthi=1 and id_photo = ? and com='product' and type = ? and kind='man' and val = ? order by stt,id desc",array($row_detail['id'],$type,$type));
 		$jsonProduct = $d->rawQuery("select json_product from #_gallery where hienthi=1 and id_photo = ? and com='product' and type = ? and kind='man' and val = ? order by stt,id desc",array($row_detail['id'],$type,$type));
 		
+		$colors=$d->rawQuery("select A.ten$lang,A.id,A.photo,A.id_mau,A.id_product,A.hienthi,B.ten$lang as mau from #_product as A,#_product_mau as B where A.id_product=? and A.id_mau = B.id and A.hienthi=1 order by A.stt asc",array($row_detail['id']));
+		
+		if($colors){
+			$sizes=$d->rawQuery("select A.id,B.ten$lang as ten,A.soluong from #_product_optionsize as A,#_product_size as B where A.id_product=? and A.id_mau=? and A.id_size = B.id order by A.stt asc",array($colors[0]['id'],$colors[0]['id_mau']));
+		}
+
+
 		/* Lấy sản phẩm mới nhất */
 		$product_new = $d->rawQuery("select photo, ten$lang, tenkhongdauvi, tenkhongdauen, giamoi, gia, giakm, id,masp,photo2 from #_product where id!=? and hienthi!=0 order by id desc limit 0,10", array($row_detail['id']));
 		

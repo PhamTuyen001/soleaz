@@ -50,7 +50,7 @@ define("dathang","Add to cart");
 define("matkhaucu","Old password");
 define("giohang","My cart");
 define("hinh","Picture");
-define("soluong","Number");
+define("soluong","Quantity");
 define("thanhtien","Amount");
 define("tinhthanh","City");
 define("nhaptukhoatimkiem","Enter the keyword...");
@@ -196,4 +196,8 @@ define("all","All");
 define("color","Color");
 define("price","price");
 define("apply","Apply");
+define("addtocart","Add to cart");
+define("buynow","Buy now");
+define("size","Size");
+define("information","Information");
 ?>

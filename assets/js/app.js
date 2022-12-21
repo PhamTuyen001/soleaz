@@ -618,21 +618,69 @@ function Price(){
     });
 }
 NN_FRAMEWORK.ProductDeatail = function(){
-	var $slider = $('.slick-main');
+	var $slider = $('.slick-main:not(.slick-initialized)');
 	var $progressBar = $('.progress');
-	$slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {   
-		var calc = ( (nextSlide) / (slick.slideCount-1) ) * 100;
+	$slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+		let count=nextSlide+1;
+		let counts=slick.slideCount;
+		var calc = ( count / counts ) * 100;
+		$progressBar.css('background-size', '100% ' + calc +'%').attr('aria-valuenow', calc );
+	});
+	$slider.on('init', function(event, slick) {
+		let counts=slick.slideCount;
+		var calc = ( 1 / counts ) * 100;
 		$progressBar.css('background-size', '100% ' + calc +'%').attr('aria-valuenow', calc );
 	});
 	$slider.slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		vertical: true,
-		speed: 400
+		speed: 400,
+		asNavFor: '.slick-thumbs'
 	});  
+	$('.slick-thumbs:not(.slick-initialized)').slick({
+	  slidesToShow: 5,
+	  slidesToScroll: 1,
+	  asNavFor: '.slick-main',
+	  vertical: true,
+	  dots: false,
+	  centerMode: false,
+	  focusOnSelect: true
+	});
+	$('.noidung_sanpham p').click(function(event) {
+		$('.noidung_sanpham p').removeClass('active');
+		$(this).addClass('active');
+		$('.noidung_sanpham .content-noidung').animate({height:0}, 400);
+		let height=$(this).next('.content-noidung').find('.show-content-noidung').outerHeight();
+		$(this).next('.content-noidung').animate({height:height}, 400);
+	});
 }
 $document.ready(function() {
 	setTimeout(function(){$("#pre-loader").fadeOut(1e3)},400);Price();
+	$('body').on('change', 'input[name="colors"]', function(event) {
+		let id=$(this).val();
+		let pid=$(this).data('pid');
+		$.ajax({
+			url: 'ajax/ajax_colorthumb.php',
+			async:true,
+			dataType: 'html',
+			type:'POST',
+			data: {id:id,pid:pid},
+			beforeSend:function(){
+				$('.loading-mask').show();
+			},
+			success:function(data){
+				$('#load_detail_product').html(data);
+				
+				setTimeout(function(){
+					NN_FRAMEWORK.ProductDeatail();
+					$('.loading-mask').hide();
+				},500);
+				$(window).resize();
+			}
+		})
+		
+	});
 	$('body').on('click', '.click-product', function(event) {
 		event.preventDefault();
 		LoadMoreProduct();

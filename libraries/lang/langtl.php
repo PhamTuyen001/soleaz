@@ -50,7 +50,7 @@ define("dathang","");
 define("matkhaucu","");
 define("giohang","");
 define("hinh","");
-define("soluong","");
+define("soluong","Dami");
 define("thanhtien","");
 define("tinhthanh","");
 define("nhaptukhoatimkiem","Ilagay ang keyword...");
@@ -196,4 +196,8 @@ define("all","Lahat");
 define("color","Kulay");
 define("price","presyo");
 define("apply","Mag-apply");
+define("addtocart","Idagdag sa cart");
+define("buynow","Bumili ka na ngayon");
+define("size","Sukat");
+define("information","Impormasyon");
 ?>

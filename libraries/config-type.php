@@ -106,7 +106,7 @@
     $config['product'][$nametype]['gia'] = true;
     $config['product'][$nametype]['giamoi'] = true;
     $config['product'][$nametype]['giakm'] = true;
-    $config['product'][$nametype]['mota'] = true;
+    $config['product'][$nametype]['mota'] = false;
     $config['product'][$nametype]['mota_cke'] = false;
     $config['product'][$nametype]['noidung'] = true;
     $config['product'][$nametype]['noidung_cke'] = true;
