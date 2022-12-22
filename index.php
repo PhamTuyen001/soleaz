@@ -29,5 +29,9 @@
     require_once LIBRARIES."router.php";
     
     /* Template */
-    include TEMPLATE."index.php";
+    if($com=='checkout'){
+        include TEMPLATE."checkouts.php";
+    }else{
+        include TEMPLATE."index.php";
+    }
 ?>

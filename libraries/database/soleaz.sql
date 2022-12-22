@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 21, 2022 lúc 11:01 AM
+-- Thời gian đã tạo: Th12 22, 2022 lúc 11:32 AM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 5.6.38
 
@@ -3216,7 +3216,29 @@ INSERT INTO `table_counter` (`id`, `tm`, `ip`) VALUES
 (9843, 1671610944, '::1'),
 (9844, 1671611871, '::1'),
 (9845, 1671613267, '::1'),
-(9846, 1671614317, '::1');
+(9846, 1671614317, '::1'),
+(9847, 1671671065, '::1'),
+(9848, 1671672538, '::1'),
+(9849, 1671673554, '::1'),
+(9850, 1671674523, '::1'),
+(9851, 1671675749, '::1'),
+(9852, 1671676666, '::1'),
+(9853, 1671677657, '::1'),
+(9854, 1671679004, '::1'),
+(9855, 1671680223, '::1'),
+(9856, 1671681226, '::1'),
+(9857, 1671684043, '::1'),
+(9858, 1671690639, '::1'),
+(9859, 1671691668, '::1'),
+(9860, 1671693828, '::1'),
+(9861, 1671695117, '::1'),
+(9862, 1671696535, '::1'),
+(9863, 1671697539, '::1'),
+(9864, 1671698641, '::1'),
+(9865, 1671699562, '::1'),
+(9866, 1671700581, '::1'),
+(9867, 1671701517, '::1'),
+(9868, 1671704455, '::1');
 
 -- --------------------------------------------------------
 
@@ -3232,8 +3254,21 @@ CREATE TABLE `table_coupon` (
   `tinhtrang` int(1) DEFAULT '0',
   `chietkhau` int(11) DEFAULT '0',
   `ngaybatdau` int(11) DEFAULT '0',
-  `ngayketthuc` int(11) DEFAULT '0'
+  `ngayketthuc` int(11) DEFAULT '0',
+  `price` int(11) DEFAULT '0',
+  `id_user` text COLLATE utf8_unicode_ci,
+  `gia` double NOT NULL,
+  `tenvi` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tenen` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tentl` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `table_coupon`
+--
+
+INSERT INTO `table_coupon` (`id`, `ma`, `stt`, `loai`, `tinhtrang`, `chietkhau`, `ngaybatdau`, `ngayketthuc`, `price`, `id_user`, `gia`, `tenvi`, `tenen`, `tentl`) VALUES
+(121, 'xle8e8779', 1, 1, 0, 10, 1671642000, 1672419600, 0, '', 500, NULL, 'Giảm 10% cho đơn hàng từ 150 USD', '');
 
 -- --------------------------------------------------------
 
@@ -4157,8 +4192,8 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (6, 'gioithieu', 'Giới thiệu', 'About us', 2, 'Tungkol sa atin'),
 (8, 'tintuc', 'Tin tức', 'News', 4, NULL),
 (9, 'lienhe', 'Liên hệ', 'Contact us', 5, NULL),
-(34, 'motasanpham', 'Mô tả', 'Description', 5, NULL),
-(46, 'sanpham', 'Sản phẩm', 'Product', 2, NULL),
+(34, 'motasanpham', 'Mô tả', 'Description', 5, 'Paglalarawan'),
+(46, 'sanpham', 'Sản phẩm', 'Product', 2, 'Produkto'),
 (31, 'luotxem', 'Lượt xem', 'Views', 2, NULL),
 (30, 'masp', 'Mã sản phẩm', 'Product code', 1, NULL),
 (26, 'ngaydang', 'Ngày đăng', 'Date Submitted', 2, NULL),
@@ -4169,14 +4204,14 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (52, 'diachi', 'Địa chỉ', 'Address', 3, NULL),
 (53, 'thongtinlienhe', 'Thông tin liên hệ', 'Information Contact', 4, NULL),
 (54, 'sodienthoai', 'Số điện thoại', 'Phone', 5, 'Telepono'),
-(55, 'hovaten', 'Họ và tên', 'Full name', 1, NULL),
+(55, 'hovaten', 'Họ và tên', 'Full name', 1, 'Buong pangalan'),
 (56, 'chude', 'Chủ đề', 'Subject', 2, NULL),
 (57, 'noidung', 'Nội dung', 'Content', 3, 'Nilalaman'),
-(224, 'matkhaumoi', 'Mật khẩu mới', 'New password', 1, NULL),
-(225, 'nhaplaimatkhaumoi', 'Nhập lại mật khẩu mới', 'Re-new password', 1, NULL),
+(224, 'matkhaumoi', 'Mật khẩu mới', 'New password', 1, 'Bagong password'),
+(225, 'nhaplaimatkhaumoi', 'Nhập lại mật khẩu mới', 'Re-new password', 1, 'Muling bagong password'),
 (65, 'gui', 'Gửi', 'Send', 1, 'Ipadala'),
 (66, 'nhaplai', 'Nhập lại', 'Reset', 2, NULL),
-(76, 'dangky', 'Đăng ký', 'Sign Up', 1, NULL),
+(76, 'dangky', 'Đăng ký', 'Sign Up', 1, 'Mag-sign Up'),
 (78, 'khongtimthayketqua', 'Không tìm thấy kết quả', 'No results found', 1, NULL),
 (197, 'timduongdi', 'Tìm đường đi', 'Find a way', 1, NULL),
 (198, 'dinhkemtaptin', 'Đính kèm file', 'Attachment file', 1, NULL),
@@ -4192,7 +4227,7 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (302, 'vuilongchonquanhuyen', 'Vui lòng chọn quận huyện', 'Please select a district', 0, NULL),
 (220, 'soluongqualon', 'Số lượng không được lớn hơn 999', 'Quantity is not greater than 999', 1, NULL),
 (96, 'hoten', 'Họ tên', 'Full name', 1, 'Buong pangalan'),
-(97, 'chitietsanpham', 'Chi tiết sản phẩm', 'Product Details', 1, NULL),
+(97, 'chitietsanpham', 'Chi tiết sản phẩm', 'Product Details', 1, 'Detalye ng Produkto'),
 (99, 'xemthem', 'Xem thêm', 'View more', 1, 'Tingnan ang higit pa'),
 (102, 'tuyendung', 'Tuyển dụng', 'Recruitment', 1, NULL),
 (108, 'gia', 'Giá', 'Price', 1, NULL),
@@ -4201,8 +4236,8 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (194, 'sanphamnoibat', 'Sản phẩm nổi bật', 'Featured products', 1, 'Mga Itinatampok na Produkto'),
 (112, 'ketquatimkiem', 'Kết quả tìm kiếm', 'Search results', 1, NULL),
 (230, 'dathang', 'Đặt hàng', 'Add to cart', 1, NULL),
-(223, 'matkhaucu', 'Mật khẩu cũ', 'Old password', 1, NULL),
-(250, 'giohang', 'Giỏ hàng', 'My cart', 1, NULL),
+(223, 'matkhaucu', 'Mật khẩu cũ', 'Old password', 1, 'Lumang password'),
+(250, 'giohang', 'Giỏ hàng', 'My cart', 1, 'Ang aking cart'),
 (212, 'hinh', 'Hình', 'Picture', 1, NULL),
 (213, 'soluong', 'Số lượng', 'Quantity', 1, 'Dami'),
 (214, 'thanhtien', 'Thành tiền', 'Amount', 1, NULL),
@@ -4211,11 +4246,11 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (205, 'tinhtrang', 'Tình trạng', 'Status', 1, NULL),
 (206, 'hethang', 'Hết hàng', 'Out of stock', 1, NULL),
 (207, 'dangcapnhat', 'Đang cập nhật', 'Updating', 1, NULL),
-(132, 'danhmucsanpham', 'Danh mục sản phẩm', 'Product portfolio', 1, NULL),
+(132, 'danhmucsanpham', 'Danh mục sản phẩm', 'Product portfolio', 1, 'Portfolio ng produkto'),
 (134, 'trongtuan', 'Tuần', 'Week', 1, NULL),
-(222, 'thaydoimatkhau', 'Thay đổi mật khẩu', 'Change password', 1, NULL),
+(222, 'thaydoimatkhau', 'Thay đổi mật khẩu', 'Change password', 1, 'Palitan ANG password'),
 (137, 'thongketruycap', 'Thống kê truy cập', 'Statistical access', 1, NULL),
-(146, 'thongtinsanpham', 'Thông tin sản phẩm', 'Products Information', 1, NULL),
+(146, 'thongtinsanpham', 'Thông tin sản phẩm', 'Products Information', 1, 'Impormasyon ng Produkto'),
 (303, 'vuilongchonphuongxa', 'Vui lòng chọn phường xã', 'Please select a ward', 0, NULL),
 (156, 'traloi', 'Trả lời', 'Answer', 1, NULL),
 (157, 'huy', 'Hủy', 'Cancel', 1, NULL),
@@ -4226,27 +4261,27 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (202, 'xacnhan', 'Xác nhận', 'Confirm', 1, NULL),
 (203, 'sanphamcungloai', 'Sản phẩm cùng loại', 'Related Products', 1, 'Kaugnay na Mga Produkto'),
 (204, 'conhang', 'Còn hàng', 'Stocking', 1, NULL),
-(165, 'thanhtoan', 'Thanh toán', 'Pay', 1, NULL),
+(362, 'close', '', 'Close', 0, 'Isara'),
 (167, 'chonvideo', 'Chọn video', 'Choose video', 1, NULL),
 (168, 'slogandangkynhantin', 'Để lại thông tin để nhận tin tức mới nhất từ chúng tôi', 'Leave information to receive the latest news from us', 1, NULL),
 (208, 'giamoi', 'Giá mới', 'New price', 1, NULL),
 (209, 'giacu', 'Giá cũ', 'Old price', 1, NULL),
 (171, 'binhluan', 'Bình luận', 'Comment', 1, NULL),
 (172, 'baivietkhac', 'Bài viết khác', 'Other news', 1, 'Iba pang balita'),
-(174, 'banmuonxoasanphamnay', 'Bạn muốn xóa sản phẩm này khỏi giỏ hàng ? ', 'Do you want to remove this product from your shopping cart?', 1, NULL),
+(174, 'banmuonxoasanphamnay', 'Bạn muốn xóa sản phẩm này khỏi giỏ hàng ? ', 'Do you want to remove this product from your shopping cart?', 1, 'Gusto mo bang alisin ang produktong ito sa iyong shopping cart?'),
 (176, 'soluongkhongnhohonkhong', 'Số lượng đặt mua không được nhỏ hơn 0', 'Order quantity must not be less than 0', 1, NULL),
 (178, 'muatiep', 'Mua tiếp', 'Buy more', 1, NULL),
 (179, 'xoatatca', 'Xóa tất cả', 'Delete all', 1, NULL),
 (181, 'kichthuoc', 'Kích thước', 'Size', 1, NULL),
-(183, 'dangnhap', 'Đăng nhập', 'Login', 1, NULL),
+(183, 'dangnhap', 'Đăng nhập', 'Login', 1, 'Mag log in'),
 (184, 'taikhoan', 'Tài khoản', 'Username', 1, NULL),
-(185, 'matkhau', 'Mật khẩu', 'Password', 1, NULL),
-(186, 'nhomatkhau', 'Nhớ mật khẩu', 'Remember password', 1, NULL),
-(187, 'quenmatkhau', 'Quên mật khẩu', 'Forget password', 1, NULL),
-(188, 'nhaplaimatkhau', 'Nhập lại mật khẩu', 'Confirm password', 1, NULL),
+(185, 'matkhau', 'Mật khẩu', 'Password', 1, 'Password'),
+(186, 'nhomatkhau', 'Nhớ mật khẩu', 'Remember password', 1, 'Tandaan ang password'),
+(187, 'quenmatkhau', 'Quên mật khẩu', 'Forget password', 1, 'Kalimutan ang password'),
+(188, 'nhaplaimatkhau', 'Nhập lại mật khẩu', 'Confirm password', 1, 'Kumpirmahin ang password'),
 (189, 'dienthoai', 'Điện thoại', 'Phone', 1, NULL),
 (190, 'banchuacotaikhoan', 'Bạn chưa có tài khoản ', 'You don\'t have a account', 1, NULL),
-(192, 'laymatkhau', 'Lấy mật khẩu', 'Get password', 1, NULL),
+(192, 'laymatkhau', 'Lấy mật khẩu', 'Get password', 1, 'Kunin ang password'),
 (231, 'apdung', 'Áp dụng', 'Apply', 1, NULL),
 (232, 'phivanchuyen', 'Phí vận chuyển', ' Transport fee', 1, NULL),
 (296, 'tamtinh', 'Tạm tính', 'Provisional', 0, NULL),
@@ -4265,32 +4300,32 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (247, 'thongtingiaohang', 'Thông tin giao hàng', 'Shipment Details', 1, NULL),
 (301, 'vuilongchontinhthanh', 'Vui lòng chọn tỉnh thành', 'Please select a province', 0, NULL),
 (253, 'yeucaukhac', 'Yêu cầu khác (không bắt buộc)', 'Other (Optional)', 1, NULL),
-(254, 'khongtontaisanphamtronggiohang', 'Không tồn tại sản phẩm nào trong giỏ hàng !', 'No products in your shopping cart !', 1, NULL),
-(255, 'chuanhapmauudai', 'Chưa nhập mã ưu đãi', ' Did not enter the promotion code', 1, NULL),
+(254, 'khongtontaisanphamtronggiohang', 'Không tồn tại sản phẩm nào trong giỏ hàng !', 'No products in your shopping cart !', 1, 'Walang mga produkto sa iyong shopping cart!'),
+(255, 'chuanhapmauudai', 'Chưa nhập mã ưu đãi', ' Did not enter the promotion code', 1, 'Hindi inilagay ang code ng promosyon'),
 (256, 'giohangcuaban', 'Giỏ hàng của bạn', 'Your cart', 1, NULL),
 (257, 'vuilongchonsizevamau', 'Vui lòng chọn size và màu !', 'Please select size and color !', 1, NULL),
 (258, 'dangkytaiday', 'Đăng ký', 'Sign up here', 1, NULL),
 (259, 'nhaphoten', 'Nhập họ tên của bạn', 'Enter your full name', 1, 'Ilagay ang iyong buong pangalan'),
 (260, 'nhaptaikhoan', 'Nhập tài khoản của bạn', 'Enter your account', 1, NULL),
-(261, 'nhapmatkhau', 'Nhập mật khẩu (5-15 ký tự)', 'Choose password (5-15 chars)', 1, NULL),
-(262, 'nhapemail', 'Nhập địa chỉ email của bạn', 'Enter your email address', 1, NULL),
+(261, 'nhapmatkhau', 'Nhập mật khẩu (5-15 ký tự)', 'Choose password (5-15 chars)', 1, 'Pumili ng password (5-15 chars)'),
+(262, 'nhapemail', 'Nhập địa chỉ email của bạn', 'Enter your email address', 1, 'ilagay ang iyong email address'),
 (263, 'nhapdienthoai', 'Nhập số điện thoại', 'Enter your number phone', 1, NULL),
 (264, 'nhapdiachi', 'Nhập địa chỉ của bạn', 'Enter your address', 1, NULL),
-(265, 'nhapngaysinh', 'Nhập ngày sinh', 'Enter your birthday', 1, NULL),
+(265, 'nhapngaysinh', 'Nhập ngày sinh', 'Enter your birthday', 1, 'Ilagay ang iyong kaarawan'),
 (266, 'gioitinh', 'Giới tính', 'Gender', 1, NULL),
 (267, 'nam', 'Nam', 'Male', 1, NULL),
 (268, 'nu', 'Nữ', 'Female', 1, NULL),
 (269, 'kichhoat', 'Kích hoạt', 'Active', 1, NULL),
 (270, 'nhapmakichhoat', 'Nhập mã kích hoạt', 'Enter your active code', 1, NULL),
-(271, 'nhapmatkhaucu', 'Nhập mật khẩu cũ', 'Enter old password', 1, NULL),
-(272, 'nhapmatkhaumoi', 'Nhập mật khẩu mới', 'Enter new password', 1, NULL),
+(271, 'nhapmatkhaucu', 'Nhập mật khẩu cũ', 'Enter old password', 1, 'Ipasok ang lumang password'),
+(272, 'nhapmatkhaumoi', 'Nhập mật khẩu mới', 'Enter new password', 1, 'Maglagay ng bagong password'),
 (273, 'thich', 'Thích', 'Like', 1, NULL),
 (274, 'dathich', 'Đã thích', 'Liked', 1, NULL),
 (275, 'taithembinhluan', 'Tải thêm bình luận', 'Get more comments', 1, NULL),
 (276, 'trangke', 'Trang kế', 'Next page', 1, NULL),
 (277, 'trangtruoc', 'Trang trước', 'Prev page', 1, NULL),
 (279, 'hinhanh', 'Hình ảnh', 'Image', 0, NULL),
-(280, 'tensanpham', 'Tên sản phẩm', 'Product name', 0, NULL),
+(280, 'tensanpham', 'Tên sản phẩm', 'Product name', 0, 'Pangalan ng Produkto'),
 (282, 'duong', 'Đường phố', 'Street', 1, NULL),
 (283, 'hinhthucthanhtoan', 'Hình thức thanh toán', 'Payments', 0, NULL),
 (284, 'vuilongnhaphoten', 'Vui lòng nhập họ và tên', 'Please enter your first and last name', 0, 'Pakilagay ang iyong pangalan at apelyido'),
@@ -4309,10 +4344,10 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (299, 'mauudaidahethan', 'Mã ưu đãi đã hết hạng', 'Promotion code has expired', 0, NULL),
 (300, 'mauudaidaduocsudunghoackhongtontai', 'Mã ưu đãi đã được sử dụng hoặc không tồn tại', 'The promotion code has been used or does not exist', 0, NULL),
 (304, 'vuilongnhaptaikhoan', 'Vui lòng nhập tài khoản', 'Please enter an account', 0, NULL),
-(305, 'vuilongnhapmatkhau', 'Vui lòng nhập mật khẩu', 'Please enter a password', 0, NULL),
-(306, 'vuilongnhaplaimatkhau', 'Vui lòng nhập lại mật khẩu', 'Please enter the password again', 0, NULL),
-(307, 'vuilongnhapngaysinh', 'Vui lòng nhập ngày sinh', 'Please enter your birthday', 0, NULL),
-(308, 'ngaysinh', 'Ngày sinh', 'Date of birth', 0, NULL),
+(305, 'vuilongnhapmatkhau', 'Vui lòng nhập mật khẩu', 'Please enter a password', 0, 'Mangyaring magpasok ng password'),
+(306, 'vuilongnhaplaimatkhau', 'Vui lòng nhập lại mật khẩu', 'Please enter the password again', 0, 'Pakilagay muli ang password'),
+(307, 'vuilongnhapngaysinh', 'Vui lòng nhập ngày sinh', 'Please enter your birthday', 0, 'Pakilagay ang iyong kaarawan'),
+(308, 'ngaysinh', 'Ngày sinh', 'Date of birth', 0, 'Araw ng kapanganakan'),
 (312, 'vuilongnhapmakichhoat', 'Vui lòng nhập mã kích hoạt', 'Please enter the activation code', 0, NULL),
 (315, 'dangxuat', 'Đăng xuất', 'Logout', 0, NULL),
 (316, 'homnay', 'Thống kê ngày', 'Today', 0, NULL),
@@ -4354,7 +4389,39 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (353, 'buynow', '', 'Buy now', 0, 'Bumili ka na ngayon'),
 (354, 'size', '', 'Size', 0, 'Sukat'),
 (355, 'information', '', 'Information', 0, 'Impormasyon'),
-(356, 'sizelatruongbatbuoc', '', 'Size is a required field!', 0, 'Ang laki ay isang kinakailangang field!');
+(356, 'sizelatruongbatbuoc', '', 'Size is a required field!', 0, 'Ang laki ay isang kinakailangang field!'),
+(357, 'bancochackhong', '', 'Are you sure?', 0, 'Sigurado ka ba?'),
+(358, 'xoa', '', 'Delete', 0, 'Tanggalin'),
+(359, 'cancel', '', 'Cancel', 0, 'Kanselahin'),
+(360, 'tamtinh', '', 'Provisional', 0, 'Pansamantala'),
+(361, 'thanhtoan', '', 'Payment', 0, 'Pagbabayad'),
+(363, 'tongcong', '', 'Total', 0, 'Kabuuan'),
+(364, 'phuongthucthanhtoan', '', 'Payment methods', 0, 'Mga paraan ng pagbabayad'),
+(365, 'ghichudonhang', '', 'Order Notes', 0, 'Order Notes'),
+(366, 'chontinhthanh', '', 'Choose a province', 0, 'Pumili ng probinsya'),
+(367, 'chonquanhuyen', '', 'Select district', 0, 'Pumili ng distrito'),
+(368, 'chonphuongxa', '', 'Choose a ward', 0, 'Pumili ng ward'),
+(369, 'thanhtoanpaypal', '', 'PayPal Payment', 0, 'Pagbabayad sa PayPal'),
+(370, 'khuyenmai', '', 'Promotion', 0, 'Promosyon'),
+(371, 'magiamgia', '', 'Discount code', 0, 'Discount code'),
+(372, 'apdung', '', 'Apply', 0, 'Mag-apply'),
+(373, 'bandacotaikhoan', '', 'Do you already have an account?', 0, 'Mayroon ka na bang isang account?'),
+(374, 'chuadudieukienapdung', '', 'Not eligible to apply', 0, 'Hindi karapat-dapat na mag-aplay'),
+(375, 'hienthithongtindonhang', '', 'Show order information', 0, 'Ipakita ang impormasyon ng order'),
+(376, 'anthongtindonhang', '', 'Hide order information', 0, 'Itago ang impormasyon ng order'),
+(377, 'okchinhsach', '', 'I agree to the terms and conditions, privacy policy and cookie policy', 0, 'Sumasang-ayon ako sa mga tuntunin at kundisyon, patakaran sa privacy at patakaran sa cookie'),
+(378, 'xacnhanmatkhau', '', 'Confirm password', 0, 'Kumpirmahin ang password'),
+(379, 'taotaikhoan', '', 'Create Account', 0, 'Lumikha ng Account'),
+(380, 'emailhoacsodienthoai', '', 'Email or phone number', 0, 'Email o numero ng telepono'),
+(381, 'ghinhotaikhoan', '', 'Remember account', 0, 'Tandaan ang account'),
+(382, 'vuilongdienvaotruongnay', '', 'Please fill in this field', 0, 'Mangyaring punan ang field na ito'),
+(383, 'email', '', 'Email', 0, 'Email'),
+(384, 'txt1', '', 'If your phone number or email already exists, press', 0, 'Kung mayroon nang numero ng iyong telepono o email, pindutin ang'),
+(385, 'txt2', '', 'come in', 0, 'pasok ka'),
+(386, 'txt3', '', 'and login with that sdt or email with any password to activate the account or contact Levents cskh for support', 0, 'at mag-login gamit ang sdt na iyon o email gamit ang anumang password para i-activate ang account o makipag-ugnayan sa Levents cskh para sa suporta'),
+(387, 'nhaplaimatkhaukhongchinhxac', '', 'Re-enter incorrect password', 0, 'Ipasok muli ang maling password'),
+(388, 'emailorsodienthoaidatontai', '', 'Email or phone number already exists', 0, 'Umiiral na ang email o numero ng telepono'),
+(389, 'coloixayravuilongthulaisau', '', 'An error occurred, please try again later', 0, 'May naganap na error. Mangyaring subukan muli sa ibang pagkakataon');
 
 -- --------------------------------------------------------
 
@@ -4584,6 +4651,13 @@ CREATE TABLE `table_member` (
   `stt` int(11) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `table_member`
+--
+
+INSERT INTO `table_member` (`id`, `id_social`, `username`, `password`, `maxacnhan`, `avatar`, `ten`, `dienthoai`, `email`, `diachi`, `gioitinh`, `login_session`, `lastlogin`, `hienthi`, `ngaysinh`, `stt`) VALUES
+(2, 0, '', 'ba79a2988c454a06a105bfa547c02974', '', '', 'Quang Tuyên Phạm', '0901411294', 'phamtuyen.nina@gmail.com', '', 0, '', '', 1, 1671728400, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -4639,9 +4713,7 @@ INSERT INTO `table_news` (`id`, `id_list`, `id_item`, `id_cat`, `id_sub`, `id_ta
 (33, 0, 0, 0, 0, '', 0, 0, '', '', '', '', 'infomation-privacy-policy', '', '', '', '', 'Infomation privacy policy', '', '', '', '', 1, 1, 'chinh-sach', 1671415649, 0, 4, '', '', '', ''),
 (32, 0, 0, 0, 0, '', 0, 0, '', '', '', '', 'online-payment', '', '', '', '', 'Online Payment', '', '', '', '', 1, 1, 'chinh-sach', 1671415643, 0, 1, '', '', '', ''),
 (31, 0, 0, 0, 0, '', 0, 0, '', '', '', '', 'shipping-policy', '', '', '', '', 'Shipping Policy', '', '', '', '', 1, 1, 'chinh-sach', 1671415634, 0, 0, '', '', '', ''),
-(11, 0, 0, 0, 0, NULL, 0, 0, '', NULL, NULL, 'thanh-toan-truc-tiep-tai-cong-ty', '', '', '', '', '- Quý khách hàng vui lòng thanh toán trực tiếp tại công ty ngay khi mua hàng tại\r\nShowroom 1 : Số 103 - 105 Lê Thanh Nghị– Đồng Tâm - Hai Bà Trưng– Hà Nội.\r\nShowroom 2 : Số 58 Hồ Tùng Mậu  – Cầu Giấy – Hà Nội.\r\n- Ngay khi quý khách thanh toán xong, nhân viên kế toán sẽ gửi lại quý khách hóa đơn tài chính và nhân viên kinh doanh sẽ hướng dẫn quý khách hình thức giao nhận hàng.', '', 'Thanh toán trực tiếp tại công ty', '', '', '', 1, 1, 'hinh-thuc-thanh-toan', 1586480217, 0, 0, NULL, NULL, NULL, NULL),
-(12, 0, 0, 0, 0, NULL, 0, 0, '', NULL, NULL, 'thanh-toan-tai-diem-giao-hang', '', '', '', '', '- Quý khách thanh toán cho nhân viên giao nhận toàn bộ hoặc phần còn lại của giá trị đơn hàng đã mua (nếu đã đặt cọc)\r\n- Hình thức thanh toán này chỉ thực hiện với các đơn hàng có địa chỉ giao hàng tại nội thành thành phố Hà Nội (trong phạm vi bán kính 30 km tính từ nơi mua hàng).\r\n- Nếu địa điểm giao hàng ngay tại nơi thanh toán, nhân viên giao hàng của chúng tôi sẽ thu tiền khi giao hàng.', '', 'Thanh toán tại điểm giao hàng', '', '', '', 2, 1, 'hinh-thuc-thanh-toan', 1586480229, 0, 0, NULL, NULL, NULL, NULL),
-(13, 0, 0, 0, 0, NULL, 0, 0, '', NULL, NULL, 'thanh-toan-bang-chuyen-khoan', '', '', '', '', '- Nếu địa điểm giao hàng là ngoại thành, ngoại tỉnh hoặc nội thành thành phố Hà Nội nhưng khác với địa điểm thanh toán (trong trường hợp Quý khách gửi quà, gửi hàng cho bạn bè, đối tác …) chúng tôi sẽ thu tiền trước 100% giá trị đơn hàng + phí vận chuyển theo cước phí tính trong chinh sách vận chuyển bằng phương thức chuyển khoản trước khi giao hàng', '', 'Thanh toán bằng chuyển khoản', '', '', '', 3, 1, 'hinh-thuc-thanh-toan', 1586480244, 0, 0, NULL, NULL, NULL, NULL),
+(11, 0, 0, 0, 0, NULL, 0, 0, '', NULL, NULL, '', 'cod-payment', '', '', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock', '- Quý khách hàng vui lòng thanh toán trực tiếp tại công ty ngay khi mua hàng tại\r\nShowroom 1 : Số 103 - 105 Lê Thanh Nghị– Đồng Tâm - Hai Bà Trưng– Hà Nội.\r\nShowroom 2 : Số 58 Hồ Tùng Mậu  – Cầu Giấy – Hà Nội.\r\n- Ngay khi quý khách thanh toán xong, nhân viên kế toán sẽ gửi lại quý khách hóa đơn tài chính và nhân viên kinh doanh sẽ hướng dẫn quý khách hình thức giao nhận hàng.', 'COD payment', 'Thanh toán trực tiếp tại công ty', '', '', '', 1, 1, 'hinh-thuc-thanh-toan', 1586480217, 1671679524, 0, '', NULL, '', NULL),
 (21, 0, 0, 0, 0, NULL, 1, 0, '8128chiactcintel-5962.jpg', NULL, '{\"p\":\"8128chiactcintel-5962.jpg\",\"w\":640,\"h\":354,\"m\":\"image\\/jpeg\"}', 'cong-nghe-intel-10850k-thanh-vien-moi-cua-gia-dinh-vi-xu-ly-core-i9-comet-lake', '', NULL, '', NULL, 'Mẫu CPU mới nhất đến từ nhà Intel thành viên mới trong gia đình vi xử lý Core i9 sau khi đã cho ra mắt hàng loạt những dòng sản phẩm nằm trong thế hệ Comet Lake mới của mình', NULL, '[Công nghệ] Intel 10850K - thành viên mới của gia đình vi xử lý Core i9 Comet Lake', NULL, NULL, NULL, 1, 1, 'giai-phap-bao-ve', 1596184848, 0, 1, NULL, NULL, NULL, NULL),
 (22, 0, 0, 0, 0, NULL, 1, 0, '8112tixungghj-1635.jpg', NULL, '{\"p\":\"8112tixungghj-1635.jpg\",\"w\":349,\"h\":144,\"m\":\"image\\/jpeg\"}', 'cong-nghe-seagate-cong-bo-dong-ssd-nytro-3032-va-nytro-1360-danh-rieng-cho-doanh-nghiep', '', NULL, '', NULL, 'Mẫu CPU mới nhất đến từ nhà Intel thành viên mới trong gia đình vi xử lý Core i9 sau khi đã cho ra mắt hàng loạt những dòng sản phẩm nằm trong thế hệ Comet Lake mới của mình', NULL, '[CÔNG NGHỆ] Seagate công bố dòng SSD Nytro 3032 và Nytro 1360 dành riêng cho doanh nghiệp', NULL, NULL, NULL, 0, 1, 'giai-phap-bao-ve', 1596184857, 1596185003, 1, NULL, NULL, NULL, NULL),
 (23, 0, 0, 0, 0, NULL, 1, 0, '8119dsc02508result-6422.jpg', NULL, '{\"p\":\"8119dsc02508result-6422.jpg\",\"w\":1600,\"h\":1067,\"m\":\"image\\/jpeg\"}', 'cong-nghe-lenovo-thinkstation-p620-san-pham-may-tram-su-dung-bo-xu-ly-ryzen-threadripper-pro-dau-tien-tren-the-gioi', '', NULL, '', NULL, 'Mẫu CPU mới nhất đến từ nhà Intel thành viên mới trong gia đình vi xử lý Core i9 sau khi đã cho ra mắt hàng loạt những dòng sản phẩm nằm trong thế hệ Comet Lake mới của mình', NULL, '[CÔNG NGHỆ] Lenovo ThinkStation P620 - sản phẩm máy trạm sử dụng bộ xử lý Ryzen Threadripper PRO đầu tiên trên thế giới', NULL, NULL, NULL, 0, 1, 'giai-phap-bao-ve', 1596184860, 1596184948, 1, NULL, NULL, NULL, NULL),
@@ -5425,7 +5497,7 @@ INSERT INTO `table_product` (`id`, `id_list`, `id_item`, `id_cat`, `id_sub`, `id
 (180, 21, 0, 45, 0, 0, '', 0, '', 1, 0, 'b-2-100-6577.jpg', '', '', 'levents-popular-logo-20-tee-red', '', '', '', '', 'LEVENTS® POPULAR LOGO 2.0 TEE/ RED', '', '', '', '', 0, 0, 0, 0, '', 3, 1, 'outfit', 1671506208, 0, 0, '', '', '', '', 'c2-font-552x944-100-9025.jpg', 0, 0),
 (181, 21, 0, 45, 0, 0, '', 0, '', 1, 0, 'a1-font-552x944-100-9094.jpg', '', '', 'levents-popular-logo-20-tee-red1', '', '', '', '', 'LEVENTS® POPULAR LOGO 2.0 TEE/ RED1', '', '', '', '', 0, 0, 0, 0, '', 2, 1, 'outfit', 1671506230, 0, 0, '', '', '', '', 'b2-font-552x944-100-9215.jpg', 0, 0),
 (182, 20, 0, 44, 0, 0, '', 0, '', 1, 0, 'b2-font-552x944-100-5174.jpg', '{\"p\":\"b2-font-552x944-100-5174.jpg\",\"w\":553,\"h\":945,\"m\":\"image\\/jpeg\"}', '', 'levents-popular-logo-20-tee-red2', '&lt;p&gt;Model: Height 165cm, weight 46kg&lt;/p&gt;\r\n\r\n&lt;p&gt;Wearing: Size 2&lt;/p&gt;\r\n', '', '', '', 'LEVENTS® POPULAR LOGO 2.0 TEE/ RED2', '', '', '', '', 0, 0, 0, 0, '', 1, 1, 'outfit', 1671506253, 1671526721, 20, '', '', '', '', 'b-2-100-2915.jpg', 0, 0),
-(183, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', '{\"p\":\"z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg\",\"w\":1000,\"h\":1000,\"m\":\"image\\/jpeg\"}', '', 'levents-poppop-puffer-shoulder-bag-blackpink', '&lt;p&gt;Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.&lt;/p&gt;\r\n', '', '', '', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', '', '', 'HTHM-000280', 250, 40, 150, 0, '', 1, 1, 'san-pham', 1671519316, 1671610741, 185, '', '', '', '', 'z38354743302143097975e2d8f1a6826e019382bd06c0cdf9bfec51e224ba2ae69c88a14df1fe7-4333.jpg', 1, 0),
+(183, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', '{\"p\":\"z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg\",\"w\":1000,\"h\":1000,\"m\":\"image\\/jpeg\"}', '', 'levents-poppop-puffer-shoulder-bag-blackpink', '&lt;p&gt;Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.&lt;/p&gt;\r\n', '', '', '', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', '', '', 'HTHM-000280', 250, 40, 150, 0, '', 1, 1, 'san-pham', 1671519316, 1671610741, 220, '', '', '', '', 'z38354743302143097975e2d8f1a6826e019382bd06c0cdf9bfec51e224ba2ae69c88a14df1fe7-4333.jpg', 1, 0),
 (185, 0, 0, 0, 0, 0, '', 9, '', 0, 0, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3836.jpg', '', '', '', '', '', '', '', 'Incipience Black T-Shirt Red', '', '', '', '', 0, 0, 0, 0, '', 2, 1, 'san-pham', 1671522950, 1671523484, 0, 'Incipience Black T-Shirt ', '', '', '', '', 0, 183),
 (186, 0, 0, 0, 0, 0, '', 10, '', 0, 0, 'z38354743302143097975e2d8f1a6826e019382bd06c0cdf9bfec51e224ba2ae69c88a14df1fe7-1716.jpg', '', '', '', '', '', '', '', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink orange', '', '', '', '', 0, 0, 0, 0, '', 1, 1, 'san-pham', 1671523535, 1671613265, 0, 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink ', '', '', '', '', 0, 183),
 (187, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z39696306528023c4093d65866f56da554a6fa37e5298f-1951.jpg', '', '', 'levents-quote-tee-black', '', '', '', '', 'Levents® Quote Tee/ Black', '', '', '', 'BE35VGRT', 350, 45, 193, 0, '', 1, 1, 'san-pham', 1671536390, 0, 0, '', '', '', '', 'z396963064625880473d4b6f19217831138b428c8aa0c1-9998.jpg', 1, 0),
@@ -5959,15 +6031,16 @@ CREATE TABLE `table_setting` (
   `descriptionen` text COLLATE utf8_unicode_ci,
   `titletl` text COLLATE utf8_unicode_ci,
   `keywordstl` text COLLATE utf8_unicode_ci,
-  `descriptiontl` text COLLATE utf8_unicode_ci
+  `descriptiontl` text COLLATE utf8_unicode_ci,
+  `tentl` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `table_setting`
 --
 
-INSERT INTO `table_setting` (`id`, `options`, `mastertool`, `headjs`, `bodyjs`, `tenvi`, `tenen`, `analytics`, `titlevi`, `keywordsvi`, `descriptionvi`, `titleen`, `keywordsen`, `descriptionen`, `titletl`, `keywordstl`, `descriptiontl`) VALUES
-(18, '{\"mailertype\":\"1\",\"ip_host\":\"mail.lucphat.com\",\"port_host\":\"25\",\"secure_host\":\"tls\",\"email_host\":\"no-replay@lucphat.com\",\"password_host\":\"dO1P91OYhp\",\"host_gmail\":\"smtp.gmail.com\",\"port_gmail\":\"587\",\"secure_gmail\":\"tls\",\"email_gmail\":\"autosendnoreply01@gmail.com\",\"password_gmail\":\"ntfocjyshxgoxqbg\",\"lang_default\":\"en\",\"diachi\":\"T\\u1ea7ng 3 s\\u1ed1 102 Nguy\\u1ec5n Ho\\u00e0ng, M\\u1ef9 \\u0110\\u00ecnh 2, Nam T\\u1eeb Li\\u00eam, H\\u00e0 N\\u1ed9i\",\"email\":\"phuctai.nina@gmail.com\",\"hotline\":\"0966 342 792\",\"dienthoai\":\"0966 342 792\",\"zalo\":\"0966 342 792\",\"oaidzalo\":\"\",\"website\":\"http:\\/\\/sneakershoes.com\",\"fanpage\":\"https:\\/\\/www.facebook.com\\/LienquanMobile\\/\",\"toado_iframe\":\"<iframe src=\\\"https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m18!1m12!1m3!1d3919.4481760094527!2d106.68480041483649!3d10.776945462130913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3b27d8a7fd%3A0xdb0d92470911a699!2sThe%20Box%20Market!5e0!3m2!1svi!2s!4v1589339784678!5m2!1svi!2s\\\" width=\\\"600\\\" height=\\\"450\\\" frameborder=\\\"0\\\" style=\\\"border:0;\\\" allowfullscreen=\\\"\\\" aria-hidden=\\\"false\\\" tabindex=\\\"0\\\"><\\/iframe>\"}', '', '', '', 'Sneaker Shoes vi', 'Sneaker Shoes en', '', 'Sneaker Shoes vi', 'Sneaker Shoes vi', '', 'Sneaker Shoes en', 'Sneaker Shoes en', '', NULL, NULL, NULL);
+INSERT INTO `table_setting` (`id`, `options`, `mastertool`, `headjs`, `bodyjs`, `tenvi`, `tenen`, `analytics`, `titlevi`, `keywordsvi`, `descriptionvi`, `titleen`, `keywordsen`, `descriptionen`, `titletl`, `keywordstl`, `descriptiontl`, `tentl`) VALUES
+(18, '{\"mailertype\":\"2\",\"ip_host\":\"mail.lucphat.com\",\"port_host\":\"25\",\"secure_host\":\"tls\",\"email_host\":\"no-replay@lucphat.com\",\"password_host\":\"dO1P91OYhp\",\"host_gmail\":\"smtp.gmail.com\",\"port_gmail\":\"587\",\"secure_gmail\":\"tls\",\"email_gmail\":\"autosendnoreply01@gmail.com\",\"password_gmail\":\"ntfocjyshxgoxqbg\",\"lang_default\":\"en\",\"diachi\":\"T\\u1ea7ng 3 s\\u1ed1 102 Nguy\\u1ec5n Ho\\u00e0ng, M\\u1ef9 \\u0110\\u00ecnh 2, Nam T\\u1eeb Li\\u00eam, H\\u00e0 N\\u1ed9i\",\"email\":\"phuctai.nina@gmail.com\",\"hotline\":\"0966 342 792\",\"dienthoai\":\"0966 342 792\",\"zalo\":\"0966 342 792\",\"oaidzalo\":\"\",\"website\":\"http:\\/\\/sneakershoes.com\",\"fanpage\":\"https:\\/\\/www.facebook.com\\/LienquanMobile\\/\",\"toado_iframe\":\"<iframe src=\\\"https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m18!1m12!1m3!1d3919.4481760094527!2d106.68480041483649!3d10.776945462130913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3b27d8a7fd%3A0xdb0d92470911a699!2sThe%20Box%20Market!5e0!3m2!1svi!2s!4v1589339784678!5m2!1svi!2s\\\" width=\\\"600\\\" height=\\\"450\\\" frameborder=\\\"0\\\" style=\\\"border:0;\\\" allowfullscreen=\\\"\\\" aria-hidden=\\\"false\\\" tabindex=\\\"0\\\"><\\/iframe>\",\"toado\":\"\"}', '', '', '', 'Sneaker Shoes vi', 'Sneaker Shoes en', '', 'Sneaker Shoes vi', 'Sneaker Shoes vi', '', 'Sneaker Shoes en', 'Sneaker Shoes en', '', NULL, NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -25999,7 +26072,7 @@ CREATE TABLE `table_user` (
 --
 
 INSERT INTO `table_user` (`id`, `id_nhomquyen`, `username`, `password`, `maxacnhan`, `avatar`, `ten`, `dienthoai`, `email`, `diachi`, `gioitinh`, `login_session`, `user_token`, `lastlogin`, `hienthi`, `quyen`, `ngaysinh`, `stt`, `role`) VALUES
-(1, 0, 'admin', '4e28193860f819b4c3d149b6b5ba872a', '', '', 'ADMIN', '', '', '', 0, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', '14ae70cb5a400f0de91c62920ab7bbee', '1671614764', 1, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', 0, 0, 3);
+(1, 0, 'admin', '4e28193860f819b4c3d149b6b5ba872a', '', '', 'ADMIN', '', '', '', 0, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', 'd4a6fefbb95f823c9cb876470ea1ac14', '1671704400', 1, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', 0, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -26089,7 +26162,10 @@ INSERT INTO `table_user_log` (`id`, `id_user`, `ip`, `timelog`, `user_agent`) VA
 (53, 1, '::1', 1671553509, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
 (54, 1, '::1', 1671591790, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
 (55, 1, '::1', 1671604029, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
-(56, 1, '::1', 1671610671, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36');
+(56, 1, '::1', 1671610671, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
+(57, 1, '::1', 1671674641, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
+(58, 1, '::1', 1671691210, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
+(59, 1, '::1', 1671697959, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36');
 
 -- --------------------------------------------------------
 
@@ -26108,7 +26184,7 @@ CREATE TABLE `table_user_online` (
 --
 
 INSERT INTO `table_user_online` (`session`, `time`, `ip`) VALUES
-('3420r1deev3s7ar86032lr4if5', 1671614896, '::1');
+('dn47r9rodjev8v4deg8mgk37k4', 1671705054, '::1');
 
 -- --------------------------------------------------------
 
@@ -37057,13 +37133,13 @@ ALTER TABLE `table_contact`
 -- AUTO_INCREMENT cho bảng `table_counter`
 --
 ALTER TABLE `table_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9847;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9869;
 
 --
 -- AUTO_INCREMENT cho bảng `table_coupon`
 --
 ALTER TABLE `table_coupon`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT cho bảng `table_district`
@@ -37087,7 +37163,7 @@ ALTER TABLE `table_gallery`
 -- AUTO_INCREMENT cho bảng `table_lang`
 --
 ALTER TABLE `table_lang`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=357;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=390;
 
 --
 -- AUTO_INCREMENT cho bảng `table_lang1`
@@ -37099,7 +37175,7 @@ ALTER TABLE `table_lang1`
 -- AUTO_INCREMENT cho bảng `table_member`
 --
 ALTER TABLE `table_member`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `table_news`
@@ -37291,7 +37367,7 @@ ALTER TABLE `table_user_limit`
 -- AUTO_INCREMENT cho bảng `table_user_log`
 --
 ALTER TABLE `table_user_log`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT cho bảng `table_wards`

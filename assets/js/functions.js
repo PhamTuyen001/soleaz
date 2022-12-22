@@ -8,7 +8,7 @@ function modalNotify(text){
 function ValidationFormSelf(ele='')
 {
     if(ele){
-        $("."+ele).find("input[type=submit]").removeAttr("disabled");
+        $("."+ele).find("input[type=submit],button[type=submit]").removeAttr("disabled");
         var forms = document.getElementsByClassName(ele);
         var validation = Array.prototype.filter.call(forms,function(form){
             form.addEventListener('submit', function(event){
@@ -76,12 +76,16 @@ function update_cart(pid=0,code='',quantity=1)
     if(pid) {
         var ship = $(".price-ship").val();
         var endow = $(".price-endow").val();
+        var endowID = $(".price-endowID").val();
 
         $.ajax({
             type: "POST",
             url: "ajax/ajax_update_cart.php",
             dataType: 'json',
-            data: {pid:pid,code:code,q:quantity,ship:ship,endow:endow},
+            data: {pid:pid,code:code,q:quantity,ship:ship,endow:endow,endowID:endowID},
+            beforeSend:function(){
+                $('.loading-mask').show();
+            },
             success: function(result){
                 if(result){
                     $('.load-price-'+code).html(result.gia);
@@ -90,6 +94,12 @@ function update_cart(pid=0,code='',quantity=1)
                     $('.load-price-temp').html(result.tempText);
                     $('.price-total').val(result.total);
                     $('.load-price-total').html(result.totalText);
+                    $('.price-endowType').val(result.endowType);
+                    $('.price-endowID').val(result.endowID);
+                    $('.price-endow').val(result.endow);
+                    $('.load-price-endow').html(result.endowText);
+                    if(result.endowType==0) $(".code-coupon").attr('value','').val('');
+                    $('.loading-mask').hide();
                 }
             }
         });

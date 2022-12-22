@@ -16,14 +16,23 @@
 		
 		public function get_product_mau($mau=0)
 		{
-			global $d;
+			global $d,$lang;
 			$row = $this->d->rawQueryOne("select ten$lang as ten from #_product_mau where id = ?",array($mau));
 			return $row['ten'];
 		}
-		
+		public function get_total(){
+			$num = 0;
+			if(isset($_SESSION['cart'])){
+				
+				foreach($_SESSION['cart'] as $k=>$v){
+					$num+=$v['qty'];
+				}
+			}
+			return $num;
+		}
 		public function get_product_size($size=0)
 		{
-			global $d;
+			global $d,$lang;
 			$row = $this->d->rawQueryOne("select ten$lang as ten from #_product_size where id = ?",array($size));
 			return $row['ten'];
 		}

@@ -85,7 +85,7 @@
 		if(!empty($data)) { foreach($data as $column => $value) $data[$column] = htmlspecialchars($value); }
 		$data['ngaybatdau'] = strtotime(str_replace("/","-",htmlspecialchars($data['ngaybatdau'])));
 		$data['ngayketthuc'] = strtotime(str_replace("/","-",htmlspecialchars($data['ngayketthuc'])));
-
+		$data['gia'] = (isset($data['gia']) && $data['gia'] != '') ? str_replace(",","",$data['gia']) : 0;
 		if(isset($id) && $id!=0)
 		{
 			$d->where('id', $id);

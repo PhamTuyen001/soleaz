@@ -1,5 +1,4 @@
 <?php include TEMPLATE.LAYOUT."breadcrumb.php" ?>
-<div class="loading-mask" data-role="loader"><div class="loader"><img alt="Đang tải..." src="assets/images/loader-2.gif"></div></div>
 <section class="wrap-detail_product py-5">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -91,7 +90,7 @@
                                     <?php foreach ($sizes as $v) {?>
                                     <li class="<?=($v['soluong']==0)?'no-click':''?>">
                                         <label id="size-<?=$v['id']?>">
-                                            <input <?=($v['soluong']==0)?'disabled':''?> type="radio" name="size" value="<?=$v['id']?>" id="size-<?=$v['id']?>">
+                                            <input <?=($v['soluong']==0)?'disabled':''?> type="radio" name="size" value="<?=$v['id_size']?>" id="size-<?=$v['id']?>">
                                             <span class="d-flex justify-content-center align-items-center">
                                                 <i><?=$v['ten']?></i>
                                             </span>

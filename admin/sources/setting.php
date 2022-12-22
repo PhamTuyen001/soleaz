@@ -59,7 +59,10 @@
 		{
 			$d->where('id',$id);
 			if($d->update('setting',$data)) $func->transfer("Cập nhật dữ liệu thành công", "index.php?com=setting&act=capnhat");
-			else $func->transfer("Cập nhật dữ liệu bị lỗi", "index.php?com=setting&act=capnhat", false);
+			else {
+				
+				$func->transfer("Cập nhật dữ liệu bị lỗi", "index.php?com=setting&act=capnhat", false);
+			}
 		}
 		else
 		{

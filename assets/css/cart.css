@@ -30,7 +30,7 @@
 .quantity-counter-procart .quantity-procat{width:40%;box-sizing:border-box;border:0px;border-right:1px solid #dfdfdf;border-left:1px solid #dfdfdf;outline:none;box-shadow:none;padding:0px;color:#333;text-align:center;}
 .price-procart{width:20%;text-align:right;}
 .price-procart-rp{display:none;width:100%;margin-bottom:10px;font-size:13.5px;}
-.price-new-cart{color:var(--color-red);margin-bottom:0px;}
+.price-new-cart{}
 .price-old-cart{color:#999;text-decoration:line-through;}
 .procart-label{border:0px;background:#eee;padding:10px;margin:0px;text-transform:capitalize;}
 .procart-label .quantity-procart p:last-child{display:none;}

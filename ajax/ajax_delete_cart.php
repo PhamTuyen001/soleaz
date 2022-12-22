@@ -8,9 +8,9 @@
 	
 	$max = count($_SESSION['cart']);
 	$temp = $cart->get_order_total();
-	$tempText = number_format($temp,0, ',', '.')."đ";
+	$tempText = number_format($temp,0, ',', ',')." USD";
 	$total = $cart->get_order_total() + $ship - $endow;
-	$totalText = number_format($total,0, ',', '.')."đ";
+	$totalText = number_format($total,0, '.', ',')." USD";
 
 	$data = array('max' => $max, 'temp' => $temp, 'tempText' => $tempText, 'total' => $total, 'totalText' => $totalText);
 	echo json_encode($data);

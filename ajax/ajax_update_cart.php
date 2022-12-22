@@ -6,7 +6,34 @@
 	$code = htmlspecialchars($_POST['code']);
 	$ship = htmlspecialchars($_POST['ship']);
 	$endow = htmlspecialchars($_POST['endow']);
+	$endowID = htmlspecialchars($_POST['endowID']);
 	$max = count($_SESSION['cart']);
+	if(!empty($endowID)) $coupon = $d->rawQueryOne("SELECT * FROM #_coupon where ma = ?",array($endowID));
+	if(!empty($endowID['id']) && $endowID['gia']<$cart->get_order_total())
+	{
+		
+		$endowID = $coupon['id'];
+		$endowType = $coupon['loai'];
+		if($endowType==1)
+		{
+			$endow =$total*($coupon['chietkhau']/100);
+			$total = $total - $endow;
+			$endowText = "-".number_format($endow,2,'.',',')." USD";
+			
+		}
+		if($endowType==2)
+		{
+			$total = $total - $coupon['chietkhau'];
+			$endowText = "-".number_format($coupon['chietkhau'],2, '.', ',')." USD";
+			$endow =$coupon['chietkhau'];
+		}
+		$totalText = number_format($total,2, '.', ',')." USD";
+	}else{
+		$endow = 0;
+		$endowType = 0;
+		$endowText = '—';
+		$endowID='';
+	}
 
 	for($i=0;$i<$max;$i++)
 	{
@@ -16,15 +43,18 @@
 			break;
 		}
 	}
-	
-	$proinfo = $cart->get_product_info($pid);
-	$gia = number_format($proinfo['gia']*$q,0, ',', '.')."đ";
-	$giamoi = number_format($proinfo['giamoi']*$q,0, ',', '.')."đ";
-	$temp = $cart->get_order_total();
-	$tempText = number_format($temp,0, ',', '.')."đ";
-	$total = $cart->get_order_total() + $ship - $endow;
-	$totalText = number_format($total,0, ',', '.')."đ";
 
-	$data = array('gia' => $gia, 'giamoi' => $giamoi, 'temp' => $temp, 'tempText' => $tempText, 'total' => $total, 'totalText' => $totalText);
+	$proinfo = $cart->get_product_info($pid);
+
+	$price=($proinfo['giamoi']>0)?$proinfo['giamoi']:$proinfo['gia'];
+
+	$gia = number_format($price*$q,2, '.', ',')."&nbsp; USD";
+	$temp = $cart->get_order_total();
+	$tempText = number_format($temp,2, '.', ',')."&nbsp; USD";
+	$total = $cart->get_order_total() + $ship - $endow;
+	$totalText = number_format($total,2, '.', ',')."&nbsp; USD";
+
+
+	$data = array('gia' => $gia, 'temp' => $temp, 'tempText' => $tempText, 'total' => $total, 'totalText' => $totalText,'endow' => $endow, 'endowID' => $endowID, 'endowType' => $endowType, 'endowText' => $endowText);
 	echo json_encode($data);
 ?>

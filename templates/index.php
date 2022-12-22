@@ -29,5 +29,6 @@
         include TEMPLATE.LAYOUT."modal.php";
         include SOURCES."js.php";
     ?>
+    <div class="loading-mask" data-role="loader"><div class="loader"><img alt="Đang tải..." src="assets/images/loader-2.gif"></div></div>
 </body>
 </html>

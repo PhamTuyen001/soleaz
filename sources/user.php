@@ -5,14 +5,14 @@
 
 	switch($action)
 	{
-		case 'dang-nhap':
+		case 'login':
 			$title_crumb = dangnhap;
 			$template = "account/dangnhap";
 			if(isset($_SESSION[$login_member]) && $_SESSION[$login_member] == true) $func->transfer("Trang không tồn tại",$config_base, false);
 			if(isset($_POST['dangnhap'])) login();
 			break;
 
-		case 'dang-ky':
+		case 'register':
 			$title_crumb = dangky;
 			$template = "account/dangky";
 			if(isset($_SESSION[$login_member]) && $_SESSION[$login_member] == true) $func->transfer("Trang không tồn tại",$config_base, false);

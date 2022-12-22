@@ -221,7 +221,20 @@
                         </ul>
                     </li>
                 <?php } ?>
-
+                <?php if(isset($config['coupon']) && $config['coupon']==true) { ?>
+                    <?php
+                        $none = "";
+                        $active = "";
+                        if(!empty($kiemtra)) if($func->check_access('coupon', 'man', '', null, 'phrase-1')) $none = "d-none";
+                        if($com=='coupon') $active = 'active';
+                    ?>
+                    <li class="nav-item <?=$active?> <?=$none?>">
+                        <a class="nav-link <?=$active?>" href="index.php?com=coupon&act=man" title="Quản lý mã ưu đãi">
+                            <i class="nav-icon text-sm fas fa-qrcode"></i>
+                            <p>Quản lý mã ưu đãi</p>
+                        </a>
+                    </li>
+                <?php } ?>
                 <!-- Cart -->
                 <?php if(isset($config['order']['active']) && $config['order']['active'] == true) { ?>
                     <?php

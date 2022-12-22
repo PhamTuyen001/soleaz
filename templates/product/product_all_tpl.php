@@ -1,5 +1,5 @@
 <?php include TEMPLATE.LAYOUT."breadcrumb.php" ?>
-<div class="loading-mask" data-role="loader"><div class="loader"><img alt="Đang tải..." src="assets/images/loader-2.gif"></div></div>
+
 <section class="wrap-sanphams pb-5" id="load_add">
 	<div class="container" id="ajaxs">
 		<div class="row">

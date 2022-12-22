@@ -238,6 +238,14 @@
 			$seo->setSeo('type','object');
 			break;
 
+		case 'checkout':
+			$source = (!empty($step))?'success':'checkouts';
+			$template = (!empty($step))?'order/success':'order/checkouts';
+			$title_crumb = thanhtoan;
+			$seo->setSeo('type','object');
+			break;
+
+
 		case 'account':
 			$source = "user";
 			break;

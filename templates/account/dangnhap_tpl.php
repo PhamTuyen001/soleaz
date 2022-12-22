@@ -1,33 +1,25 @@
-<div class="wrap-user">
-    <div class="title-user d-flex align-items-end justify-content-between">
-        <span><?=dangnhap?></span>
-        <a href="account/quen-mat-khau" title="<?=quenmatkhau?>"><?=quenmatkhau?></a>
-    </div>
-    <form class="form-user validation-user" novalidate method="post" action="account/dang-nhap" enctype="multipart/form-data">
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-user"></i></div>
+<div class="form__wrap con py-5">
+    <h2 class="sec-title form__title"><?=dangnhap?></h2>
+    <form action="" id="mona-login-form">
+        <div class="form">
+            <div class="form__txt"><?=banchuacotaikhoan?><a href="account/register" class="form__link"><?=dangky?></a>
             </div>
-            <input type="text" class="form-control" id="username" name="username" placeholder="<?=taikhoan?>" required>
-            <div class="invalid-feedback"><?=vuilongnhaptaikhoan?></div>
-        </div>
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-lock"></i></div>
+            <input type="text" name="user_name" required="" class="rs-form form__inp" oninvalid="this.setCustomValidity('<?=vuilongdienvaotruongnay?>')" oninput="this.setCustomValidity('')" placeholder="<?=emailhoacsodienthoai?>">
+            <input type="password" name="user_pass" required="" oninvalid="this.setCustomValidity('<?=vuilongdienvaotruongnay?>')" oninput="this.setCustomValidity('')" class="rs-form form__inp" placeholder="<?=matkhau?>">
+            <div class="form__check">
+                <label for="user_remember" class="fl-con">
+                    <input type="checkbox" name="user_remember" value="yes" id="user_remember" class="dp-none">
+                    <div class="form__cbox"></div>
+                    <div class="form__ctxt hov-df"><?=ghinhotaikhoan?></div>
+                </label>
             </div>
-            <input type="password" class="form-control" id="password" name="password" placeholder="<?=matkhau?>" required>
-            <div class="invalid-feedback"><?=vuilongnhapmatkhau?></div>
-        </div>
-        <div class="button-user d-flex align-items-center justify-content-between">
-            <input type="submit" class="btn btn-primary" name="dangnhap" value="<?=dangnhap?>" disabled>
-            <div class="checkbox-user custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="remember-user" id="remember-user" value="1">
-                <label class="custom-control-label" for="remember-user"><?=nhomatkhau?></label>
+            <div class="fl-wrap aln-ct form__bot form__mb">
+                <a href="account/forgot-password/" class="dp-block form__link">
+                    <?=quenmatkhau?> ?
+                </a>
+                <button class="rs-form btn-pri c-whi form__submit-small m-btn-loading"><?=dangnhap?></button>
             </div>
-        </div>
-        <div class="note-user">
-            <span><?=banchuacotaikhoan?> ! </span>
-            <a href="account/dang-ky" title="<?=dangkytaiday?>"><?=dangkytaiday?></a>
+            <div id="response-login"></div>
         </div>
     </form>
 </div>

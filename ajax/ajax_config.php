@@ -17,6 +17,8 @@
     require_once LIBRARIES."lang/lang$lang.php";
 
     /* Slug lang */
-    $sluglang = 'tenkhongdauvi';
-
+    $sluglang = 'tenkhongdauen';
+    $sqlCache = "select * from #_setting";
+    $setting = $cache->getCache($sqlCache,'fetch',600);
+    $optsetting = json_decode($setting['options'],true);
 ?>

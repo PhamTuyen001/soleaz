@@ -597,7 +597,7 @@
     $config['order']['thumb'] = '100x100x1';
 
     /* Quản lý mã ưu đãi */
-    $config['coupon'] = false;
+    $config['coupon'] = true;
 
     /* Quản lý thông báo đẩy */
     $config['onesignal'] = false;
