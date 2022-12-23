@@ -6,6 +6,7 @@
     var TIMENOW = '<?=date("Y/m/d",time())?>';
     var SHIP_CART = <?=($config['order']['ship']) ? 'true' : 'false'?>;
     var GOTOP = 'assets/images/top.png';
+    var IS_LOGIN=<?=(!empty($_SESSION[$login_member]))?'true':'false'?>;
     var LANG = {
         'no_keywords': '<?=chuanhaptukhoatimkiem?>',
         'delete_product_from_cart': '<?=banmuonxoasanphamnay?>',

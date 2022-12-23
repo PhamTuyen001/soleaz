@@ -42,9 +42,9 @@
 <BODY>
     <div id="alert">
         <i class="fas <?=($stt)?'fa-check-circle fasuccess':'fa-exclamation-triangle fadanger'?>"></i>
-        <div class="title">Thông báo</div>
+        <div class="title">Notify</div>
         <div class="message alert <?=($stt) ? 'alert-success' : 'alert-danger'?>"><?=$showtext?></div>
-        <div class="rlink">(<a href="<?=$page_transfer?>" >Click vào đây nếu không muốn đợi lâu</a>)</div>
+        <div class="rlink">(<a href="<?=$page_transfer?>" >Click here if you don't want to wait</a>)</div>
         <div class="progress"><div id="process-bar" class="progress-bar progress-bar-striped progress-bar-<?=($stt) ? 'success' : 'danger'?> active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div></div>
     </div>
     <script type="text/javascript">

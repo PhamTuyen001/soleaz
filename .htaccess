@@ -2,6 +2,10 @@ RewriteEngine on
 Options -Indexes
 DirectoryIndex index.php
 
+<IfModule mod_php5.c>
+ php_value max_input_vars 5000
+</IfModule>
+
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteRule ^index\.php$ - [L]

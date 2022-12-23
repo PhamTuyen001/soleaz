@@ -1,7 +1,7 @@
 <?php
 	include "ajax_config.php";
 ?>
-<div class="cart__list count-cart">
+<div class="cart__list">
 <?php if(!empty($_SESSION['cart'])){?>
 <?php for($i=0;$i<count($_SESSION['cart']);$i++) {
 $pid = $_SESSION['cart'][$i]['productid'];
@@ -29,7 +29,7 @@ $pro_price_new_qty = $pro_price_new*$q; ?>
                     </span>
                     <div class="confirm-remove-item-cart">
                         <?=bancochackhong?>
-                        <a href="javascript:void(0)" data-code="<?=$code?>" data-event="confirm"><?=xoa?></a>
+                        <a href="javascript:void(0)" class="del-procart" data-code="<?=$code?>" data-event="confirm"><?=xoa?></a>
                         <a href="javascript:void(0)" data-event="cancel"><?=cancel?></a>
                     </div>
                 </div>

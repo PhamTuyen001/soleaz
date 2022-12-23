@@ -5850,7 +5850,7 @@ button.close {
 .modal-dialog-centered::before {
   display: block;
   height: calc(100vh - (.5rem * 2));
-  content: '0 0 4 4'
+  content: ''
 }
 
 .modal-content {

@@ -48,9 +48,10 @@
                             </div>
                         </th>
                         <th class="align-middle text-center" width="10%">STT</th>
-                        <th class="align-middle">Tài khoản</th>
-                        <th class="align-middle">Họ tên</th>
                         <th class="align-middle">Email</th>
+                        <th class="align-middle">Điện thoại</th>
+                        <th class="align-middle">Họ tên</th>
+                        <th class="align-middle">Ngày sinh</th>
                         <th class="align-middle text-center">Kích hoạt</th>
                         <th class="align-middle text-center">Thao tác</th>
                     </tr>
@@ -71,13 +72,16 @@
                                     <input type="number" class="form-control form-control-mini m-auto update-stt" min="0" value="<?=$items[$i]['stt']?>" data-id="<?=$items[$i]['id']?>" data-table="member">
                                 </td>
                                 <td class="align-middle">
-                                    <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['username']?>"><?=$items[$i]['username']?></a>
+                                    <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['email']?>"><?=$items[$i]['email']?></a>
+                                </td>
+                                <td class="align-middle">
+                                    <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['dienthoai']?>"><?=$items[$i]['dienthoai']?></a>
                                 </td>
                                 <td class="align-middle">
                                     <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['ten']?>"><?=$items[$i]['ten']?></a>
                                 </td>
                                 <td class="align-middle">
-                                    <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=$items[$i]['email']?>"><?=$items[$i]['email']?></a>
+                                    <a class="text-dark" href="<?=$linkEdit?>&id=<?=$items[$i]['id']?>" title="<?=date('d/m/Y',$items[$i]['ngaysinh'])?>"><?=date('d/m/Y',$items[$i]['ngaysinh'])?></a>
                                 </td>
                                 <td class="align-middle text-center">
                                 	<div class="custom-control custom-checkbox my-checkbox">

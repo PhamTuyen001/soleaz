@@ -22,8 +22,8 @@
 						</div>
 						<div class="v_Search">
 				        	<div class="w_timk">
-				                <input type="text" id="keyword" placeholder="<?=nhaptukhoatimkiem?>" onkeypress="doEnter(event,'keyword');">
-				                <i class="fas fa-search" onclick="onSearch('keyword');"></i>
+				                <input type="text" id="keyword33" placeholder="<?=nhaptukhoatimkiem?>" onkeypress="doEnter(event,'keyword33');">
+				                <i class="fas fa-search" onclick="onSearch('keyword33');"></i>
 				            </div>
 		        		</div>
 					</div>
@@ -39,8 +39,10 @@
 				<div class="hd__icon_tool">
 					<div class="icon_tool__btn">
 						<div class="icon_tool__btn__child" data-action="wishlist">
+							<a href="account/my-wishlist">
 							<img src="assets/images/heart.svg" alt="">
-							<div class="cart__num ">0</div>
+							<div class="cart__num cart__wishlist "><?=$func->checkwishlistCount()?></div>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -57,7 +59,7 @@
 				<div class="hd__icon_tool">
 					<div class="icon_tool__btn">
 						<div class="icon_tool__btn__child">
-							<a href="account/login"><img src="assets/images/account.svg" alt=""></a>
+							<a href="<?=(empty($rowUser))?'account/login':'account/my-info'?>"><img src="assets/images/account.svg" alt=""></a>
 						</div>
 					</div>
 				</div>

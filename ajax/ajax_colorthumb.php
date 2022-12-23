@@ -137,12 +137,7 @@
                     <div class="show-content-noidung"><?=htmlspecialchars_decode($row_detail['noidung'.$lang])?></div>
                 </div>
             </div>
-            <div class="noidung_sanpham">
-                <p><?=information?></p>
-                <div class="content-noidung">
-                    <div class="show-content-noidung"><?=htmlspecialchars_decode($row_detail['noidung'.$lang])?></div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

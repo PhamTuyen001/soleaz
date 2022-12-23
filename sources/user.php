@@ -8,42 +8,63 @@
 		case 'login':
 			$title_crumb = dangnhap;
 			$template = "account/dangnhap";
-			if(isset($_SESSION[$login_member]) && $_SESSION[$login_member] == true) $func->transfer("Trang không tồn tại",$config_base, false);
+			if(isset($_SESSION[$login_member]) && $_SESSION[$login_member] == true) $func->transfer("Page does not exist",$config_base, false);
 			if(isset($_POST['dangnhap'])) login();
 			break;
 
 		case 'register':
 			$title_crumb = dangky;
 			$template = "account/dangky";
-			if(isset($_SESSION[$login_member]) && $_SESSION[$login_member] == true) $func->transfer("Trang không tồn tại",$config_base, false);
+			if(isset($_SESSION[$login_member]) && $_SESSION[$login_member] == true) $func->transfer("Page does not exist",$config_base, false);
 			if(isset($_POST['dangky'])) signup();
 			break;
 
 		case 'quen-mat-khau':
 			$title_crumb = quenmatkhau;
 			$template = "account/quenmatkhau";
-			if(isset($_SESSION[$login_member]) && $_SESSION[$login_member] == true) $func->transfer("Trang không tồn tại",$config_base, false);
+			if(isset($_SESSION[$login_member]) && $_SESSION[$login_member] == true) $func->transfer("Page does not exist",$config_base, false);
 			if(isset($_POST['quenmatkhau'])) doimatkhau_user();
 			break;
 
 		case 'kich-hoat':
 			$title_crumb = kichhoat;
 			$template = "account/kichhoat";
-			if(isset($_SESSION[$login_member]) && $_SESSION[$login_member] == true) $func->transfer("Trang không tồn tại",$config_base, false);
+			if(isset($_SESSION[$login_member]) && $_SESSION[$login_member] == true) $func->transfer("Page does not exist",$config_base, false);
 			if(isset($_POST['kichhoat'])) active_user();
 			break;
 
-		case 'thong-tin':
-			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Trang không tồn tại",$config_base, false);
+		case 'my-info':
+			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base, false);
 			$template = "account/thongtin";
 			$title_crumb = capnhatthongtin;
 			info_user();
 			break;
 
-		case 'dang-xuat':
-			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Trang không tồn tại",$config_base, false);
+		case 'logout':
+			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base, false);
 			logout();
+			break;
 		
+		case 'my-address':
+			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base, false);
+			$template = "account/address";
+			$title_crumb = address;
+			myaddress();
+			break;
+
+		case 'my-voucher':
+			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base, false);
+			$template = "account/voucher";
+			$title_crumb = myvoucher;
+			myvoucher();
+			break;
+		case 'my-wishlist':
+			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base, false);
+			$template = "account/wishlist";
+			$title_crumb = mywishlist;
+			mywishlist();
+			break;
+			
 		default:
 			header('HTTP/1.0 404 Not Found', true, 404);
 			include("404.php");
@@ -56,13 +77,34 @@
 	/* breadCrumbs */
 	if($title_crumb) $breadcr->setBreadCrumbs('',$title_crumb);
 	$breadcrumbs = $breadcr->getBreadCrumbs();
+	$banner = $d->rawQueryOne("SELECT id, photo FROM #_photo WHERE type = ? AND act = ? limit 0,1",array('bn-user','photo_static'));
+
+
+	function mywishlist(){
+		global $d, $func, $row_detail, $config_base, $login_member,$rowAddress,$city,$coupon,$product,$product;
+		$iduser = $_SESSION[$login_member]['id'];
+
+		$product = $d->rawQuery("SELECT id,tenkhongdauvi,tenkhongdauen,tenkhongdautl,tenvi,tenen,tentl,photo,photo2,gia,giakm,giamoi,moi FROM #_product WHERE hienthi=1 AND type = ? AND id in (select id_product from #_wishlist where id_user=?) ORDER BY stt,id DESC",array('san-pham',$iduser));
+	}
+
+	function myvoucher(){
+		global $d, $func, $row_detail, $config_base, $login_member,$rowAddress,$city,$coupon;
+		$iduser = $_SESSION[$login_member]['id'];
+		$coupon=$d->rawQuery("select * from #_coupon where ngayketthuc>".time()." and tinhtrang=0");
+	}
+
+
+	function myaddress(){
+		global $d, $func, $row_detail, $config_base, $login_member,$rowAddress,$city;
+		$iduser = $_SESSION[$login_member]['id'];
+		$city = $d->rawQuery("select ten, id from #_city where hienthi=1 order by stt asc");
+		$rowAddress=$d->rawQuery("select * from #_member_address where id_user=? order by macdinh desc",array($iduser));
+	}
 
 	function info_user()
 	{
 		global $d, $func, $row_detail, $config_base, $login_member;
-
-		$iduser = $_SESSION['login_member']['id'];
-
+		$iduser = $_SESSION[$login_member]['id'];
 		if($iduser)
 		{
 			$row_detail = $d->rawQueryOne("select ten, username, gioitinh, ngaysinh, email, dienthoai, diachi from #_member where id = ? limit 0,1",array($iduser));

@@ -1,6 +1,6 @@
 <?php 
 	if(!defined('SOURCES')) die("Error");	
-	if(empty($_SESSION['cart'])) $func->transfer("Bạn không có sản phẩm nào trong giỏ hàng.", $config_base);	
+	if(empty($_SESSION['cart'])) $func->transfer(bankhongcogitronggiohang, $config_base);	
 	/* SEO */
 	$seo->setSeo('title',$title_crumb);
 	/* breadCrumbs */
@@ -10,6 +10,10 @@
 	$city = $d->rawQuery("select ten, id from #_city where hienthi=1 order by stt asc");
 	/* Hình thức thanh toán */
 	$httt = $d->rawQuery("select ten$lang, mota$lang, id from #_news where type = ? order by stt,id desc",array('hinh-thuc-thanh-toan'));
+
+	if(!empty($rowUser)){
+		$rowAddress=$d->rawQuery("select * from #_member_address where id_user=? order by macdinh desc",array($rowUser['id']));
+	}
 
 	if(!empty($_POST['thanhtoan']))
 	{
@@ -46,7 +50,7 @@
 			$color = $_SESSION['cart'][$i]['mau'];					
 			$size = $_SESSION['cart'][$i]['size'];
 			$code = $_SESSION['cart'][$i]['code'];
-			$proinfo = $cart->getPriceProduct($pid,$size);
+			$proinfo = $cart->get_product_info($pid);
 			$pmau = $cart->get_product_mau($color);
 			$psize = $cart->get_product_size($size);
 			$textsm='';
@@ -67,25 +71,25 @@
 	    	if($proinfo['giamoi'])
 	    	{
 	    		$chitietdonhang.='<td align="left" style="padding:3px 9px" valign="top">';
-	    		$chitietdonhang.='<span style="display:block;color:#ff0000;">'.number_format($proinfo['giamoi'],0,'','.').'đ'.'</span>';
-	    		$chitietdonhang.='<span style="display:block;color:#999;text-decoration:line-through;font-size:11px;">'.number_format($proinfo['gia'],0,'','.').'đ'.'</span>';
+	    		$chitietdonhang.='<span style="display:block;color:#ff0000;">'.number_format($proinfo['giamoi'],2,'.',',').' USD'.'</span>';
+	    		$chitietdonhang.='<span style="display:block;color:#999;text-decoration:line-through;font-size:11px;">'.number_format($proinfo['gia'],2,'.',',').' USD'.'</span>';
 	    		$chitietdonhang.='</td>';
 	    	}
 	    	else
 	    	{
-	    		$chitietdonhang.='<td align="left" style="padding:3px 9px" valign="top"><span style="color:#ff0000;">'.number_format($proinfo['gia'],0,'','.').'đ'.'</span></td>';
+	    		$chitietdonhang.='<td align="left" style="padding:3px 9px" valign="top"><span style="color:#ff0000;">'.number_format($proinfo['gia'],2,'.',',').' USD'.'</span></td>';
 	    	}
 	    	$chitietdonhang.='<td align="center" style="padding:3px 9px" valign="top">'.$q.'</td>';
 	    	if($proinfo['giamoi'])
 	    	{
 	    		$chitietdonhang.='<td align="right" style="padding:3px 9px" valign="top">';
-	    		$chitietdonhang.='<span style="display:block;color:#ff0000;">'.number_format($proinfo['giamoi']*$q,0,'','.').'đ'.'</span>';
-	    		$chitietdonhang.='<span style="display:block;color:#999;text-decoration:line-through;font-size:11px;">'.number_format($proinfo['gia']*$q,0,'','.').'đ'.'</span>';
+	    		$chitietdonhang.='<span style="display:block;color:#ff0000;">'.number_format($proinfo['giamoi']*$q,2,'.',',').' USD'.'</span>';
+	    		$chitietdonhang.='<span style="display:block;color:#999;text-decoration:line-through;font-size:11px;">'.number_format($proinfo['gia']*$q,2,'.',',').' USD'.'</span>';
 	    		$chitietdonhang.='</td>';
 	    	}
 	    	else
 	    	{
-	    		$chitietdonhang.='<td align="right" style="padding:3px 9px" valign="top"><span style="color:#ff0000;">'.number_format($proinfo['gia']*$q,0,'','.').'đ'.'</span></td>';
+	    		$chitietdonhang.='<td align="right" style="padding:3px 9px" valign="top"><span style="color:#ff0000;">'.number_format($proinfo['gia']*$q,2,'.',',').' USD'.'</span></td>';
 	    	}
 	    	$chitietdonhang.='</tr></tbody>';
 	    }
@@ -93,14 +97,14 @@
 	    $chitietdonhang.='
 		<tfoot style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px">
 			<tr>
-				<td align="right" colspan="3" style="padding:5px 9px">Tạm tính</td>
+				<td align="right" colspan="3" style="padding:5px 9px">Provisional</td>
 				<td align="right" style="padding:5px 9px"><span>'.number_format($tamtinh,0, '', '.').'đ</span></td>
 			</tr>';
 			if($ship)
 			{
 				$chitietdonhang.=
 				'<tr>
-					<td align="right" colspan="3" style="padding:5px 9px">Phí vận chuyển</td>
+					<td align="right" colspan="3" style="padding:5px 9px">Transport fee</td>
 					<td align="right" style="padding:5px 9px"><span>'.number_format($ship,0, '', '.').'đ</span></td>
 				</tr>';
 			}
@@ -110,7 +114,7 @@
 				{
 					$chitietdonhang.=
 					'<tr>
-						<td align="right" colspan="3" style="padding:5px 9px">Ưu đãi</td>
+						<td align="right" colspan="3" style="padding:5px 9px">Endow</td>
 						<td align="right" style="padding:5px 9px"><span>-'.$endow.'%</span></td>
 					</tr>';
 				}
@@ -118,14 +122,14 @@
 				{
 					$chitietdonhang.=
 					'<tr>
-						<td align="right" colspan="3" style="padding:5px 9px">Ưu đãi</td>
+						<td align="right" colspan="3" style="padding:5px 9px">Endow</td>
 						<td align="right" style="padding:5px 9px"><span>-'.number_format($endow,0, '', '.').'đ</span></td>
 					</tr>';
 				}
 			}
 			$chitietdonhang.='
 			<tr bgcolor="#eee">
-				<td align="right" colspan="3" style="padding:7px 9px"><strong><big>Tổng giá trị đơn hàng</big> </strong></td>
+				<td align="right" colspan="3" style="padding:7px 9px"><strong><big>Total order value</big> </strong></td>
 				<td align="right" style="padding:7px 9px"><strong><big><span>'.number_format($total,0, '', '.').'đ</span> </big> </strong></td>
 			</tr>
 		</tfoot>';
@@ -152,7 +156,6 @@
 																		<td>
 																			<a href="'.$emailer->getEmail('home').'" style="border:medium none;text-decoration:none;color:#007ed3;margin:0px 0px 0px 20px" target="_blank">'.$emailer->getEmail('logo').'</a>
 																		</td>
-																		<td style="padding:15px 20px 0 0;text-align:right">'.$emailer->getEmail('social').'</td>
 																	</tr>
 																</tbody>
 															</table>
@@ -169,9 +172,9 @@
 											<tbody>
 												<tr>
 													<td>
-														<h1 style="font-size:17px;font-weight:bold;color:#444;padding:0 0 5px 0;margin:0">Kính chào</h1>
-														<p style="margin:4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal">Quý khách nhận được thông tin đặt hàng tại website '.$emailer->getEmail('company:website').'</p>
-														<h3 style="font-size:13px;font-weight:bold;color:'.$emailer->getEmail('color').';text-transform:uppercase;margin:20px 0 0 0;padding: 0 0 5px;border-bottom:1px solid #ddd">Thông tin đơn hàng #'.$madonhang.' <span style="font-size:12px;color:#777;text-transform:none;font-weight:normal">(Ngày '.date('d',$emailer->getEmail('datesend')).' tháng '.date('m',$emailer->getEmail('datesend')).' năm '.date('Y H:i:s',$emailer->getEmail('datesend')).')</span></h3>
+														<h1 style="font-size:17px;font-weight:bold;color:#444;padding:0 0 5px 0;margin:0">Welcome</h1>
+														<p style="margin:4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal">You receive order information at the website '.$emailer->getEmail('company:website').'</p>
+														<h3 style="font-size:13px;font-weight:bold;color:'.$emailer->getEmail('color').';text-transform:uppercase;margin:20px 0 0 0;padding: 0 0 5px;border-bottom:1px solid #ddd">Information line #'.$madonhang.' </h3>
 													</td>
 												</tr>
 												<tr>
@@ -179,8 +182,8 @@
 													<table border="0" cellpadding="0" cellspacing="0" width="100%">
 														<thead>
 															<tr>
-																<th align="left" style="padding:6px 9px 0px 0px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;font-weight:bold" width="50%">Thông tin thanh toán</th>
-																<th align="left" style="padding:6px 0px 0px 9px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;font-weight:bold" width="50%">Địa chỉ giao hàng</th>
+																<th align="left" style="padding:6px 9px 0px 0px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;font-weight:bold" width="50%">Billing Information</th>
+																<th align="left" style="padding:6px 0px 0px 9px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;font-weight:bold" width="50%">Delivery address</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -198,17 +201,17 @@
 																<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal"><strong>Hình thức thanh toán: </strong> '.$htttText.'';
 																if($ship)
 																{
-																	$contentAdmin.='<br><strong>Phí vận chuyển: </strong> '.number_format($ship,0,'','.').'đ';
+																	$contentAdmin.='<br><strong>Transport fee: </strong> '.number_format($ship,2,'.',',').' USD';
 																}
 																if($endowID)
 																{
 																	if($endowType==1)
 																	{
-																		$contentAdmin.='<br><strong>Ưu đãi: </strong> -'.$endow.'%';
+																		$contentAdmin.='<br><strong>Endow: </strong> -'.$endow.'%';
 																	}
 																	else if($endowType==2)
 																	{
-																		$contentAdmin.='<br><strong>Ưu đãi: </strong> -'.$endow.'đ';
+																		$contentAdmin.='<br><strong>Endow: </strong> -'.$endow.' USD';
 																	}
 																}
 																$contentAdmin.='</td>
@@ -219,19 +222,19 @@
 												</tr>
 												<tr>
 													<td>
-													<p style="margin:4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal"><strong>Yêu cầu khác:</strong> <i>'.$yeucaukhac.'</i></p>
+													<p style="margin:4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal"><strong>Other requirements:</strong> <i>'.$yeucaukhac.'</i></p>
 													</td>
 												</tr>
 												<tr>
 													<td>
-													<h2 style="text-align:left;margin:10px 0;border-bottom:1px solid #ddd;padding-bottom:5px;font-size:13px;color:'.$emailer->getEmail('color').'">CHI TIẾT ĐƠN HÀNG</h2>
+													<h2 style="text-align:left;margin:10px 0;border-bottom:1px solid #ddd;padding-bottom:5px;font-size:13px;color:'.$emailer->getEmail('color').'">ORDER DETAILS</h2>
 													<table border="0" cellpadding="0" cellspacing="0" style="background:#f5f5f5" width="100%">
 														<thead>
 															<tr>
-																<th align="left" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Sản phẩm</th>
-																<th align="left" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Đơn giá</th>
-																<th align="center" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px;min-width:55px;">Số lượng</th>
-																<th align="right" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Tổng tạm</th>
+																<th align="left" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Product</th>
+																<th align="left" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Unit price</th>
+																<th align="center" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px;min-width:55px;">Quantity</th>
+																<th align="right" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Temporary total</th>
 															</tr>
 														</thead>
 														'.$chitietdonhang.'
@@ -257,9 +260,9 @@
 						<tbody>
 							<tr>
 								<td>
-								<p align="left" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:18px;color:#4b8da5;padding:10px 0;margin:0px;font-weight:normal">Quý khách nhận được email này vì đã mua hàng tại '.$emailer->getEmail('company:website').'.<br>
-								Để chắc chắn luôn nhận được email thông báo, xác nhận mua hàng từ '.$emailer->getEmail('company:website').', quý khách vui lòng thêm địa chỉ <strong><a href="mailto:'.$emailer->getEmail('email').'" target="_blank">'.$emailer->getEmail('email').'</a></strong> vào số địa chỉ (Address Book, Contacts) của hộp email.<br>
-								<b>Địa chỉ:</b> '.$emailer->getEmail('company:address').'</p>
+								<p align="left" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:18px;color:#4b8da5;padding:10px 0;margin:0px;font-weight:normal">You received this email because you made a purchase at '.$emailer->getEmail('company:website').'.<br>
+								To be sure to always receive email notifications, purchase confirmation from '.$emailer->getEmail('company:website').', Please add your address <strong><a href="mailto:'.$emailer->getEmail('email').'" target="_blank">'.$emailer->getEmail('email').'</a></strong> vào số địa chỉ (Address Book, Contacts) của hộp email.<br>
+								<b>Address:</b> '.$emailer->getEmail('company:address').'</p>
 								</td>
 							</tr>
 						</tbody>
@@ -310,7 +313,7 @@
 													<td>
 														<h1 style="font-size:17px;font-weight:bold;color:#444;padding:0 0 5px 0;margin:0">Cảm ơn quý khách đã đặt hàng tại '.$emailer->getEmail('company:website').'</h1>
 														<p style="margin:4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal">Chúng tôi rất vui thông báo đơn hàng #'.$madonhang.' của quý khách đã được tiếp nhận và đang trong quá trình xử lý. '.$emailer->getEmail('company:website').' sẽ thông báo đến quý khách ngay khi hàng chuẩn bị được giao.</p>
-														<h3 style="font-size:13px;font-weight:bold;color:'.$emailer->getEmail('color').';text-transform:uppercase;margin:20px 0 0 0;padding: 0 0 5px;border-bottom:1px solid #ddd">Thông tin đơn hàng #'.$madonhang.' <span style="font-size:12px;color:#777;text-transform:none;font-weight:normal">(Ngày '.date('d',$emailer->getEmail('datesend')).' tháng '.date('m',$emailer->getEmail('datesend')).' năm '.date('Y H:i:s',$emailer->getEmail('datesend')).')</span></h3>
+														<h3 style="font-size:13px;font-weight:bold;color:'.$emailer->getEmail('color').';text-transform:uppercase;margin:20px 0 0 0;padding: 0 0 5px;border-bottom:1px solid #ddd">Information line #'.$madonhang.' <span style="font-size:12px;color:#777;text-transform:none;font-weight:normal">(Ngày '.date('d',$emailer->getEmail('datesend')).' tháng '.date('m',$emailer->getEmail('datesend')).' năm '.date('Y H:i:s',$emailer->getEmail('datesend')).')</span></h3>
 													</td>
 												</tr>
 											<tr>
@@ -318,8 +321,8 @@
 											<table border="0" cellpadding="0" cellspacing="0" width="100%">
 												<thead>
 													<tr>
-														<th align="left" style="padding:6px 9px 0px 0px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;font-weight:bold" width="50%">Thông tin thanh toán</th>
-														<th align="left" style="padding:6px 0px 0px 9px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;font-weight:bold" width="50%">Địa chỉ giao hàng</th>
+														<th align="left" style="padding:6px 9px 0px 0px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;font-weight:bold" width="50%">Billing Information</th>
+														<th align="left" style="padding:6px 0px 0px 9px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;font-weight:bold" width="50%">Delivery address</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -337,17 +340,17 @@
 														<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal"><strong>Hình thức thanh toán: </strong> '.$htttText.'';
 														if($ship)
 														{
-															$contentCustomer.='<br><strong>Phí vận chuyển: </strong> '.number_format($ship,0,'','.').'đ';
+															$contentCustomer.='<br><strong>Transport fee: </strong> '.number_format($ship,2,'.',',').' USD';
 														}
 														if($endowID)
 														{
 															if($endowType==1)
 															{
-																$contentCustomer.='<br><strong>Ưu đãi: </strong> -'.$endow.'%';
+																$contentCustomer.='<br><strong>Endow: </strong> -'.$endow.'%';
 															}
 															else if($endowType==2)
 															{
-																$contentCustomer.='<br><strong>Ưu đãi: </strong> -'.$endow.'đ';
+																$contentCustomer.='<br><strong>Endow: </strong> -'.$endow.' USD';
 															}
 														}
 														$contentCustomer.='</td>
@@ -358,35 +361,35 @@
 										</tr>
 										<tr>
 											<td>
-											<p style="margin:4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal"><strong>Yêu cầu khác:</strong> <i>'.$yeucaukhac.'</i></p>
+											<p style="margin:4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal"><strong>Other requirements:</strong> <i>'.$yeucaukhac.'</i></p>
 											</td>
 										</tr>
 										<tr>
 											<td>
-											<h2 style="text-align:left;margin:10px 0;border-bottom:1px solid #ddd;padding-bottom:5px;font-size:13px;color:'.$emailer->getEmail('color').'">CHI TIẾT ĐƠN HÀNG</h2>
+											<h2 style="text-align:left;margin:10px 0;border-bottom:1px solid #ddd;padding-bottom:5px;font-size:13px;color:'.$emailer->getEmail('color').'">ORDER DETAILS</h2>
 
 											<table border="0" cellpadding="0" cellspacing="0" style="background:#f5f5f5" width="100%">
 												<thead>
 													<tr>
-														<th align="left" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Sản phẩm</th>
-														<th align="left" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Đơn giá</th>
-														<th align="center" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px;min-width:55px;">Số lượng</th>
-														<th align="right" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Tổng tạm</th>
+														<th align="left" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Product</th>
+														<th align="left" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Unit price</th>
+														<th align="center" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px;min-width:55px;">Quantity</th>
+														<th align="right" bgcolor="'.$emailer->getEmail('color').'" style="padding:6px 9px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:14px">Temporary total</th>
 													</tr>
 												</thead>
 												'.$chitietdonhang.'
 											</table>
-											<div style="margin:auto;text-align:center"><a href="'.$emailer->getEmail('home').'" style="display:inline-block;text-decoration:none;background-color:'.$emailer->getEmail('color').'!important;text-align:center;border-radius:3px;color:#fff;padding:5px 10px;font-size:12px;font-weight:bold;margin-top:5px" target="_blank">Chi tiết đơn hàng tại '.$emailer->getEmail('company:website').'</a></div>
+											<div style="margin:auto;text-align:center"><a href="'.$emailer->getEmail('home').'" style="display:inline-block;text-decoration:none;background-color:'.$emailer->getEmail('color').'!important;text-align:center;border-radius:3px;color:#fff;padding:5px 10px;font-size:12px;font-weight:bold;margin-top:5px" target="_blank">Order details at '.$emailer->getEmail('company:website').'</a></div>
 											</td>
 										</tr>
 										<tr>
 											<td>&nbsp;
-												<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal;border:1px '.$emailer->getEmail('color').' dashed;padding:10px;list-style-type:none">Bạn cần được hỗ trợ ngay? Chỉ cần gửi mail về <a href="mailto:'.$emailer->getEmail('company:email').'" style="color:'.$emailer->getEmail('color').';text-decoration:none" target="_blank"> <strong>'.$emailer->getEmail('company:email').'</strong> </a>, hoặc gọi về hotline <strong style="color:'.$emailer->getEmail('color').'">'.$emailer->getEmail('company:hotline').'</strong> '.$emailer->getEmail('company:worktime').'. '.$emailer->getEmail('company:website').' luôn sẵn sàng hỗ trợ bạn bất kì lúc nào.</p>
+												<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal;border:1px '.$emailer->getEmail('color').' dashed;padding:10px;list-style-type:none">Need help right away? Just send an email to <a href="mailto:'.$emailer->getEmail('company:email').'" style="color:'.$emailer->getEmail('color').';text-decoration:none" target="_blank"> <strong>'.$emailer->getEmail('company:email').'</strong> </a>, or call the hotline <strong style="color:'.$emailer->getEmail('color').'">'.$emailer->getEmail('company:hotline').'</strong> '.$emailer->getEmail('company:worktime').'. '.$emailer->getEmail('company:website').' always ready to help you at any time.</p>
 											</td>
 										</tr>
 										<tr>
 											<td>&nbsp;
-											<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;margin:0;padding:0;line-height:18px;color:#444;font-weight:bold">Một lần nữa '.$emailer->getEmail('company:website').' cảm ơn quý khách.</p>
+											<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;margin:0;padding:0;line-height:18px;color:#444;font-weight:bold">Once again '.$emailer->getEmail('company:website').' thank you.</p>
 											<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal;text-align:right"><strong><a href="'.$emailer->getEmail('home').'" style="color:'.$emailer->getEmail('color').';text-decoration:none;font-size:14px" target="_blank">'.$emailer->getEmail('company').'</a> </strong></p>
 											</td>
 										</tr>
@@ -404,9 +407,9 @@
 						<tbody>
 							<tr>
 								<td>
-								<p align="left" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:18px;color:#4b8da5;padding:10px 0;margin:0px;font-weight:normal">Quý khách nhận được email này vì đã mua hàng tại '.$emailer->getEmail('company:website').'.<br>
-								Để chắc chắn luôn nhận được email thông báo, xác nhận mua hàng từ '.$emailer->getEmail('company:website').', quý khách vui lòng thêm địa chỉ <strong><a href="mailto:'.$emailer->getEmail('email').'" target="_blank">'.$emailer->getEmail('email').'</a></strong> vào số địa chỉ (Address Book, Contacts) của hộp email.<br>
-								<b>Địa chỉ:</b> '.$emailer->getEmail('company:address').'</p>
+								<p align="left" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:18px;color:#4b8da5;padding:10px 0;margin:0px;font-weight:normal">You received this email because you made a purchase at '.$emailer->getEmail('company:website').'.<br>
+								To be sure to always receive email notifications, purchase confirmation from '.$emailer->getEmail('company:website').', Please add your address <strong><a href="mailto:'.$emailer->getEmail('email').'" target="_blank">'.$emailer->getEmail('email').'</a></strong> Enter the address number (Address Book, Contacts) of the email box.<br>
+								<b>Address:</b> '.$emailer->getEmail('company:address').'</p>
 								</td>
 							</tr>
 						</tbody>
@@ -417,7 +420,7 @@
 		</table>';
 
 		/* lưu đơn hàng */
-		$data_donhang['id_user'] = ($_SESSION['login_member']['id']) ? $_SESSION['login_member']['id'] : 0;
+		$data_donhang['id_user'] = ($_SESSION[$login_member]['id']) ? $_SESSION[$login_member]['id'] : 0;
 		$data_donhang['madonhang'] = $madonhang;
 		$data_donhang['phiship'] = $ship;
 		$data_donhang['phicoupon'] = $endow;
@@ -442,7 +445,7 @@
 				$code = $_SESSION['cart'][$i]['code'];
 				$size = $_SESSION['cart'][$i]['size'];
 				$code = $_SESSION['cart'][$i]['code'];
-				$proinfo = $cart->getPriceProduct($pid,$size);
+				$proinfo = $cart->get_product_info($pid);
 				$pmau = $cart->get_product_mau($color);
 				$psize = $cart->get_product_size($size);
 				if($q==0) continue;
@@ -463,9 +466,9 @@
 
 		if(!empty($optsetting['email'])){
 			$arrayEmail = null;
-			$subject = "Thông báo xác nhận đơn hàng #".$madonhang;
+			$subject = "Order Confirmation Notice #".$madonhang;
 			$message = $contentAdmin;
-			$emailer->sendEmail("admin", $arrayEmail, $subject, $message, $file);
+			//$emailer->sendEmail("admin", $arrayEmail, $subject, $message, $file);
 		}
 		/* Send email customer */
 		if(!empty($email)){
@@ -477,13 +480,13 @@
 			);
 			$subject = "Thông báo xác nhận đơn hàng #".$madonhang;
 			$message = $contentCustomer;
-			$emailer->sendEmail("customer", $arrayEmail, $subject, $message, $file);
+			//$emailer->sendEmail("customer", $arrayEmail, $subject, $message, $file);
 		}
 		$_SESSION['orrder-success']['ten']=$data_donhang['hoten'];
 		$_SESSION['orrder-success']['diachi']=$data_donhang['diachi'];
 		$_SESSION['orrder-success']['gia']=number_format($data_donhang['tonggia'],0, ',', '.')."đ";
 		unset($_SESSION['coupon']);
 	  	unset($_SESSION['cart']);
-		$func->transfer('Đặt hàng thành công <br/>Mã đơn hàng của bạn là: '.$madonhang, $config_base.'thanh-cong');
+		$func->transfer('Order successfully <br/>Your order number is: '.$madonhang, $config_base);
 	}
 ?>

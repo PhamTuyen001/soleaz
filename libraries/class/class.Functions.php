@@ -35,6 +35,22 @@
 			else if(array_search('index.php', $urls)) $urls = array_diff($urls, ["index.php"]);
 			if(in_array($url, $urls)) $this->redirect($config_base,301);
 		}
+		public function checkwishlist($id){
+			global $login_member,$d;
+			if(empty($_SESSION[$login_member])) return true;
+			$row=$this->d->rawQueryOne("select * from #_wishlist where id_product=? and id_user=?",array($id,$_SESSION[$login_member]['id']));
+			if(!empty($row['id'])) return false;
+			else return true;
+
+		}
+
+		public function checkwishlistCount(){
+			global $login_member,$d;
+			if(empty($_SESSION[$login_member])) return 0;
+			$row=$this->d->rawQueryOne("select count(id) as dem from #_wishlist where id_user=?",array($_SESSION[$login_member]['id']));
+			return $row['dem'];
+
+		}
 		/* Build Schema */
 		public function buildSchemaProduct($id_pro,$name,$image,$description,$code_pro,$name_brand,$name_author,$url,$price)
 		{
@@ -301,6 +317,8 @@
 		/* Lấy hình thức thanh toán */
 		public function get_payments($id=0)
 		{
+			global $lang;
+			if($id==0) return '	PayPal Payment';
 			$row = $this->d->rawQueryOne("select tenvi from #_news where id = ?",array($id));
 			return $row['tenvi'];
 		}

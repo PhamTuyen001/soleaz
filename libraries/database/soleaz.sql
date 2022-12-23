@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 22, 2022 lúc 11:32 AM
--- Phiên bản máy phục vụ: 10.1.36-MariaDB
--- Phiên bản PHP: 5.6.38
+-- Thời gian đã tạo: Th12 23, 2022 lúc 01:24 AM
+-- Phiên bản máy phục vụ: 10.1.34-MariaDB
+-- Phiên bản PHP: 5.6.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -3238,7 +3238,30 @@ INSERT INTO `table_counter` (`id`, `tm`, `ip`) VALUES
 (9865, 1671699562, '::1'),
 (9866, 1671700581, '::1'),
 (9867, 1671701517, '::1'),
-(9868, 1671704455, '::1');
+(9868, 1671704455, '::1'),
+(0, 1671709836, '::1'),
+(9869, 1671710867, '::1'),
+(9870, 1671712507, '::1'),
+(9871, 1671713813, '::1'),
+(9872, 1671715128, '::1'),
+(9873, 1671716083, '::1'),
+(9874, 1671717369, '::1'),
+(9875, 1671718459, '::1'),
+(9876, 1671719920, '::1'),
+(9877, 1671720853, '::1'),
+(9878, 1671721800, '::1'),
+(9879, 1671727065, '::1'),
+(9880, 1671729572, '::1'),
+(9881, 1671730545, '::1'),
+(9882, 1671731507, '::1'),
+(9883, 1671732436, '::1'),
+(9884, 1671733746, '::1'),
+(9885, 1671735264, '::1'),
+(9886, 1671736310, '::1'),
+(9887, 1671737224, '::1'),
+(9888, 1671738185, '::1'),
+(9889, 1671739122, '::1'),
+(9890, 1671740067, '::1');
 
 -- --------------------------------------------------------
 
@@ -3268,7 +3291,8 @@ CREATE TABLE `table_coupon` (
 --
 
 INSERT INTO `table_coupon` (`id`, `ma`, `stt`, `loai`, `tinhtrang`, `chietkhau`, `ngaybatdau`, `ngayketthuc`, `price`, `id_user`, `gia`, `tenvi`, `tenen`, `tentl`) VALUES
-(121, 'xle8e8779', 1, 1, 0, 10, 1671642000, 1672419600, 0, '', 500, NULL, 'Giảm 10% cho đơn hàng từ 150 USD', '');
+(121, 'xle8e8779', 1, 1, 0, 10, 1671642000, 1672419600, 0, '', 500, NULL, 'Giảm 10% cho đơn hàng từ 150 USD', ''),
+(122, 'PCT76a744', 1, 2, 0, 15, 1671728400, 1672419600, 0, '', 300, '', 'GIẢM 15 USD CHO ĐƠN HÀNG TỪ 300 USD', '');
 
 -- --------------------------------------------------------
 
@@ -4231,7 +4255,7 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (99, 'xemthem', 'Xem thêm', 'View more', 1, 'Tingnan ang higit pa'),
 (102, 'tuyendung', 'Tuyển dụng', 'Recruitment', 1, NULL),
 (108, 'gia', 'Giá', 'Price', 1, NULL),
-(221, 'thongtincanhan', 'Thông tin cá nhân', 'Information personal', 1, NULL),
+(221, 'thongtincanhan', 'Thông tin cá nhân', 'Personal information', 1, 'Personal na impormasyon'),
 (193, 'thuvienanh', 'Thư viện ảnh', 'Album', 1, NULL),
 (194, 'sanphamnoibat', 'Sản phẩm nổi bật', 'Featured products', 1, 'Mga Itinatampok na Produkto'),
 (112, 'ketquatimkiem', 'Kết quả tìm kiếm', 'Search results', 1, NULL),
@@ -4313,8 +4337,8 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (264, 'nhapdiachi', 'Nhập địa chỉ của bạn', 'Enter your address', 1, NULL),
 (265, 'nhapngaysinh', 'Nhập ngày sinh', 'Enter your birthday', 1, 'Ilagay ang iyong kaarawan'),
 (266, 'gioitinh', 'Giới tính', 'Gender', 1, NULL),
-(267, 'nam', 'Nam', 'Male', 1, NULL),
-(268, 'nu', 'Nữ', 'Female', 1, NULL),
+(267, 'nam', 'Nam', 'Male', 1, 'Lalaki'),
+(268, 'nu', 'Nữ', 'Female', 1, 'Babae'),
 (269, 'kichhoat', 'Kích hoạt', 'Active', 1, NULL),
 (270, 'nhapmakichhoat', 'Nhập mã kích hoạt', 'Enter your active code', 1, NULL),
 (271, 'nhapmatkhaucu', 'Nhập mật khẩu cũ', 'Enter old password', 1, 'Ipasok ang lumang password'),
@@ -4349,13 +4373,13 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (307, 'vuilongnhapngaysinh', 'Vui lòng nhập ngày sinh', 'Please enter your birthday', 0, 'Pakilagay ang iyong kaarawan'),
 (308, 'ngaysinh', 'Ngày sinh', 'Date of birth', 0, 'Araw ng kapanganakan'),
 (312, 'vuilongnhapmakichhoat', 'Vui lòng nhập mã kích hoạt', 'Please enter the activation code', 0, NULL),
-(315, 'dangxuat', 'Đăng xuất', 'Logout', 0, NULL),
+(315, 'dangxuat', 'Đăng xuất', 'Log out', 0, 'Log out'),
 (316, 'homnay', 'Thống kê ngày', 'Today', 0, NULL),
 (317, 'homqua', 'Hôm qua', 'Yesterday', 0, NULL),
 (318, 'thongbao', 'Thông báo', 'Notify', 0, NULL),
 (319, 'thoat', 'Thoát', 'Exit', 0, NULL),
 (320, 'chuanhaptukhoatimkiem', 'Chưa nhập từ khóa tìm kiếm', 'No search keywords entered', 0, NULL),
-(322, 'capnhatthongtin', 'Cập nhật thông tin', 'Update information', 0, NULL),
+(322, 'capnhatthongtin', 'Cập nhật thông tin', 'My Account', 0, 'Aking Account'),
 (323, 'noidungdangcapnhat', 'Nội dung đang cập nhật', 'Content is updating', 0, 'Nag-a-update ang nilalaman'),
 (324, 'hotro', 'Hỗ trợ', NULL, 0, NULL),
 (325, 'tochuc', 'Tổ chức', NULL, 0, NULL),
@@ -4421,7 +4445,28 @@ INSERT INTO `table_lang` (`id`, `giatri`, `langvi`, `langen`, `stt`, `langtl`) V
 (386, 'txt3', '', 'and login with that sdt or email with any password to activate the account or contact Levents cskh for support', 0, 'at mag-login gamit ang sdt na iyon o email gamit ang anumang password para i-activate ang account o makipag-ugnayan sa Levents cskh para sa suporta'),
 (387, 'nhaplaimatkhaukhongchinhxac', '', 'Re-enter incorrect password', 0, 'Ipasok muli ang maling password'),
 (388, 'emailorsodienthoaidatontai', '', 'Email or phone number already exists', 0, 'Umiiral na ang email o numero ng telepono'),
-(389, 'coloixayravuilongthulaisau', '', 'An error occurred, please try again later', 0, 'May naganap na error. Mangyaring subukan muli sa ibang pagkakataon');
+(389, 'coloixayravuilongthulaisau', '', 'An error occurred, please try again later', 0, 'May naganap na error. Mangyaring subukan muli sa ibang pagkakataon'),
+(390, 'bankhongcogitronggiohang', '', 'You don\'t have any products in the store.', 0, 'Wala kang mga produkto sa iyong shopping cart.'),
+(391, 'loidangnhap', '', 'Username or password incorrect. Or your account has not been confirmed from the Website Admin', 0, 'Mali ang username o password. O ang iyong account ay hindi nakumpirma mula sa Admin ng Website'),
+(392, 'myvoucher', '', 'My Voucher', 0, 'Aking Voucher'),
+(393, 'myaddress', '', 'Address', 0, 'Address'),
+(394, 'myorder', '', 'My order', 0, 'Ang order ko'),
+(395, 'wishlist', '', 'Wishlist', 0, 'Wishlist'),
+(396, 'chongioithinhcuaban', '', 'Choose your gender', 0, 'Piliin ang iyong kasarian'),
+(397, 'address', '', 'Address', 0, 'Address'),
+(398, 'themdiachimoi', '', 'Add new address', 0, 'Magdagdag ng bagong address'),
+(399, 'hovanten', '', 'First and last name', 0, 'Pangalan at apelyido'),
+(400, 'macdinh', '', 'Default', 0, 'Default'),
+(401, 'chinhsua', '', 'Editing', 0, 'Pag-edit'),
+(402, 'thietlapmacdinh', '', 'Default settings', 0, 'Mga default na setting'),
+(403, 'themmoi', '', 'Add New', 0, 'Magdagdag ng bago'),
+(404, 'chinhsuadiachigiaohang', '', 'Edit shipping address', 0, 'I-edit ang address ng pagpapadala'),
+(405, 'themdiachigiaohang', '', 'Add shipping address', 0, 'Magdagdag ng address sa pagpapadala'),
+(406, 'hansudung', '', 'Expiry date: Until the end of the day', 0, 'Petsa ng pag-expire: Hanggang sa katapusan ng araw'),
+(407, 'ngaybatdau', '', 'Start day', 0, 'Araw ng pagsisimula'),
+(408, 'mywishlist', '', 'Wishlist', 0, 'Wishlist'),
+(409, 'diachidaluutru', '', 'Stored address', 0, 'Naka-imbak na address'),
+(410, 'themdiachimoi', '', 'Add new location', 0, 'Magdagdag ng bagong address');
 
 -- --------------------------------------------------------
 
@@ -4656,7 +4701,32 @@ CREATE TABLE `table_member` (
 --
 
 INSERT INTO `table_member` (`id`, `id_social`, `username`, `password`, `maxacnhan`, `avatar`, `ten`, `dienthoai`, `email`, `diachi`, `gioitinh`, `login_session`, `lastlogin`, `hienthi`, `ngaysinh`, `stt`) VALUES
-(2, 0, '', 'ba79a2988c454a06a105bfa547c02974', '', '', 'Quang Tuyên Phạm', '0901411294', 'phamtuyen.nina@gmail.com', '', 0, '', '', 1, 1671728400, 0);
+(2, 0, '', '6ef1e92b32eb821bbbf15e14945ce6f0', '', 'mask-group-5-6136.png', 'Quang Tuyên Phạm', '0901411294', 'phamtuyen.nina@gmail.com', '', 1, '688967d942c396dbc1fa8c390acc5cb8', '1671738017', 1, 757357200, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `table_member_address`
+--
+
+CREATE TABLE `table_member_address` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL DEFAULT '0',
+  `city` int(11) NOT NULL DEFAULT '0',
+  `district` int(11) NOT NULL DEFAULT '0',
+  `wards` int(11) NOT NULL DEFAULT '0',
+  `ten` varchar(255) DEFAULT NULL,
+  `diachi` varchar(255) DEFAULT NULL,
+  `macdinh` int(11) NOT NULL,
+  `dienthoai` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `table_member_address`
+--
+
+INSERT INTO `table_member_address` (`id`, `id_user`, `city`, `district`, `wards`, `ten`, `diachi`, `macdinh`, `dienthoai`) VALUES
+(5, 2, 50, 602, 8745, 'Quang Tuyên Phạm', 'Tòa nhà SaiGonTel, lô 46 Công viên phần mềm Quang Trung, Phường Tân chánh hiệp, Quận 12.', 1, '0932401108');
 
 -- --------------------------------------------------------
 
@@ -4952,6 +5022,15 @@ CREATE TABLE `table_order` (
   `stt` int(11) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `table_order`
+--
+
+INSERT INTO `table_order` (`id`, `id_user`, `madonhang`, `hoten`, `dienthoai`, `diachi`, `email`, `httt`, `tamtinh`, `tonggia`, `city`, `district`, `wards`, `phiship`, `phicoupon`, `loaicoupon`, `idcoupon`, `yeucaukhac`, `ghichu`, `ngaytao`, `tinhtrang`, `stt`) VALUES
+(40, 2, 'XRQDIZ', 'Quang Tuyên Phạm', '0901411294', 'Tòa nhà SaiGonTel, lô 46 Công viên phần mềm Quang Trung, Phường Tân chánh hiệp, Quận 12.', 'phamtuyen.nina@gmail.com', 11, 300, 300, 50, 602, 8745, 0, 0, 0, 0, 'đặt chứ ko có tiền láy', '', 1671740067, 1, 1),
+(41, 2, 'BKS3DK', 'Quang Tuyên Phạm', '0901411294', 'Tòa nhà SaiGonTel, lô 46 Công viên phần mềm Quang Trung, Phường Tân chánh hiệp, Quận 12.', 'phamtuyen.nina@gmail.com', 11, 300, 300, 50, 602, 8745, 0, 0, 0, 0, 'đặt chứ ko có tiền láy', '', 1671740079, 1, 1),
+(42, 2, '3JVTDS', 'Quang Tuyên Phạm', '0901411294', 'Tòa nhà SaiGonTel, lô 46 Công viên phần mềm Quang Trung, Phường Tân chánh hiệp, Quận 12.', 'phamtuyen.nina@gmail.com', 0, 900, 885, 50, 602, 8745, 0, 15, 2, 122, '', '', 1671740215, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -4971,6 +5050,18 @@ CREATE TABLE `table_order_detail` (
   `giamoi` double DEFAULT '0',
   `soluong` int(11) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `table_order_detail`
+--
+
+INSERT INTO `table_order_detail` (`id`, `id_product`, `id_order`, `photo`, `ten`, `code`, `mau`, `size`, `gia`, `giamoi`, `soluong`) VALUES
+(101, 183, 40, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', 'orange', 'Size XXS', 250, 150, 1),
+(100, 183, 40, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', 'orange', 'Size L', 250, 150, 1),
+(102, 183, 41, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', 'orange', 'Size L', 250, 150, 1),
+(103, 183, 41, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', 'orange', 'Size XXS', 250, 150, 1),
+(104, 183, 42, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', 'orange', 'Size L', 250, 150, 4),
+(105, 183, 42, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', 'orange', 'Size XXS', 250, 150, 2);
 
 -- --------------------------------------------------------
 
@@ -5435,7 +5526,8 @@ INSERT INTO `table_photo` (`id`, `noibat`, `photo`, `noidungen`, `noidungvi`, `m
 (74, 0, 'lh1-98460.svg', '', '', '', '', 'Membership Policy', '', '', '', '', 'icon-lienhe', 'photo_multi', 1, 1, 0, 0, '', '', '', '', ''),
 (75, 0, 'lh2-88891.svg', '', '', '', '', 'Shopping Guide', '', '', '', '', 'icon-lienhe', 'photo_multi', 1, 1, 0, 0, '', '', '', '', ''),
 (76, 0, 'lh3-85382.svg', '', '', '', '', 'Warranty Policy', '', '', '', '', 'icon-lienhe', 'photo_multi', 1, 1, 0, 0, '', '', '', '', ''),
-(77, 0, 'lh4-27323.svg', '', '', '', '', 'Q & A', '', '', '', '', 'icon-lienhe', 'photo_multi', 1, 1, 0, 0, '', '', '', '', '');
+(77, 0, 'lh4-27323.svg', '', '', '', '', 'Q & A', '', '', '', '', 'icon-lienhe', 'photo_multi', 1, 1, 0, 0, '', '', '', '', ''),
+(78, 0, 'mask-group-6-2339.png', '', '', '', '', '', '', '', '', '', 'bn-user', 'photo_static', 0, 1, 1671717405, 0, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -5497,7 +5589,7 @@ INSERT INTO `table_product` (`id`, `id_list`, `id_item`, `id_cat`, `id_sub`, `id
 (180, 21, 0, 45, 0, 0, '', 0, '', 1, 0, 'b-2-100-6577.jpg', '', '', 'levents-popular-logo-20-tee-red', '', '', '', '', 'LEVENTS® POPULAR LOGO 2.0 TEE/ RED', '', '', '', '', 0, 0, 0, 0, '', 3, 1, 'outfit', 1671506208, 0, 0, '', '', '', '', 'c2-font-552x944-100-9025.jpg', 0, 0),
 (181, 21, 0, 45, 0, 0, '', 0, '', 1, 0, 'a1-font-552x944-100-9094.jpg', '', '', 'levents-popular-logo-20-tee-red1', '', '', '', '', 'LEVENTS® POPULAR LOGO 2.0 TEE/ RED1', '', '', '', '', 0, 0, 0, 0, '', 2, 1, 'outfit', 1671506230, 0, 0, '', '', '', '', 'b2-font-552x944-100-9215.jpg', 0, 0),
 (182, 20, 0, 44, 0, 0, '', 0, '', 1, 0, 'b2-font-552x944-100-5174.jpg', '{\"p\":\"b2-font-552x944-100-5174.jpg\",\"w\":553,\"h\":945,\"m\":\"image\\/jpeg\"}', '', 'levents-popular-logo-20-tee-red2', '&lt;p&gt;Model: Height 165cm, weight 46kg&lt;/p&gt;\r\n\r\n&lt;p&gt;Wearing: Size 2&lt;/p&gt;\r\n', '', '', '', 'LEVENTS® POPULAR LOGO 2.0 TEE/ RED2', '', '', '', '', 0, 0, 0, 0, '', 1, 1, 'outfit', 1671506253, 1671526721, 20, '', '', '', '', 'b-2-100-2915.jpg', 0, 0),
-(183, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', '{\"p\":\"z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg\",\"w\":1000,\"h\":1000,\"m\":\"image\\/jpeg\"}', '', 'levents-poppop-puffer-shoulder-bag-blackpink', '&lt;p&gt;Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.&lt;/p&gt;\r\n', '', '', '', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', '', '', 'HTHM-000280', 250, 40, 150, 0, '', 1, 1, 'san-pham', 1671519316, 1671610741, 220, '', '', '', '', 'z38354743302143097975e2d8f1a6826e019382bd06c0cdf9bfec51e224ba2ae69c88a14df1fe7-4333.jpg', 1, 0),
+(183, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg', '{\"p\":\"z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3906.jpg\",\"w\":1000,\"h\":1000,\"m\":\"image\\/jpeg\"}', '', 'levents-poppop-puffer-shoulder-bag-blackpink', '&lt;p&gt;Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.&lt;/p&gt;\r\n', '', '', '', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink', '', '', '', 'HTHM-000280', 250, 40, 150, 0, '', 1, 1, 'san-pham', 1671519316, 1671610741, 275, '', '', '', '', 'z38354743302143097975e2d8f1a6826e019382bd06c0cdf9bfec51e224ba2ae69c88a14df1fe7-4333.jpg', 1, 0),
 (185, 0, 0, 0, 0, 0, '', 9, '', 0, 0, 'z3835473589564b78c19d7de3deefb60fd2c0b333a46a64fd1604a95d642dfa13b757bf46bce34-1000x1000-3836.jpg', '', '', '', '', '', '', '', 'Incipience Black T-Shirt Red', '', '', '', '', 0, 0, 0, 0, '', 2, 1, 'san-pham', 1671522950, 1671523484, 0, 'Incipience Black T-Shirt ', '', '', '', '', 0, 183),
 (186, 0, 0, 0, 0, 0, '', 10, '', 0, 0, 'z38354743302143097975e2d8f1a6826e019382bd06c0cdf9bfec51e224ba2ae69c88a14df1fe7-1716.jpg', '', '', '', '', '', '', '', 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink orange', '', '', '', '', 0, 0, 0, 0, '', 1, 1, 'san-pham', 1671523535, 1671613265, 0, 'Levents® | Poppop Puffer Shoulder Bag/ BlackPink ', '', '', '', '', 0, 183),
 (187, 14, 0, 37, 0, 0, '', 0, '', 1, 1, 'z39696306528023c4093d65866f56da554a6fa37e5298f-1951.jpg', '', '', 'levents-quote-tee-black', '', '', '', '', 'Levents® Quote Tee/ Black', '', '', '', 'BE35VGRT', 350, 45, 193, 0, '', 1, 1, 'san-pham', 1671536390, 0, 0, '', '', '', '', 'z396963064625880473d4b6f19217831138b428c8aa0c1-9998.jpg', 1, 0),
@@ -26072,7 +26164,7 @@ CREATE TABLE `table_user` (
 --
 
 INSERT INTO `table_user` (`id`, `id_nhomquyen`, `username`, `password`, `maxacnhan`, `avatar`, `ten`, `dienthoai`, `email`, `diachi`, `gioitinh`, `login_session`, `user_token`, `lastlogin`, `hienthi`, `quyen`, `ngaysinh`, `stt`, `role`) VALUES
-(1, 0, 'admin', '4e28193860f819b4c3d149b6b5ba872a', '', '', 'ADMIN', '', '', '', 0, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', 'd4a6fefbb95f823c9cb876470ea1ac14', '1671704400', 1, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', 0, 0, 3);
+(1, 0, 'admin', '4e28193860f819b4c3d149b6b5ba872a', '', '', 'ADMIN', '', '', '', 0, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', 'f6ad1b9dd2979e0d2191d20c582855dc', '1671740403', 1, 'bc52f3ccb3d56df2d4aa1efe7c78bb0a', 0, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -26165,7 +26257,9 @@ INSERT INTO `table_user_log` (`id`, `id_user`, `ip`, `timelog`, `user_agent`) VA
 (56, 1, '::1', 1671610671, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
 (57, 1, '::1', 1671674641, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
 (58, 1, '::1', 1671691210, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
-(59, 1, '::1', 1671697959, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36');
+(59, 1, '::1', 1671697959, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
+(60, 1, '::1', 1671710666, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),
+(61, 1, '::1', 1671729538, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36');
 
 -- --------------------------------------------------------
 
@@ -26184,7 +26278,7 @@ CREATE TABLE `table_user_online` (
 --
 
 INSERT INTO `table_user_online` (`session`, `time`, `ip`) VALUES
-('dn47r9rodjev8v4deg8mgk37k4', 1671705054, '::1');
+('uu77eubc0nm3qmo6v5161jhdi0', 1671740631, '::1');
 
 -- --------------------------------------------------------
 
@@ -36851,6 +36945,25 @@ INSERT INTO `table_wards` (`id`, `id_city`, `id_district`, `ten`, `tenkhongdau`,
 (10618, 63, 740, 'Xã Tân Ân', 'xa-tan-an', '32245', 'Xã', 10618, 1, 0, 1592282349, NULL),
 (10619, 63, 740, 'Xã Đất Mũi', 'xa-dat-mui', '32248', 'Xã', 10619, 1, 0, 1592282349, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `table_wishlist`
+--
+
+CREATE TABLE `table_wishlist` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `table_wishlist`
+--
+
+INSERT INTO `table_wishlist` (`id`, `id_user`, `id_product`) VALUES
+(7, 2, 183);
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -36913,6 +37026,12 @@ ALTER TABLE `table_lang1`
 -- Chỉ mục cho bảng `table_member`
 --
 ALTER TABLE `table_member`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `table_member_address`
+--
+ALTER TABLE `table_member_address`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -37114,6 +37233,12 @@ ALTER TABLE `table_wards`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `table_wishlist`
+--
+ALTER TABLE `table_wishlist`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -37133,13 +37258,13 @@ ALTER TABLE `table_contact`
 -- AUTO_INCREMENT cho bảng `table_counter`
 --
 ALTER TABLE `table_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9869;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9891;
 
 --
 -- AUTO_INCREMENT cho bảng `table_coupon`
 --
 ALTER TABLE `table_coupon`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT cho bảng `table_district`
@@ -37163,7 +37288,7 @@ ALTER TABLE `table_gallery`
 -- AUTO_INCREMENT cho bảng `table_lang`
 --
 ALTER TABLE `table_lang`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=390;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=411;
 
 --
 -- AUTO_INCREMENT cho bảng `table_lang1`
@@ -37176,6 +37301,12 @@ ALTER TABLE `table_lang1`
 --
 ALTER TABLE `table_member`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `table_member_address`
+--
+ALTER TABLE `table_member_address`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `table_news`
@@ -37217,13 +37348,13 @@ ALTER TABLE `table_news_sub`
 -- AUTO_INCREMENT cho bảng `table_order`
 --
 ALTER TABLE `table_order`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT cho bảng `table_order_detail`
 --
 ALTER TABLE `table_order_detail`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT cho bảng `table_permission`
@@ -37241,7 +37372,7 @@ ALTER TABLE `table_permission_group`
 -- AUTO_INCREMENT cho bảng `table_photo`
 --
 ALTER TABLE `table_photo`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT cho bảng `table_product`
@@ -37367,13 +37498,19 @@ ALTER TABLE `table_user_limit`
 -- AUTO_INCREMENT cho bảng `table_user_log`
 --
 ALTER TABLE `table_user_log`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT cho bảng `table_wards`
 --
 ALTER TABLE `table_wards`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10620;
+
+--
+-- AUTO_INCREMENT cho bảng `table_wishlist`
+--
+ALTER TABLE `table_wishlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

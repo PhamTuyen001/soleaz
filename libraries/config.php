@@ -52,8 +52,8 @@
 			)
 		),
 		'order' => array(
-			'check' => false,
-			'coupon' => false,
+			'check' => true,
+			'coupon' => true,
 			'ship' => false
 		),
 		'login' => array(

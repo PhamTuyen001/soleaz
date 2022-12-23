@@ -541,6 +541,20 @@
     $config['photo']['photo_static'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
 
 
+    $nametype = "bn-user";
+    $config['photo']['photo_static'][$nametype]['title_main'] = "Banner trang thành viên";
+    $config['photo']['photo_static'][$nametype]['images'] = true;
+    $config['photo']['photo_static'][$nametype]['tieude'] = false;
+    $config['photo']['photo_static'][$nametype]['link'] = false;
+    $config['photo']['photo_static'][$nametype]['width'] = 1440;
+    $config['photo']['photo_static'][$nametype]['height'] = 400;
+    $config['photo']['photo_static'][$nametype]['thumb'] = '1440x400x1';
+    $config['photo']['photo_static'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF';
+
+
+
+
+
     /* Setting */
     $config['setting']['diachi'] = true;
     $config['setting']['dienthoai'] = true;
@@ -576,7 +590,7 @@
     $config['export']['category'] = true;
 
     /* Quản lý tài khoản */
-    $config['user']['active'] = false;
+    $config['user']['active'] = true;
     $config['user']['admin'] = true;
     $config['user']['visitor'] = true;
 
@@ -584,16 +598,16 @@
     $config['permission'] = false;
 
     /* Quản lý địa điểm */
-    $config['places']['active'] = false;
-    $config['places']['placesship'] = true;
+    $config['places']['active'] = true;
+    $config['places']['placesship'] = false;
 
     /* Quản lý giỏ hàng */
-    $config['order']['active'] = false;
+    $config['order']['active'] = true;
     $config['order']['search'] = true;
-    $config['order']['excel'] = true;
-    $config['order']['word'] = true;
-    $config['order']['excelall'] = true;
-    $config['order']['wordall'] = true;
+    $config['order']['excel'] = false;
+    $config['order']['word'] = false;
+    $config['order']['excelall'] = false;
+    $config['order']['wordall'] = false;
     $config['order']['thumb'] = '100x100x1';
 
     /* Quản lý mã ưu đãi */

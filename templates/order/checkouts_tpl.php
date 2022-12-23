@@ -162,10 +162,26 @@
 								<div class="section">
 									<div class="section-header"><h2 class="section-title"><?=thongtingiaohang?></h2></div>
 									<div class="section-content section-customer-information no-mb">
+										<?php if(empty($rowUser)){?>
 										<p class="section-content-text"><?=bandacotaikhoan?>
 											<a href="account/login"><?=dangnhap?></a>
 										</p>
+										<?php }?>
 										<div class="fieldset">
+											<?php if(!empty($rowAddress)){?>
+							    			<div class="field field-show-floating-label field-required ">
+												<div class="field-input-wrapper field-input-wrapper-select">
+													<label class="field-label" > <?=diachidaluutru?>  </label>
+													<select style="padding-right: 38px;" class="field-input form-control" id="stored_addresses">
+														<option value="0" data-properties="{}"><?=themdiachimoi?>..</option>
+														<?php foreach ($rowAddress as $key => $v) {?>
+														<option value="6" data-properties='<?=json_encode($v,JSON_UNESCAPED_UNICODE )?>'><?=$v['ten']?>, <?=$v['dienthoai']?>, <?=$v['diachi']?> </option>	
+														<?php }?>
+													</select>
+												</div>
+											</div>
+											<?php }?>
+
 											<div class="field field-required  ">
 												<div class="field-input-wrapper">
 													<label class="field-label" for="billing_address_full_name"><?=hovaten?></label>

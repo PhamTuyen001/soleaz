@@ -126,7 +126,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text text-primary font-weight-bold text-capitalize text-sm">Mới đặt</span>
                     <p class="info-box-text text-sm mb-0">Số lượng: <span class="text-danger font-weight-bold"><?=$allMoidat?></span></p>
-                    <p class="info-box-text text-sm mb-0">Tổng giá: <span class="text-danger font-weight-bold"><?=number_format($totalMoidat, 0, ',', '.')?> vnđ</span></p>
+                    <p class="info-box-text text-sm mb-0">Tổng giá: <span class="text-danger font-weight-bold"><?=number_format($totalMoidat, 2, '.', ',')?> USD</span></p>
                 </div>
             </div>
         </div>
@@ -136,7 +136,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text text-info font-weight-bold text-capitalize text-sm">Đã xác nhận</span>
                     <p class="info-box-text text-sm mb-0">Số lượng: <span class="text-danger font-weight-bold"><?=$allDaxacnhan?></span></p>
-                    <p class="info-box-text text-sm mb-0">Tổng giá: <span class="text-danger font-weight-bold"><?=number_format($totalDaxacnhan, 0, ',', '.')?> vnđ</span></p>
+                    <p class="info-box-text text-sm mb-0">Tổng giá: <span class="text-danger font-weight-bold"><?=number_format($totalDaxacnhan, 2, '.', ',')?> USD</span></p>
                 </div>
             </div>
         </div>
@@ -147,7 +147,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text text-success font-weight-bold text-capitalize text-sm">Đã giao</span>
                     <p class="info-box-text text-sm mb-0">Số lượng: <span class="text-danger font-weight-bold"><?=$allDagiao?></span></p>
-                    <p class="info-box-text text-sm mb-0">Tổng giá: <span class="text-danger font-weight-bold"><?=number_format($totalDagiao, 0, ',', '.')?> vnđ</span></p>
+                    <p class="info-box-text text-sm mb-0">Tổng giá: <span class="text-danger font-weight-bold"><?=number_format($totalDagiao, 2, '.', ',')?> USD</span></p>
                 </div>
             </div>
         </div>
@@ -157,7 +157,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text text-danger font-weight-bold text-capitalize text-sm">Đã hủy</span>
                     <p class="info-box-text text-sm mb-0">Số lượng: <span class="text-danger font-weight-bold"><?=$allDahuy?></span></p>
-                    <p class="info-box-text text-sm mb-0">Tổng giá: <span class="text-danger font-weight-bold"><?=number_format($totalDahuy, 0, ',', '.')?> vnđ</span></p>
+                    <p class="info-box-text text-sm mb-0">Tổng giá: <span class="text-danger font-weight-bold"><?=number_format($totalDahuy, 2, '.', ',')?> USD</span></p>
                 </div>
             </div>
         </div>
@@ -282,7 +282,7 @@
                                     <span class="text-info"><?=$func->get_payments($items[$i]['httt'])?></span>
                                 </td>
                                 <td class="align-middle">
-                                    <span class="text-danger font-weight-bold"><?=number_format($items[$i]['tonggia'], 0, ',', '.')?> VNĐ</span>
+                                    <span class="text-danger font-weight-bold"><?=number_format($items[$i]['tonggia'], 2, '.', ',')?> USD</span>
                                 </td>
                                 <td class="align-middle">
                                     <?php
@@ -353,7 +353,7 @@
             type    : 'double',
             step    : 1,
             // prefix  : 'đ ',
-            postfix : ' đ',
+            postfix : ' $',
             prettify: true,
             hasGrid : true
         })

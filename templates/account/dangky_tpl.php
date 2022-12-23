@@ -16,11 +16,11 @@
                 </label>
             </div>
             <div class="form__bot form__mb m-cus-btn-f-register"> 
-                <input type="hidden" name="action" value="login">
+                <input type="hidden" name="action" value="register">
                 <button class="rs-form btn-pri c-whi form__submit-small m-btn-loading disabled"><?=dangky?></button>
             </div>
             <span class="d-block form__bot m-cus-text-regis"><?=txt1?> <a href="account/login" class=""> <?=txt2?> </a> <?=txt3?> </span>
-            <div id="response-register mt-3"></div>
+            <div id="response-register" class="mt-3"></div>
         </div>
     </form>
 </div>

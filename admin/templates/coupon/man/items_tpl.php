@@ -95,7 +95,7 @@
 						    			}
 						    			else if($items[$i]['loai']==2)
 						    			{
-						    				echo number_format($items[$i]['chietkhau'],0,'',',').' VNĐ';
+						    				echo number_format($items[$i]['chietkhau'],0,'',',').' USD';
 						    			}
 						    		?>
                                 </td>

@@ -118,7 +118,7 @@
 	);
 
 	/* Find data */
-	if($com != 'tim-kiem' && $com != 'account' && $com != 'sitemap')
+	if($com != 'search' && $com != 'account' && $com != 'sitemap')
 	{
 		foreach($requick as $k => $v)
 		{
@@ -141,7 +141,9 @@
 			}
 		}
 	}
-
+	if(!empty($_SESSION[$login_member])){
+		$rowUser = $d->rawQueryOne("select * from #_member where id=? and hienthi=1",array($_SESSION[$login_member]['id']));
+	}
 	/* Switch coms */
 	switch($com)
 	{
@@ -224,9 +226,9 @@
 			$title_crumb = outfit;
 			break;
 
-		case 'tim-kiem':
+		case 'search':
 			$source = "search";
-			$template = "news/news";
+			$template = "product/product_search";
 			$seo->setSeo('type','object');
 			$title_crumb = timkiem;
 			break;

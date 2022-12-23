@@ -52,7 +52,7 @@ function onSearch(obj)
         alert(LANG['no_keywords']);
         return false;
     } else {
-        location.href = "tim-kiem?keyword="+encodeURI(keyword);
+        location.href = "search?keyword="+encodeURI(keyword);
         loadPage(document.location);            
     }
 }

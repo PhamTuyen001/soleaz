@@ -1,89 +1,53 @@
-<div class="wrap-user">
-    <div class="title-user">
-        <span><?=thongtincanhan?></span>
+<section class="warp-banner-inpage">
+    <p class="text-center">
+        <img class="w-100" src="<?=UPLOAD_PHOTO_L.$banner['photo']?>" alt="<?=$setting['ten'.$lang]?>">
+    </p>
+</section>
+<?php include TEMPLATE.LAYOUT."breadcrumb.php" ?>
+<section class="page-account py-5">
+    <div class="container">
+        <div class="row row-account">
+            <div class="col-12 col-lg-2 col-account col-left-account">
+                <?php include TEMPLATE.LAYOUT."left-account.php" ?>
+            </div>
+            <div class="col-12 col-lg-10 col-account col-right-account">
+                <div class="ttile-account">
+                    <h2><?=thongtincanhan?></h2>
+                </div>
+
+                <div class="info">
+                    <form id="m-edit-account">
+                        <div class="form">
+                            <div class="info-account">
+                                <p>First and last name</p>
+                                <input type="text" required="" name="data[ten]" value="<?=$rowUser['ten']?>" placeholder="First and last name">
+                            </div>
+                            <div class="info-account">
+                                <p>Email</p>
+                                <input type="email" required="" disabled placeholder="Email" value="<?=$rowUser['email']?>">
+                            </div>
+                            <div class="info-account">
+                                <p>Phone Number</p>
+                                <input type="text" required="" disabled placeholder="Phone Number" value="<?=$rowUser['dienthoai']?>">
+                            </div>
+                            <div class="info-account">
+                                <p>Date of birth</p>
+                                <input type="date" required="" data-date="true" name="data[ngaysinh]" value="<?=(@$rowUser['ngaysinh'])?date('Y-m-d',@$rowUser['ngaysinh']):"";?>" placeholder="Date of birth">
+                            </div>
+                            <div class="info-account">
+                                <p>Sex</p>
+                                <select name="data[gioitinh]" required="">
+                                    <option value="0"><?=chongioithinhcuaban?></option>
+                                    <option value="1" <?=($rowUser['gioitinh']==1)?'selected':''?>><?=nam?></option>
+                                    <option value="2" <?=($rowUser['gioitinh']==2)?'selected':''?>><?=nu?></option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="hidden" name="action" value="myinfo">
+                        <button type="submit" value="yes">Save change</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <form class="form-user validation-user" novalidate method="post" action="account/thong-tin" enctype="multipart/form-data">
-        <label for="basic-url"><?=hoten?></label>
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-user"></i></div>
-            </div>
-            <input type="text" class="form-control" id="ten" name="ten" placeholder="<?=nhaphoten?>" value="<?=$row_detail['ten']?>" required>
-            <div class="invalid-feedback"><?=vuilongnhaphoten?></div>
-        </div>
-        <label for="basic-url"><?=taikhoan?></label>
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-user"></i></div>
-            </div>
-            <input type="text" class="form-control" id="username" name="username" placeholder="<?=nhaptaikhoan?>" value="<?=$row_detail['username']?>" readonly required>
-        </div>
-        <label for="basic-url"><?=matkhaucu?></label>
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-lock"></i></div>
-            </div>
-            <input type="password" class="form-control" id="password" name="password" placeholder="<?=nhapmatkhaucu?>">
-        </div>
-        <label for="basic-url"><?=matkhaumoi?></label>
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-lock"></i></div>
-            </div>
-            <input type="password" class="form-control" id="new-password" name="new-password" placeholder="<?=nhapmatkhaumoi?>">
-        </div>
-        <label for="basic-url"><?=nhaplaimatkhaumoi?></label>
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-lock"></i></div>
-            </div>
-            <input type="password" class="form-control" id="new-password-confirm" name="new-password-confirm" placeholder="<?=nhaplaimatkhaumoi?>">
-        </div>
-        <label for="basic-url"><?=gioitinh?></label>
-        <div class="input-group input-user">
-            <div class="radio-user custom-control custom-radio">
-                <input type="radio" id="nam" name="gioitinh" class="custom-control-input" <?=($row_detail['gioitinh']==1)?'checked':''?> value="1" required>
-                <label class="custom-control-label" for="nam"><?=nam?></label>
-            </div>
-            <div class="radio-user custom-control custom-radio">
-                <input type="radio" id="nu" name="gioitinh" class="custom-control-input" <?=($row_detail['gioitinh']==2)?'checked':''?> value="2" required>
-                <label class="custom-control-label" for="nu"><?=nu?></label>
-            </div>
-        </div>
-        <label for="basic-url"><?=ngaysinh?></label>
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-lock"></i></div>
-            </div>
-            <input type="text" class="form-control" id="ngaysinh" name="ngaysinh" placeholder="<?=nhapngaysinh?>" value="<?=date("d/m/Y",$row_detail['ngaysinh'])?>" required>
-            <div class="invalid-feedback"><?=vuilongnhapsodienthoai?></div>
-        </div>
-        <label for="basic-url">Email</label>
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-envelope"></i></div>
-            </div>
-            <input type="email" class="form-control" id="email" name="email" placeholder="<?=nhapemail?>" value="<?=$row_detail['email']?>" required>
-            <div class="invalid-feedback"><?=vuilongnhapdiachiemail?></div>
-        </div>
-        <label for="basic-url"><?=dienthoai?></label>
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-phone-square"></i></div>
-            </div>
-            <input type="number" class="form-control" id="dienthoai" name="dienthoai" placeholder="<?=nhapdienthoai?>" value="<?=$row_detail['dienthoai']?>" required>
-            <div class="invalid-feedback"><?=vuilongnhapsodienthoai?></div>
-        </div>
-        <label for="basic-url"><?=diachi?></label>
-        <div class="input-group input-user">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-map"></i></div>
-            </div>
-            <input type="text" class="form-control" id="diachi" name="diachi" placeholder="<?=nhapdiachi?>" value="<?=$row_detail['diachi']?>" required>
-            <div class="invalid-feedback"><?=vuilongnhapdiachi?></div>
-        </div>
-        <div class="button-user">
-            <input type="submit" class="btn btn-primary btn-block" name="capnhatthongtin" value="<?=capnhat?>" disabled>
-        </div>
-    </form>
-</div>
+</section>

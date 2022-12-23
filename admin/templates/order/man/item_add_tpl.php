@@ -75,7 +75,7 @@
 						<label>Phí vận chuyển:</label>
 						<p class="font-weight-bold text-danger">
 							<?php if(@$item['phiship']) { ?>
-								<?=number_format(@$item['phiship'], 0, ',', '.')?>đ
+								<?=number_format(@$item['phiship'], 2, '.', ',')?>$
 							<?php } else { ?>
 								Không
 							<?php } ?>
@@ -87,9 +87,9 @@
 						<label>Ưu đãi:</label>
 						<p class="font-weight-bold text-danger">
 							<?php if(@$item['loaicoupon']==1) { ?>
-								-<?=number_format(@$item['phicoupon'], 0, ',', '.')?>%
+								-<?=number_format(@$item['phicoupon'], 2, '.', ',')?>%
 							<?php } else if(@$item['loaicoupon']==2) { ?>
-								-<?=number_format(@$item['phicoupon'], 0, ',', '.')?>đ
+								-<?=number_format(@$item['phicoupon'], 2, '.', ',')?>$
 							<?php } else { ?>
 								Không
 							<?php } ?>
@@ -162,10 +162,10 @@
 	                                <td class="align-middle text-center">
 	                                	<div class="price-cart-detail">
 											<?php if($v['giamoi']) { ?>
-												<span class="price-new-cart-detail"><?=number_format($v['giamoi'], 0, ',', '.')?>đ</span>
-												<span class="price-old-cart-detail"><?=number_format($v['gia'], 0, ',', '.')?>đ</span>
+												<span class="price-new-cart-detail"><?=number_format($v['giamoi'], 2, '.', ',')?>$</span>
+												<span class="price-old-cart-detail"><?=number_format($v['gia'], 2, '.', ',')?>$</span>
 											<?php } else { ?>
-												<span class="price-new-cart-detail"><?=number_format($v['gia'], 0, ',', '.')?>đ</span>
+												<span class="price-new-cart-detail"><?=number_format($v['gia'], 2, '.', ',')?>$</span>
 											<?php } ?>
 										</div>
 	                                </td>
@@ -173,10 +173,10 @@
 	                                <td class="align-middle text-right">
 	                                	<div class="price-cart-detail">
 											<?php if($v['giamoi']) { ?>
-												<span class="price-new-cart-detail"><?=number_format($v['giamoi']*$v['soluong'], 0, ',', '.')?>đ</span>
-												<span class="price-old-cart-detail"><?=number_format($v['gia']*$v['soluong'], 0, ',', '.')?>đ</span>
+												<span class="price-new-cart-detail"><?=number_format($v['giamoi']*$v['soluong'], 2, '.', ',')?>$</span>
+												<span class="price-old-cart-detail"><?=number_format($v['gia']*$v['soluong'], 2, '.', ',')?>$</span>
 											<?php } else { ?>
-												<span class="price-new-cart-detail"><?=number_format($v['gia']*$v['soluong'], 0, ',', '.')?>đ</span>
+												<span class="price-new-cart-detail"><?=number_format($v['gia']*$v['soluong'], 2, '.', ',')?>$</span>
 											<?php } ?>
 										</div>
 	                                </td>
@@ -185,7 +185,7 @@
 	                        <?php if((isset($config['order']['ship']) && $config['order']['ship']==true) || (isset($config['order']['coupon']) && $config['order']['coupon']==true)) { ?>
 		                        <tr>
 									<td colspan="5" class="title-money-cart-detail">Tạm tính:</td>
-									<td colspan="1" class="cast-money-cart-detail"><?=number_format(@$item['tamtinh'], 0, ',', '.')?>đ</td>
+									<td colspan="1" class="cast-money-cart-detail"><?=number_format(@$item['tamtinh'], 2, '.', ',')?>$</td>
 								</tr>
 							<?php } ?>
 							<?php if(isset($config['order']['ship']) && $config['order']['ship']==true) { ?>
@@ -193,7 +193,7 @@
 									<td colspan="5" class="title-money-cart-detail">Phí vận chuyển:</td>
 									<td colspan="1" class="cast-money-cart-detail">
 										<?php if(@$item['phiship']) { ?>
-											<?=number_format(@$item['phiship'], 0, ',', '.')?>đ
+											<?=number_format(@$item['phiship'], 2, '.', ',')?>$
 										<?php } else { ?>
 											Không
 										<?php } ?>
@@ -205,9 +205,9 @@
 									<td colspan="5" class="title-money-cart-detail">Ưu đãi:</td>
 									<td colspan="1" class="cast-money-cart-detail">
 										<?php if(@$item['loaicoupon']==1) { ?>
-											-<?=number_format(@$item['phicoupon'], 0, ',', '.')?>%
+											-<?=number_format(@$item['phicoupon'], 2, '.', ',')?>%
 										<?php } else if(@$item['loaicoupon']==2) { ?>
-											-<?=number_format(@$item['phicoupon'], 0, ',', '.')?>đ
+											-<?=number_format(@$item['phicoupon'], 2, '.', ',')?>$
 										<?php } else { ?>
 											Không
 										<?php } ?>
@@ -216,7 +216,7 @@
 							<?php } ?>
 							<tr>
 								<td colspan="5" class="title-money-cart-detail">Tổng giá trị đơn hàng:</td>
-								<td colspan="1" class="cast-money-cart-detail"><?=number_format(@$item['tonggia'], 0, ',', '.')?>đ</td>
+								<td colspan="1" class="cast-money-cart-detail"><?=number_format(@$item['tonggia'], 2, '.', ',')?>$</td>
 							</tr>
 	                    </tbody>
 	                <?php } ?>

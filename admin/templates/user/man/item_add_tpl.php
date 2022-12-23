@@ -28,29 +28,34 @@
             </div>
             <div class="card-body">
             	<div class="row">
-					<div class="form-group col-md-4">
-						<label for="username">Tài khoản: <span class="text-danger">*</span></label>
-						<input type="text" class="form-control" name="data[username]" id="username" placeholder="Tài khoản" value="<?=@$item['username']?>" <?=($act=="edit")?'readonly':'';?> required>
-					</div>
+					<div class="form-group col-12">
+                        <label class="change-photo" for="file">
+                            <p>Upload hình ảnh: <strong class="mt-2 mb-2 text-sm text-danger"><?php echo "Width: 150px, Height: 150px (.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF)" ?></strong></p>
+                            <div class="rounded">
+                                <img class="rounded img-upload" src="<?=UPLOAD_USER.$item['avatar']?>" onerror="src='assets/images/noimage.png'" alt="Alt Photo"/>
+                                <strong class="justify-content-start flex-row mt-2">
+                                    <span class="btn btn-sm bg-gradient-success"><i class="fas fa-camera mr-2"></i>Chọn hình</span>
+                                    <b class="text-sm text-split d-block ml-3"></b>
+                                </strong>
+                            </div>
+                        </label>
+                        
+                        <div class="custom-file my-custom-file d-none">
+                            <input type="file" class="custom-file-input" name="file" id="file">
+                            <label class="custom-file-label" for="file">Chọn file</label>
+                        </div>
+                    </div>
 					<div class="form-group col-md-4">
 						<label for="ten">Họ tên: <span class="text-danger">*</span></label>
 						<input type="text" class="form-control" name="data[ten]" id="ten" placeholder="Họ tên" value="<?=@$item['ten']?>" required>
 					</div>
 					<div class="form-group col-md-4">
-						<label for="password">Mật khẩu:</label>
-						<input type="password" class="form-control" name="data[password]" id="password" placeholder="Mật khẩu" <?=($act=="add")?'required':'';?>>
-					</div>
-					<div class="form-group col-md-4">
-						<label for="confirm_password">Nhập lại mật khẩu:</label>
-						<input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Nhập lại mật khẩu" <?=($act=="add")?'required':'';?>>
-					</div>
-					<div class="form-group col-md-4">
 						<label for="email">Email:</label>
-						<input type="email" class="form-control" name="data[email]" id="email" placeholder="Email" value="<?=@$item['email']?>">
+						<input type="email" class="form-control" <?=($act=="edit")?'readonly':'';?> name="data[email]" id="email" placeholder="Email" value="<?=@$item['email']?>">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="dienthoai">Điện thoại:</label>
-						<input type="text" class="form-control" name="data[dienthoai]" id="dienthoai" placeholder="Điện thoại" value="<?=@$item['dienthoai']?>">
+						<input type="text" class="form-control" <?=($act=="edit")?'readonly':'';?> name="data[dienthoai]" id="dienthoai" placeholder="Điện thoại" value="<?=@$item['dienthoai']?>">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="gioitinh">Giới tính:</label>
@@ -62,11 +67,7 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="ngaysinh">Ngày sinh:</label>
-						<input type="text" class="form-control" name="data[ngaysinh]" id="ngaysinh" placeholder="Ngày sinh" value="<?=(@$item['ngaysinh'])?date('d/m/Y',@$item['ngaysinh']):"";?>" readonly>
-					</div>
-					<div class="form-group col-md-4">
-						<label for="diachi">Địa chỉ:</label>
-						<input type="text" class="form-control" name="data[diachi]" id="diachi" placeholder="Địa chỉ" value="<?=@$item['diachi']?>">
+						<input type="text" class="form-control" name="data[ngaysinh]" id="ngaysinh" placeholder="Ngày sinh" value="<?=(@$item['ngaysinh'])?date('d/m/Y',@$item['ngaysinh']):"";?>">
 					</div>
 				</div>
 				<div class="row align-items-center">
@@ -82,6 +83,23 @@
 						<input type="number" class="form-control form-control-mini d-inline-block align-middle" min="0" name="data[stt]" id="stt" placeholder="Số thứ tự" value="<?=isset($item['stt'])?$item['stt']:1?>">
 					</div>
 				</div>
+            </div>
+        </div>
+        <div class="card card-primary card-outline text-sm">
+        	<div class="card-header">
+                <h3 class="card-title">Thông tin mật khẩu</h3>
+            </div>
+            <div class="card-body">
+            	<div class="row">
+            		<div class="form-group col-md-6">
+						<label for="password">Mật khẩu:</label>
+						<input type="password" class="form-control" name="data[password]" id="password" placeholder="Mật khẩu" <?=($act=="add")?'required':'';?>>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="confirm_password">Nhập lại mật khẩu:</label>
+						<input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Nhập lại mật khẩu" <?=($act=="add")?'required':'';?>>
+					</div>
+            	</div>
             </div>
         </div>
         <div class="card-footer text-sm">

@@ -40,7 +40,7 @@
 				if(in_array($row_tags[$i]['id'],$temp)) $selected = 'selected="selected"';
 				else $selected = '';
 			}
-			$str .= '<option value="'.$row_tags[$i]["id"].'" '.$selected.' /> '.$row_tags[$i]["tenen"].'</option>';
+			$str .= '<option value="'.$row_tags[$i]["id"].'" '.$selected.' /> '.$row_tags[$i]["ten"].' - '.$row_tags[$i]["dienthoai"].'</option>';
 		}
 		$str .= '</select>';
 
@@ -127,7 +127,7 @@
 							<div class="col-5">
 								<select class="form-control" name="data[loai]">
 									<option <?=(isset($item['loai']) && $item['loai']==1)?"selected":""?> value="1">%</option>
-									<option <?=(isset($item['loai']) && $item['loai']==2)?"selected":""?> value="2">VNĐ</option>
+									<option <?=(isset($item['loai']) && $item['loai']==2)?"selected":""?> value="2">USD</option>
 								</select>
 							</div>
 						</div>
@@ -143,10 +143,10 @@
                         </div>
                     </div>
 
-                    <div class="form-group col-md-4">
+                    <!-- <div class="form-group col-md-4">
                         <label class="d-block" for="thanhvien">Chọn thành viên áp dụng:</label>
                         <?=get_thanhvien($item['id_user'])?>
-                    </div>
+                    </div> -->
 
 					<div class="form-group col-md-3">
 						<label for="ngaybatdau">Ngày bắt đầu: <span class="text-danger">*</span></label>
@@ -156,7 +156,15 @@
 						<label for="ngayketthuc">Ngày kết thúc: <span class="text-danger">*</span></label>
 						<input type="text" class="form-control" name="data[ngayketthuc]" id="ngayketthuc" placeholder="Ngày kết thúc" value="<?=($item['ngayketthuc'])?date('d/m/Y',$item['ngayketthuc']):"";?>" required readonly>
 					</div>
-					
+					<?php if($act=='edit') { ?>
+						<div class="form-group col-md-4">
+							<label for="tinhtrang">Tình trạng: <span class="text-danger">*</span></label>
+							<select class="form-control select2" name="data[tinhtrang]" required>
+								<option <?=(isset($item['tinhtrang']) && $item['tinhtrang']==0)?"selected":"";?> value="0">Chưa sử dụng</option>
+								<option <?=(isset($item['tinhtrang']) && $item['tinhtrang']==1)?"selected":"";?> value="1">Đã sử dụng</option>
+							</select>
+						</div>
+				    <?php } ?>
 				</div>
 				<?php if($act=='add') { ?>
 					<div class="row">

@@ -538,7 +538,7 @@
 	/* Save visitor */
 	function save_item()
 	{
-		global $d, $func, $curPage;
+		global $d, $func, $curPage,$config;
 		
 		if(empty($_POST)) $func->transfer("Không nhận được dữ liệu", "index.php?com=user&act=man&p=".$curPage, false);
 
@@ -558,12 +558,22 @@
 		}
 
 		/* Kiểm tra username */
-		$username = isset($data['username']) ? $data['username'] : '';
-		$check_username = $d->rawQueryOne("select id from #_member where username = ? and id <> ? limit 0,1",array($username, $id));
-		if(!empty($check_username)) $func->transfer("Tên đăng nhập này đã tồn tại. Xin chọn tên khác", "index.php?com=user&act=man&p=".$curPage, false);
+		$email = isset($data['email']) ? $data['email'] : '';
+		$dienthoai = isset($data['dienthoai']) ? $data['dienthoai'] : '';
+		$check_email = $d->rawQueryOne("select id from #_member where email = ? and and dienthoai=? id <> ? limit 0,1",array($email,$dienthoai, $id));
+		if(!empty($check_username)) $func->transfer("Email hoặc số điện thoại đã tồn tại. Xin chọn tên khác", "index.php?com=user&act=man&p=".$curPage, false);
 
 		if($id)
 		{
+			if(isset($_FILES['file'])){
+				$file_name = $func->uploadName($_FILES['file']["name"]);
+				if($avatar = $func->uploadImage("file",'.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF', UPLOAD_USER,$file_name))
+				{
+					$data['avatar'] = $avatar;
+					$row = $d->rawQueryOne("select id, avatar from #_member where id = ?",array($id));
+					if(!empty($row['id'])) $func->delete_file(UPLOAD_USER.$row['avatar']);
+				}
+			}
 			if($func->check_permission())
 			{
 				$row = $d->rawQueryOne("select id from #_member where id = ? limit 0,1",array($id));
@@ -585,7 +595,7 @@
 	                $func->transfer("Xác nhận mật khẩu mới không chính xác","index.php?com=user&act=edit&id=".$id."&p=".$curPage, false);
 	            }
 
-	            $data['password'] = md5($password);
+	            $data['password'] = $func->encrypt_password($config['website']['secret'], $password,$config['website']['salt']);
 	        }
 	        else unset($data['password']);
 			
@@ -594,7 +604,15 @@
 			else $func->transfer("Cập nhật dữ liệu bị lỗi", "index.php?com=user&act=man&p=".$curPage, false);
 		}
 		else
-		{		
+		{	
+			if(!empty($_FILES['file'])){
+				$file_name = $func->uploadName($_FILES['file']["name"]);
+				if($avatar = $func->uploadImage("file",'.jpg|.gif|.png|.jpeg|.gif|.JPG|.PNG|.JPEG|.Png|.GIF', UPLOAD_USER,$file_name))
+				{
+					$data['avatar'] = $avatar;
+				}
+			}
+
 			if(isset($data['password']) && ($data['password'] == '')) $func->transfer("Chưa nhập mật khẩu", "index.php?com=user&act=add&p=".$curPage, false);
 			$data['password'] = md5($data['password']);
 			
