@@ -1,5 +1,52 @@
 <script type="text/javascript">
 	/* Validation form */
+	function holdonOpen(theme="sk-circle",text="Loading...",backgroundColor="rgba(0,0,0,0.8)",textColor="white")
+	{
+	    var options = {
+	        theme: theme,
+	        message: text,
+	        backgroundColor: backgroundColor,
+	        textColor: textColor
+	    };
+
+	    HoldOn.open(options);
+	}
+	function holdonClose()
+	{
+		HoldOn.close();
+	}
+
+	/* Go to element */
+	function goToByScroll(id, minusTop)
+	{
+	    minusTop = (parseInt(minusTop)) ? parseInt(minusTop) : 0;
+	    id = id.replace("#", "");
+	    $('html,body').animate({
+	        scrollTop: $("#" + id).offset().top - minusTop
+	    }, 'slow');
+	}
+
+	/* Show notify */
+	function showNotify(text='Notify text', title='Thông báo', status='success')
+	{
+	    new Notify ({
+	        status: status, // success, warning, error
+	        title: title,
+	        text: text,
+	        effect: 'fade',
+	        speed: 400,
+	        customClass: null,
+	        customIcon: null,
+	        showIcon: true,
+	        showCloseButton: true,
+	        autoclose: true,
+	        autotimeout: 3000,
+	        gap: 10,
+	        distance: 10,
+	        type: 3,
+	        position: 'right top'
+	    });
+	}
 	function ValidationFormSelf(ele)
 	{
 	    window.addEventListener('load', function(){
@@ -16,7 +63,14 @@
 	        $("."+ele).find("input[type=submit],button[type=submit]").removeAttr("disabled");
 	    }, false);
 	}
-
+	$(document).ready(function() {
+		if($(".comment-manager").length)
+	    {
+	        $(".comment-manager").comments({
+	            url: 'ajax/comment.php'
+	        });
+	    }
+	});
 	/* Validation form chung */
 	ValidationFormSelf("validation-form");
 
@@ -34,6 +88,7 @@
 
         window.location = url;
     }
+
     function onchangeCat()
 	{
 		var list = parseInt($("#id_list").val());
@@ -638,13 +693,16 @@
 				{
 					$('body').on("keyup","#"+ten,function(){
 						var title = $("#"+ten).val();
+
 						if((!id || $("#slugchange").prop("checked")) && seourlstatic)
 						{
 							/* Slug preivew */
 							slugPreview(title,lang);
 						}
+
 						/* Slug preivew title seo */
 						slugPreviewTitleSeo(title,lang);
+
 						/* slug Alert */
 						slugAlert(2,lang);
 					})
@@ -654,8 +712,10 @@
 				{
 					$('body').on("keyup","#slug"+lang,function(){
 						var title = $("#slug"+lang).val();
+
 						/* Slug preivew */
 						slugPreview(title,lang);
+
 						/* slug Alert */
 						slugAlert(2,lang);
 					})
@@ -770,7 +830,7 @@
 	{
 		if(inputFile[0].files[0])
 		{
-			if(inputFile[0].files[0].name.match(/.(jpg|jpeg|png|gif|svg)$/i))
+			if(inputFile[0].files[0].name.match(/.(jpg|jpeg|png|gif)$/i))
 			{
 				var size = parseInt(inputFile[0].files[0].size) / 4096;
 

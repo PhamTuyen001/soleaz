@@ -254,4 +254,10 @@ define("ngaybatdau","Start day");
 define("mywishlist","Wishlist");
 define("diachidaluutru","Stored address");
 define("themdiachimoi","Add new location");
+define("madon","Code");
+define("orderdate","Order date");
+define("tonggiatri","Total value");
+define("trangthai","Status");
+define("chitiet","Details");
+define("tong","Total");
 ?>

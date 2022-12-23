@@ -22,7 +22,7 @@
         			</div>
         		</div>
         		<div class="readmore <?=($total<=6)?'d-none':'d-flex'?> mt-4 align-items-center justify-content-center">
-		            <a href="javascript:void(0)" class="click-product"  data-url="<?=$func->getCurrentPageURL()?>" data-page="1" data-total="<?=$total?>"><span><?=loadmore?></span><i class="fal fa-spinner fa-spin"></i></a>
+		            <a href="javascript:void(0)" class="click-product" data-url="<?=$func->getCurrentPageURL()?>" data-page="1" data-total="<?=$total?>"><span><?=loadmore?></span><i class="fal fa-spinner fa-spin"></i></a>
 		        </div>
 			</div>
 		</div>

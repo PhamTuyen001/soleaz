@@ -41,9 +41,3 @@
     </div>
 </section>
 
-<?php if($config['order']['check']==true) { ?>
-    <a class="cart-fixed text-decoration-none" href="gio-hang" title="Giỏ hàng">
-        <i class="fas fa-shopping-bag"></i>
-        <span class="count-cart"><?=count($_SESSION['cart'])?></span>
-    </a>
-<?php } ?>

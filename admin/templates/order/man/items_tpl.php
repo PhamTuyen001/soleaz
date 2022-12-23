@@ -287,7 +287,7 @@
                                 <td class="align-middle">
                                     <?php
                                         $id_tinhtrang = $items[$i]['tinhtrang'];
-                                        $tinhtrang = $d->rawQueryOne("SELECT trangthai FROM #_status WHERE id = ?",array($id_tinhtrang));
+                                        $tinhtrang = $d->rawQueryOne("SELECT trangthai as trangthai FROM #_status WHERE id = ?",array($id_tinhtrang));
                                     ?>
                                     <span class="<?=$arrStatus[$id_tinhtrang-1]?> text-capitalize"><?=$tinhtrang['trangthai']?></span>
                                 </td>

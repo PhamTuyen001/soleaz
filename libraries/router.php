@@ -69,7 +69,7 @@
     $_SESSION['lang'] = (isset($_SESSION['lang'])) ? $_SESSION['lang']:'en';
     if(isset($match['params']['lang'])) $_SESSION['lang'] = $match['params']['lang'];
     else if(!isset($_SESSION['lang']) && !isset($match['params']['lang'])) $_SESSION['lang'] = $optsetting['lang_default'];
-    $lang = $_SESSION['lang']='en';
+    $lang = $_SESSION['lang'];
 
     /* Slug lang */
     $sluglang = 'tenkhongdauen';
@@ -95,16 +95,7 @@
 		array("tbl"=>"product_item","field"=>"idi","source"=>"product","com"=>"outfit","type"=>"outfit"),
 		array("tbl"=>"product","field"=>"id","source"=>"product","com"=>"outfit","type"=>"outfit",'menu'=>true),
 		
-		/* Tags */
-		/*array("tbl"=>"tags","tbltag"=>"product","field"=>"id","source"=>"tags","com"=>"tags-san-pham","type"=>"san-pham",'menu'=>true),
-		array("tbl"=>"tags","tbltag"=>"news","field"=>"id","source"=>"tags","com"=>"tags-tin-tuc","type"=>"tin-tuc",'menu'=>true),*/
-
-		/* Thư viện ảnh */
-		array("tbl"=>"product","field"=>"id","source"=>"product","com"=>"thu-vien-anh","type"=>"thu-vien-anh",'menu'=>true),
-
-		/* Video */
-		/*array("tbl"=>"photo","field"=>"id","source"=>"video","com"=>"video","type"=>"video",'menu'=>true),*/
-
+		
 		array("tbl"=>"news","field"=>"id","source"=>"news","com"=>"tin-tuc","type"=>"tin-tuc",'menu'=>true),
 		array("tbl"=>"news_list","field"=>"idl","source"=>"news","com"=>"thiet-bi-su-kien","type"=>"thiet-bi-su-kien"),
 		array("tbl"=>"news","field"=>"id","source"=>"news","com"=>"thiet-bi-su-kien","type"=>"thiet-bi-su-kien",'menu'=>true),
@@ -196,7 +187,7 @@
 
 		case 'sale':
 			$source = "product";
-			$template = "product/product_all";
+			$template = "product/product_search";
 			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
 			$type = 'san-pham';
 			$title_crumb = sale;
@@ -204,15 +195,15 @@
 
 		case 'featured-products':
 			$source = "product";
-			$template = "product/product_all";
+			$template = "product/product_search";
 			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
 			$type = 'san-pham';
-			$title_crumb = featuredproducts;
+			$title_crumb = sanphamnoibat;
 			break;
 
 		case 'new-collection':
 			$source = "product";
-			$template = "product/product_all";
+			$template = "product/product_search";
 			$seo->setSeo('type',isset($_GET['id']) ? "article" : "object");
 			$type = 'san-pham';
 			$title_crumb = newcollection;
@@ -257,14 +248,14 @@
 			{
 				switch($lang)
 				{
-					case 'vi':
-						$_SESSION['lang'] = 'vi';
+					case 'tl':
+						$_SESSION['lang'] = 'tl';
 						break;
 					case 'en':
 						$_SESSION['lang'] = 'en';
 						break;
 					default:
-						$_SESSION['lang'] = 'vi';
+						$_SESSION['lang'] = 'en';
 						break;
 				}
 			}

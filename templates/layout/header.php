@@ -66,7 +66,11 @@
 				<div class="hd__icon_tool">
 					<div class="icon_tool__btn">
 						<div class="icon_tool__btn__child">
-							<a href=""><img src="assets/images/english.svg" alt=""></a>
+							<?php if($lang=='en'){?>
+							<a href="ngon-ngu/tl/"><img src="assets/images/tl.png" alt=""></a>
+							<?php }else{?>
+							<a href="ngon-ngu/en/"><img src="assets/images/english.svg" alt=""></a>
+							<?php }?>
 						</div>
 					</div>
 				</div>

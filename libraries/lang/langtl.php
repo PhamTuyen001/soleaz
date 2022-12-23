@@ -1,8 +1,8 @@
 <?php
-define("trangchu","");
+define("trangchu","Bahay");
 define("gioithieu","Tungkol sa atin");
 define("tintuc","");
-define("lienhe","");
+define("lienhe","Makipag-ugnayan");
 define("motasanpham","Paglalarawan");
 define("sanpham","Produkto");
 define("luotxem","");
@@ -13,7 +13,7 @@ define("hotrotructuyen","");
 define("dangonline","");
 define("tongtruycap","");
 define("diachi","");
-define("thongtinlienhe","");
+define("thongtinlienhe","Kontak sa Impormasyon");
 define("sodienthoai","Telepono");
 define("hovaten","Buong pangalan");
 define("chude","");
@@ -254,4 +254,10 @@ define("ngaybatdau","Araw ng pagsisimula");
 define("mywishlist","Wishlist");
 define("diachidaluutru","Naka-imbak na address");
 define("themdiachimoi","Magdagdag ng bagong address");
+define("madon","Code");
+define("orderdate","Petsa ng order");
+define("tonggiatri","Kabuuang halaga");
+define("trangthai","Katayuan");
+define("chitiet","Mga Detalye");
+define("tong","Kabuuan");
 ?>

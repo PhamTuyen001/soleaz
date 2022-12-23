@@ -34,7 +34,7 @@
 			break;
 
 		case 'my-info':
-			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base, false);
+			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base."account/login", false);
 			$template = "account/thongtin";
 			$title_crumb = capnhatthongtin;
 			info_user();
@@ -46,23 +46,34 @@
 			break;
 		
 		case 'my-address':
-			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base, false);
+			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base."account/login", false);
 			$template = "account/address";
 			$title_crumb = address;
 			myaddress();
 			break;
 
 		case 'my-voucher':
-			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base, false);
+			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base."account/login", false);
 			$template = "account/voucher";
 			$title_crumb = myvoucher;
 			myvoucher();
 			break;
 		case 'my-wishlist':
-			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base, false);
+			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base."account/login", false);
 			$template = "account/wishlist";
 			$title_crumb = mywishlist;
 			mywishlist();
+			break;
+
+		case 'my-order':
+			if(!isset($_SESSION[$login_member]) || !$_SESSION[$login_member]) $func->transfer("Page does not exist",$config_base."account/login", false);
+			$title_crumb = myorder;
+			if(!empty($_GET['order'])){
+				$template = "account/order_detail";
+			}else{
+				$template = "account/order";
+			}
+			myorder();
 			break;
 			
 		default:
@@ -78,6 +89,19 @@
 	if($title_crumb) $breadcr->setBreadCrumbs('',$title_crumb);
 	$breadcrumbs = $breadcr->getBreadCrumbs();
 	$banner = $d->rawQueryOne("SELECT id, photo FROM #_photo WHERE type = ? AND act = ? limit 0,1",array('bn-user','photo_static'));
+
+
+	function myorder(){
+		global $d, $func, $config_base, $login_member,$row_order,$myOrderCheck,$myOrderCheck_detail;
+		$iduser = $_SESSION[$login_member]['id'];
+		$row_order=$d->rawQuery("select * from #_order where id_user=? order by ngaytao desc",array($iduser));
+		if(!empty($_GET['order'])){
+			$myOrderCheck=$d->rawQueryOne("select * from #_order where id_user=? and madonhang=? order by ngaytao desc",array($iduser,$_GET['order']));
+			$myOrderCheck_detail=$d->rawQuery("select * from #_order_detail where id_order=? order by id desc",array($myOrderCheck['id']));
+		}
+		
+
+	}
 
 
 	function mywishlist(){

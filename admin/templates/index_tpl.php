@@ -27,54 +27,27 @@
     $blank = date('w', strtotime("{$year}-{$month}-01"));
 ?>
 <!-- Main content -->
-<section class="content mb-3">
-    <div class="container-fluid">
-        <h5 class="pt-3 pb-2">Dashboard</h5>
-        <div class="row mb-2 text-sm">
-            <div class="col-12 col-sm-6 col-md-3">
-                <a class="my-info-box info-box" href="index.php?com=setting&act=capnhat" title="Cấu hình website">
-                    <span class="my-info-box-icon info-box-icon bg-primary"><i class="fas fa-cogs"></i></span>
-                    <div class="info-box-content text-dark">
-                        <span class="info-box-text text-capitalize">Cấu hình website</span>
-                        <span class="info-box-number">View more</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3">
-                <a class="my-info-box info-box" href="index.php?com=user&act=admin_edit" title="Tài khoản">
-                    <span class="my-info-box-icon info-box-icon bg-danger"><i class="fas fa-user-cog"></i></span>
-                    <div class="info-box-content text-dark">
-                        <span class="info-box-text text-capitalize">Tài khoản</span>
-                        <span class="info-box-number">View more</span>
-                    </div>
-                </a>
-            </div>
-            <div class="clearfix hidden-md-up"></div>
-            <div class="col-12 col-sm-6 col-md-3">
-                <a class="my-info-box info-box" href="index.php?com=user&act=admin_edit&changepass=1" title="Đổi mật khẩu">
-                    <span class="my-info-box-icon info-box-icon bg-success"><i class="fas fa-key"></i></span>
-                    <div class="info-box-content text-dark">
-                        <span class="info-box-text text-capitalize">Đổi mật khẩu</span>
-                        <span class="info-box-number">View more</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3">
-                <a class="my-info-box info-box" href="index.php?com=contact&act=man" title="Thư liên hệ">
-                    <span class="my-info-box-icon info-box-icon bg-info"><i class="fas fa-address-book"></i></span>
-                    <div class="info-box-content text-dark">
-                        <span class="info-box-text text-capitalize">Thư liên hệ</span>
-                        <span class="info-box-number">View more</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 
+<div class="wrap-banner-top-index-admin">
+    <div class="text-admin">
+        <h1>Xin chào <?=$_SESSION[$login_admin]['username']?>!</h1>
+        <p>Bao lâu rồi bạn không quay lại trang quản trị, nào cùng kiểm tra xem chúng ta có gì mới nhé!!</p>
+    </div>
+    <div class="box-account-admin">
+        <div class="img-box-">
+            <span>
+                <img src="assets/images/bg-account.png" alt="">
+            </span>
+            
+        </div>
+        <p>
+                <strong>Administrator</strong><span>Nhà quản trị website</span>
+            </p>
+    </div>
+</div>
 <section class="content pb-4">
    <div class="container-fluid">
-       <div class="card">
+       <div class="card card-boder">
            <div class="card-header">
                <h5 class="mb-0">Thống kê truy cập tháng <?=$month?>/<?=$year?></h5>
            </div>

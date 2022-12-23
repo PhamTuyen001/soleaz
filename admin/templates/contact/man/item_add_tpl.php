@@ -49,14 +49,6 @@
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" name="data[email]" id="email" placeholder="Email" value="<?=@$item['email']?>">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="diachi">Địa chỉ:</label>
-                        <input type="text" class="form-control" name="data[diachi]" id="diachi" placeholder="Địa chỉ" value="<?=@$item['diachi']?>">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="tieude">Chủ đề:</label>
-                        <input type="text" class="form-control" name="data[tieude]" id="tieude" placeholder="Chủ đề" value="<?=@$item['tieude']?>">
-                    </div>
                 </div>
                 <div class="form-group">
                     <label for="noidung">Nội dung:</label>
